@@ -6,6 +6,11 @@ const courseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     type: {
       type: String,
       enum: ["free", "paid"],
@@ -15,7 +20,7 @@ const courseSchema = new mongoose.Schema(
       type: [
         {
           subtitle: String,
-          link: String,
+          src: String,
           duration: String,
         },
       ],
@@ -25,6 +30,10 @@ const courseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    }
   },
   { versionKey: false }
 );
