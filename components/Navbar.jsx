@@ -59,8 +59,12 @@ const Navbar = () => {
                   md: "inline-flex",
                 }}
               >
+                <Link href="/">
                 <Button variant="ghost">Home</Button>
+                </Link>
+                <Link href="/pricing">
                 <Button variant="ghost">Pricing</Button>
+                </Link>
                 <Button variant="ghost">Notes</Button>
                 <Button variant="ghost">About</Button>
                 <Link href="/courses">
