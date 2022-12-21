@@ -28,7 +28,7 @@ const sendMail = async (to, name,code) => {
                  <p>Thank you for registering with us.</p>
             </div>
              
-              <p style="font-size:0.9em;color: #1f54f5;text-decoration:none;font-weight:600">Regards,<br />Meds Pharma & Team</p>
+              <p style="font-size:0.9em;color: #1f54f5;text-decoration:none;font-weight:600">Regards,<br />Hackathon & Team</p>
               <hr style="border:none;border-top:1px solid #eee" />
                 <p style="font-size:0.8em;color:#777">You are receiving this email because you have registered with us.</p>
             </div>
