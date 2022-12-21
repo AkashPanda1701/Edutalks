@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <React.Fragment>
-        <chakra.header
+        <Box
           bg={bg}
           w="full"
           px={{
@@ -29,6 +29,9 @@ const Navbar = () => {
           }}
           py={4}
           shadow="md"
+          position={{ base: "fixed", md: "relative" }}
+          zIndex={10}
+          
         >
           <Flex alignItems="center" justifyContent="space-between" mx="auto">
             <Flex>
@@ -125,7 +128,7 @@ const Navbar = () => {
               </Box>
             </HStack>
           </Flex>
-        </chakra.header>
+        </Box>
       </React.Fragment>
     </>
   );
