@@ -100,6 +100,7 @@ const Navbar = () => {
                   spacing={3}
                   rounded="sm"
                   shadow="sm"
+                  zIndex="9999"
                 >
                   <CloseButton
                     aria-label="Close menu"
