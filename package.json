@@ -1,0 +1,33 @@
+{
+  "name": "mernwarrior",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.4.4",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@next/font": "13.0.7",
+    "axios": "^1.2.1",
+    "chakra": "^0.0.3",
+    "framer-motion": "^8.0.1",
+    "icons": "^1.0.0",
+    "mongoose": "^6.8.1",
+    "next": "13.0.7",
+    "next-auth": "^4.18.6",
+    "nextjs-progressbar": "^0.0.16",
+    "nodemailer": "^6.8.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.2",
+    "referral-codes": "^2.0.3"
+  }
+}
