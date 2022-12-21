@@ -1,7 +1,7 @@
 import { Badge, Box, Button, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../../../components/Navbar'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 
 function watch() {

@@ -2,12 +2,15 @@ import React from "react";
 import { useRouter } from "next/router";
 import { Box, Flex, chakra, Link, Text, Badge } from "@chakra-ui/react";
 import { BsCalendar2Week } from "react-icons/bs";
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
 
 const SingleCourse = () => {
   const router = useRouter();
   const { slug } = router.query;
   return (
     <div>
+      <Navbar />
       <Flex
         bg="skyblue"
         _dark={{
@@ -292,6 +295,7 @@ const SingleCourse = () => {
           </Flex>
         </Box>
       </Box>
+      <Footer />
     </div>
   );
 };
