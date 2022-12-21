@@ -13,6 +13,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
+import Link from "next/link";
 
 const Navbar = () => {
   const bg = useColorModeValue("white", "gray.800");
@@ -29,9 +30,9 @@ const Navbar = () => {
           }}
           py={4}
           shadow="md"
-          position={{ base: "fixed", md: "relative" }}
+          position={{  base: "relative" }}
           zIndex={10}
-          
+
         >
           <Flex alignItems="center" justifyContent="space-between" mx="auto">
             <Flex>
@@ -58,14 +59,16 @@ const Navbar = () => {
                   md: "inline-flex",
                 }}
               >
-                <Button variant="ghost">Features</Button>
+                <Button variant="ghost">Home</Button>
                 <Button variant="ghost">Pricing</Button>
-                <Button variant="ghost">Blog</Button>
-                <Button variant="ghost">Company</Button>
-                <Button variant="ghost">Sign in</Button>
+                <Button variant="ghost">Notes</Button>
+                <Button variant="ghost">About</Button>
+                <Link href="/courses">
+                  <Button variant="ghost">Courses</Button>
+                </Link>
               </HStack>
               <Button bg="skyblue" size="sm">
-                Get Started
+                Sign In
               </Button>
               <Box
                 display={{
