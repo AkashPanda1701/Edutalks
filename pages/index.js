@@ -4,6 +4,7 @@ import { Box } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
 import Pricing from "../components/Pricing";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function Home() {
         <Navbar />
         <Header />
         <Pricing />
+        <Footer />
       </Box>
     </>
   );
