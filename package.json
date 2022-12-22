@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.14",
     "@chakra-ui/react": "^2.4.4",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@next/font": "13.0.7",
     "axios": "^1.2.1",
     "chakra": "^0.0.3",
+    "firebase": "^9.15.0",
     "framer-motion": "^8.0.1",
     "icons": "^1.0.0",
     "mongoose": "^6.8.1",

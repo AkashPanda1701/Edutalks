@@ -10,7 +10,7 @@ import { Skeleton, SkeletonText } from '@chakra-ui/react'
 
 function courses() {
     const dispatch = useDispatch();
-    const {Allcourses:{data,loading,error}} = useSelector(state => state.course);
+    const { Allcourses: { data, loading, error } } = useSelector(state => state.course);
     console.log('data: ', data);
     React.useEffect(() => {
         dispatch(getAllCourses());
@@ -72,36 +72,38 @@ function courses() {
                                 </Box>
                                 <Grid templateColumns="repeat(3, 1fr)" gap={6} mt='4'>
                                     {
-                                        loading ? new Array(6).fill(6).map((el,index)=> <GridItem colSpan={1} key={index} >
-                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                            <Skeleton roundedTop={'lg'}  h={'180px'}/>
-                                            <Box p='4'>
-                                                <SkeletonText mt='2' noOfLines={1} spacing='4' />
-                                                <SkeletonText mt='2' noOfLines={1} spacing='4' />
-                                                <SkeletonText mt='2' noOfLines={1} spacing='4' />
-                                
-                                            </Box>
-                                        </Box>
-                                    </GridItem>) : data?.map((course,index) => <Link key={index} href={`/course/${course.slug}`}>
-                                        <GridItem colSpan={1}>
+                                        loading ? new Array(6).fill(6).map((el, index) => <GridItem colSpan={1} key={index} >
                                             <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                                <Image src={course.image} roundedTop={'lg'} />
+                                                <Skeleton roundedTop={'lg'} h={'180px'} />
                                                 <Box p='4'>
-                                                    <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                    <Text fontSize='md' fontWeight='semibold'>{course.title.slice(0, 25)}...</Text>
-                                                    <Text mt='2' fontSize='sm' textColor='gray.500'>Learn {
-                                                           course.title.split('to')[1].length > 10 ? `${course.title.split('to')[1].slice(0, 10)}... `: course.title.split('to')[1]
-                                                    } from scratch</Text>
-                                                    <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>{
-                                                        course.totalDuration
-                                                    } Mins</Badge></Text>
+                                                    <SkeletonText mt='2' noOfLines={1} spacing='4' />
+                                                    <SkeletonText mt='2' noOfLines={1} spacing='4' />
+                                                    <SkeletonText mt='2' noOfLines={1} spacing='4' />
+
                                                 </Box>
                                             </Box>
-                                        </GridItem>
-                                    </Link>
-                                    )
+                                        </GridItem>) : data?.map((course, index) => <Link key={index} href={`/course/${course.slug}`}>
+                                            <GridItem colSpan={1}>
+                                                <Box borderRadius='lg' boxShadow={'md'} bg='white'>
+                                                    <Image src={course.image} roundedTop={'lg'} />
+                                                    <Box p='4'>
+                                                        <Badge colorScheme={course.type === 'free' ? 'green' : 'orange'} mb='2'>
+                                                            {course.type} Course
+                                                        </Badge>
+                                                        <Text fontSize='md' fontWeight='semibold'>{course.title.slice(0, 25)}...</Text>
+                                                        <Text mt='2' fontSize='sm' textColor='gray.500'>Learn {
+                                                            course.title.split('to')[1].length > 10 ? `${course.title.split('to')[1].slice(0, 10)}... ` : course.title.split('to')[1]
+                                                        } from scratch</Text>
+                                                        <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>{
+                                                            course.totalDuration
+                                                        } Mins</Badge></Text>
+                                                    </Box>
+                                                </Box>
+                                            </GridItem>
+                                        </Link>
+                                        )
                                     }
-                                    
+
                                 </Grid>
                             </Box>
                         </GridItem>
