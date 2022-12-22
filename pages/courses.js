@@ -3,9 +3,16 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
 import { FaBook, FaBookMedical, FaBookReader, FaBrain, FaGift, FaHome, FaMoneyBill } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
 import Navbar from '../components/Navbar'
+import { getAllCourses } from '../redux/course/action'
 
 function courses() {
+    const dispatch = useDispatch();
+    const {Allcourses:{data,loading,error}} = useSelector(state => state.course);
+    React.useEffect(() => {
+        dispatch(getAllCourses());
+    }, [dispatch]);
     return (
         <>
             <Head>
