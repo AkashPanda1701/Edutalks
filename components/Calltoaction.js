@@ -1,6 +1,7 @@
 import React from 'react'
-import { Flex, Box, chakra, Stack, Link, Button, Grid, GridItem } from '@chakra-ui/react'
+import { Flex, Box, chakra, Button } from '@chakra-ui/react'
 import { FaShare } from 'react-icons/fa'
+import Link from 'next/link'
 
 function Calltoaction() {
     return (
@@ -25,7 +26,9 @@ function Calltoaction() {
                 >
                     <chakra.span display="block">Start Your Learning Journey Today For Free</chakra.span>
                 </chakra.h2>
+                <Link href="/referral">
                 <Button colorScheme="orange" size='md'><FaShare /> &nbsp; Refer Now</Button>
+                </Link>
             </Flex>
         </>
     )

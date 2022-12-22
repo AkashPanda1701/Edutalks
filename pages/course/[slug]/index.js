@@ -74,7 +74,7 @@ const SingleCourse = () => {
         <GridItem colSpan={{ base: 7, md: 3 }} mt='2'>
           <Flex alignItems='center' bg='white' p='4' mt='4' borderRadius='md' boxShadow='md'>
             <Box>
-              <Box fontSize='xl' fontWeight='bold'>Learn React JS - Full Course for Beginners</Box>
+              <Box fontSize='xl' fontWeight='bold'>{data?.title}</Box>
               <Badge colorScheme="green">Duration: 32 mins</Badge>
             </Box>
           </Flex>
@@ -116,7 +116,7 @@ const SingleCourse = () => {
       
 {
   data?.videos?.map((video, index) => (
-    <Box bg='white' p='4' borderRadius='md' boxShadow='md' cursor={'pointer'} _hover={{ bg: 'blue.50' }}>
+    <Box key={index} bg='white' p='4' borderRadius='md' boxShadow='md' cursor={'pointer'} _hover={{ bg: 'blue.50' }}>
     <Flex gap='4' alignItems='center' justifyContent={'space-between'}>
       <Flex gap='4' alignItems='center'>
           <Img w='120px' src={data.image} alt={data.title} rounded='md' />
@@ -126,7 +126,7 @@ const SingleCourse = () => {
           <Badge colorScheme="green">Duration: {video.duration} mins</Badge>
         </Box>
       </Flex>
-      <Link href={`${data.slug}/watch?video=${video._id}`} >
+      <Link href={`${data.slug}/watch?video=${index+1}`} >
         <Button colorScheme='blue' size='sm'><BsLayoutSidebarInset /> &nbsp; Watch Now</Button>
       </Link>
     </Flex>

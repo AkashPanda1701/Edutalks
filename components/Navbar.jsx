@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Link from "next/link";
+import Login from "./Login/Login";
 
 const Navbar = () => {
   const bg = useColorModeValue("white", "gray.800");
@@ -45,9 +46,11 @@ const Navbar = () => {
                 {/* <Logo /> */}
                 <VisuallyHidden>Choc</VisuallyHidden>
               </chakra.a>
+              <Link href="/">
               <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
                 Choc
               </chakra.h1>
+              </Link>
             </Flex>
             <HStack display="flex" alignItems="center" spacing={1}>
               <HStack
@@ -71,9 +74,7 @@ const Navbar = () => {
                   <Button variant="ghost">Courses</Button>
                 </Link>
               </HStack>
-              <Button bg="skyblue" size="sm">
-                Sign In
-              </Button>
+              <Login />
               <Box
                 display={{
                   base: "inline-flex",
