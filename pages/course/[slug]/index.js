@@ -1,12 +1,11 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Box, Flex, chakra, Link, Text, Badge, Image, Grid, GridItem, Button } from "@chakra-ui/react";
+import { Box, Flex, Text, Badge, Image, Grid, GridItem, Button } from "@chakra-ui/react";
 import { BsCalendar2Week, BsCheck, BsCheck2Circle, BsClock, BsClockFill, BsCollection, BsDashSquare, BsFillShareFill, BsLayoutSidebarInset, BsListNested, BsShare, BsSquareHalf, BsSuitDiamondFill } from "react-icons/bs";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import { FaArrowRight, FaCheckCircle, FaConfluence, FaGift, FaPlaceOfWorship, FaQuestion, FaShare } from "react-icons/fa";
-import { BsHeartFill } from 'react-icons/bs'
-
+import Link from "next/link";
 const SingleCourse = () => {
   const router = useRouter();
   const { slug } = router.query;
@@ -76,7 +75,7 @@ const SingleCourse = () => {
           </Flex>
           <Box bg='white' p='4' mt='4' borderRadius='md' boxShadow='md'>
             <GridItem colSpan={{ base: 8, md: 3 }} bg='white' borderRadius='md'>
-            <Box fontSize='xl' fontWeight='bold'>Skills you'll gain</Box>
+              <Box fontSize='xl' fontWeight='bold'>Skills you'll gain</Box>
               <Box border='1px solid' borderColor='gray.100' borderRadius='md' p={4} mt={4}>
                 <Flex justifyContent='space-between' alignItems='center'>
                   <Flex alignItems='center' gap='2'>
@@ -120,7 +119,9 @@ const SingleCourse = () => {
                   <Badge colorScheme="green">Duration: 32 mins</Badge>
                 </Box>
               </Flex>
-              <Button colorScheme='blue' size='sm'><BsLayoutSidebarInset /> &nbsp; Watch Now</Button>
+              <Link href='courselink/watch'>
+                <Button colorScheme='blue' size='sm'><BsLayoutSidebarInset /> &nbsp; Watch Now</Button>
+              </Link>
             </Flex>
           </Box>
           <Box bg='white' p='4' py='8' borderRadius='md' boxShadow='md' mt='4' cursor={'pointer'} _hover={{ bg: 'blue.50' }}>
