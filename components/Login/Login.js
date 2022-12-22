@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import axios from "axios";
 import {
     Drawer,
@@ -32,14 +32,24 @@ import {
 } from "firebase/auth";
 import app from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
+import {signIn, useSession} from "next-auth/react"
 
 
 import Timer from "./Timer";
 import Form from "./Form";
+import { login } from "../../redux/auth/action";
+import { RESET_AUTH } from "../../redux/auth/actionTypes";
 function Login() {
 
     const auth = getAuth(app);
-    const [Number, setNumber] = useState("8532083765");
+    const dispatch = useDispatch();
+    const { data: session, status } = useSession();
+   
+    
+    
+
+
+    const [Number, setNumber] = useState("");
     const [Authinicated, setAuthinicated] = useState(false);
     const [otpSented, setOtpSented] = useState(true);
     const [Otp, setOtp] = useState("");
@@ -50,6 +60,25 @@ function Login() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const firstField = React.useRef();
     const toast = useToast();
+    const {message} = useSelector(state => state.auth)
+    useEffect(() => {
+        
+    if (message==="User does not exist") {
+      
+        setOtpVerification(true);
+        dispatch({type:RESET_AUTH})
+    }
+    if(message==="User exists")
+    {
+        //use next Auth here
+        onClose();
+        signIn("credentials", { phone: Number, callbackUrl: "/" });
+
+
+    }
+    }, [message]);
+    
+
     const sendOtp = () => {
         if (
             Number.length > 10 ||
@@ -78,16 +107,14 @@ function Login() {
                 setAuthinicated(res);
                 setOtpSented(false);
                 toast({
-                    title: `OTP Sented`,
+                    title: `OTP Sent`,
                     position: "top",
                     isClosable: true,
                     status: "success",
                 });
             })
             .catch((error) => {
-                authError(
-                    "Something Went Wrong Please Try Again Later "
-                );
+               
                 onClose();
                 setLoading(false);
                 toast({
@@ -114,17 +141,20 @@ function Login() {
                     isClosable: true,
                     status: "success",
                 });
+                dispatch(login({ phone: Number }));
                 const user = result.user;
-                setOtpVerification(true);
+                // setOtpVerification(true);
                 setLoading(false);
+
             })
             .catch((error) => {
-                onClose();
+                // onClose();
                 toast({
-                    title: error,
+                    title: `Worng OTP`,
                     position: "top",
                     isClosable: true,
                     status: "error",
+
                 });
                 setLoading(false);
             });
@@ -140,12 +170,13 @@ function Login() {
                 <Button
                     fontSize={{ base: 0, md: "md" }}
                     fontWeight={500}
-                    variant={"link"}
+                    variant="ghost" 
                     color="black"
-                    onClick={onOpen}
+                    onClick={ session ? null : onOpen}
                 >
-                    Hello,{"isAuth" ? 'Akash' : 'Login'}
+                    Hello, {session ? session.user.name : "Sign In"}
                 </Button>
+
 
                 <Drawer
                     size="sm"
@@ -161,24 +192,18 @@ function Login() {
                             color="white"
                             right="var(--chakra-space-0)"
                         />
-                        <DrawerHeader
+                        <Box
                             display="flex"
                             bg={useColorModeValue("gray.50", "gray.800")}
-                            gap="40px"
                             justifyContent={"space-between"}
                             alignItems="center"
                         >
                             <Img
-                                w="250px"
+                                w="100%"
                                 padding={"30px"}
-                                src="https://user-images.githubusercontent.com/97351159/208255522-22126415-4bf1-422b-9c54-d637ae7ecf91.png"
+                                src="https://profiles.sulekha.com/mstore/41473532/albums/default/thumbnailfull/shutterstock-548778247.jpg"
                             />
-                            <Img
-                                paddingRight={"10px"}
-                                w="80px"
-                                src="https://assets.pharmeasy.in/web-assets/dist/1fe1322a.svg?dim=256x0"
-                            />
-                        </DrawerHeader>{" "}
+                        </Box>{" "}
                         <hr />
                         {!otpVerification ? (
                             <DrawerBody marginTop={"40px"}>
