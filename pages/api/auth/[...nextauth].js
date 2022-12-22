@@ -29,9 +29,7 @@ export default NextAuth({
         session.user.phone = user.phone;
         session.user.subscriptions = user.subscriptions;
         session.user.referalCode = user.referalCode;
-
-
-
+        session.user.courses = user.courses;
       }
       return session;
     },

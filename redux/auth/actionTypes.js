@@ -7,6 +7,8 @@
     export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
     export const SIGNUP_ERROR = "SIGNUP_ERROR";
 
+    export const SET_SESSION = "SET_SESSION";
+
 
     export const RESET_AUTH = "RESET_AUTH";
     

@@ -19,9 +19,12 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
+import { useSession } from "next-auth/react";
 
 const UserProfile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { data: session } = useSession();
+  console.log(session);
 
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
@@ -37,7 +40,6 @@ const UserProfile = () => {
       </chakra.h2>
       <Box
         w="full"
-        h="200px"
         mt="30px"
         p={8}
         boxShadow="xl"
@@ -61,13 +63,13 @@ const UserProfile = () => {
             />
           </Box>
         </Flex>
-        <Flex justifyContent="space-between" mt="40px">
+        <Flex justifyContent="space-between" mt="30px" bg='gray.50' px='8' p='4' rounded='md'>
           <Box>
             <chakra.p fontSize="12px">Your referal code</chakra.p>
-            <chakra.h1 fontSize="20px">12345</chakra.h1>
+            <chakra.h1 fontSize="26px" fontWeight={'semibold'}>{session?.user.referalCode}</chakra.h1>
           </Box>
-          <Box>
-            <Button colorScheme="gray" mr="10px">
+          <Box mt='10px'>
+            <Button colorScheme="green" mr="10px">
               Copy code
             </Button>
             <Button colorScheme="gray" variant="outline">
@@ -82,22 +84,25 @@ const UserProfile = () => {
         </chakra.h1>
         <Box>
           <chakra.p>Name</chakra.p>
-          <chakra.p>Abdul Quadir</chakra.p>
+          <chakra.p>{session?.user.name}</chakra.p>
           <Divider mt="10px" mb="10px" />
         </Box>
         <Box>
           <chakra.p>Email</chakra.p>
-          <chakra.p>abdul77@gmail.com</chakra.p>
+          <chakra.p>{session?.user.email}</chakra.p>
           <Divider mt="10px" mb="10px" />
         </Box>
         <Box>
           <chakra.p>Mobile number</chakra.p>
-          <chakra.p>7540917877</chakra.p>
+          <chakra.p>{session?.user.phone}</chakra.p>
           <Divider mt="10px" mb="10px" />
         </Box>
         <Box>
-          <chakra.p>Subscription</chakra.p>
-          <chakra.p>30days Left</chakra.p>
+          <chakra.p>Subscription Valid</chakra.p>
+          <chakra.p>
+            {/* Calculate subscription left from startdate and enddate */}
+            {new Date(session?.user.subscriptions.enddate).toDateString()}
+          </chakra.p>
           <Divider mt="10px" mb="10px" />
         </Box>
       </Box>
@@ -116,16 +121,16 @@ const UserProfile = () => {
             <ModalBody pb={6}>
               <FormControl>
                 <FormLabel>Name</FormLabel>
-                <Input ref={initialRef} placeholder="Name" />
+                <Input ref={initialRef} placeholder="Name" value={session?.user.name} />
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>Email</FormLabel>
-                <Input placeholder="Email" />
+                <Input placeholder="Email" value={session?.user.email} />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Phone number</FormLabel>
-                <Input placeholder="Phone number" />
+                <Input placeholder="Phone number" value={session?.user.phone} />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Password</FormLabel>
@@ -133,8 +138,8 @@ const UserProfile = () => {
               </FormControl>
             </ModalBody>
 
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3}>
+            <ModalFooter >
+              <Button mt='8' colorScheme="blue" mr={3}>
                 Update
               </Button>
               {/* <Button onClick={onClose}>Cancel</Button> */}

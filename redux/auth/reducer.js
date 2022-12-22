@@ -1,17 +1,17 @@
 
-import { LOGIN_LOADING,LOGIN_SUCCESS,LOGIN_ERROR,SIGNUP_LOADING,SIGNUP_SUCCESS,SIGNUP_ERROR, RESET_AUTH } from "./actionTypes";
+import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_ERROR, SIGNUP_LOADING, SIGNUP_SUCCESS, SIGNUP_ERROR, RESET_AUTH, SET_SESSION } from "./actionTypes";
 
 
 const initialState = {
     loading: false,
     error: false,
-    message : "",
-    user : {},
+    message: "",
+    user: {},
 };
 
 
-export const authReducer = (state = initialState,{type,payload}) => {
-   
+export const authReducer = (state = initialState, { type, payload }) => {
+
     switch (type) {
         case LOGIN_LOADING:
             return {
@@ -22,8 +22,8 @@ export const authReducer = (state = initialState,{type,payload}) => {
             return {
                 ...state,
                 loading: false,
-                message : payload.message,
-                user : payload.user,
+                message: payload.message,
+                user: payload.user,
             };
         case LOGIN_ERROR:
             return {
@@ -36,7 +36,7 @@ export const authReducer = (state = initialState,{type,payload}) => {
                 ...state,
                 loading: false,
                 error: false,
-                message : "",
+                message: "",
             };
 
         case SIGNUP_LOADING:
@@ -48,8 +48,8 @@ export const authReducer = (state = initialState,{type,payload}) => {
             return {
                 ...state,
                 loading: false,
-                message : payload.message,
-                user : payload.user,
+                message: payload.message,
+                user: payload.user,
             };
         case SIGNUP_ERROR:
             return {
@@ -57,7 +57,12 @@ export const authReducer = (state = initialState,{type,payload}) => {
                 loading: false,
                 error: true,
             };
+        case SET_SESSION:
+            return {
+                ...state,
+                user: payload,
+            };
         default:
             return state;
-    }   
+    }
 }
