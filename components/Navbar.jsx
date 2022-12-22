@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CloseButton,
   Flex,
@@ -15,10 +15,19 @@ import {
 import { AiOutlineMenu } from "react-icons/ai";
 import Link from "next/link";
 import Login from "./Login/Login";
+import { useDispatch, useSelector } from "react-redux";
+import { setSession } from "../redux/auth/action";
 
 const Navbar = () => {
+  const {user} =useSelector(state=>state.auth)
+  console.log('user: ', user);
+  const dispatch = useDispatch();
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
+
+  useEffect(() => {
+    dispatch(setSession());
+  }, [dispatch]);
   return (
     <>
       <React.Fragment>
