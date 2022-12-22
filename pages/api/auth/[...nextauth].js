@@ -10,14 +10,12 @@ export default NextAuth({
       // fetch user from database
       async authorize(credentials) {
         await connectDB();
-        const user = await User.findOne({ email: credentials.email });
-        if (
-          user.email === credentials.email &&
-          user.password === credentials.password
-        ) {
+        const user = await User.findOne({ phone: credentials.phone });
+        if (user) {
           return user;
+        } else {
+          return null;
         }
-        return null;
       },
     }),
   ],
@@ -28,6 +26,12 @@ export default NextAuth({
         session.user.role = user.role;
         session.user.name = user.name;
         session.user.id = user._id;
+        session.user.phone = user.phone;
+        session.user.subscriptions = user.subscriptions;
+        session.user.referalCode = user.referalCode;
+
+
+
       }
       return session;
     },

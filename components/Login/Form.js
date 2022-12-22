@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Flex,
   Box,
@@ -14,27 +14,49 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link,
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { signup } from "../../redux/auth/action";
+import { signIn } from "next-auth/react";
+
+
+
 function Form({ Number, onClose }) {
   const toast = useToast();
   const dispatch = useDispatch()
+  const {message } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    fname: "",
-    lname: "",
+    name: "",
     email: "",
     password: "",
-    number: Number,
+    phone: Number,
+    referalCode: "",
   });
   const [loading, setLoading] = useState(false);
 
   const [error, setError] = useState("");
+
+
+   useEffect(() => {
+    if (message=="User created") {
+      toast({
+        title: "Account created.",
+        description: "We've created your account for you.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position : "top"
+      });
+      onClose();
+      signIn("credentials", { phone:Number ,callbackUrl:"/" });
+    }
+  }, [message]);
+
 
   const handleSubmit = () => {
     if (!formData.email.includes("@")) {
@@ -44,41 +66,16 @@ function Form({ Number, onClose }) {
       return;
     } else if (
       formData.password == "" &&
-      formData.fname == ""
+      formData.name == ""
     ) {
       setError("Please fill the form correctly");
       return;
     }
-    console.log(formData);
-    userPost();
-    setTimeout(() => {
-      dispatch({type :AUTH_REQ_SUCCESS, payload: 'success'})
-    toast({
-      title: "Account created.",
-      description: "We've created your account for you.",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-      position: "top",
-  })
-    }, 2000);
+    // console.log(formData);
+    dispatch(signup(formData));
+   
   };
-  const userPost = () => {
-    setLoading(true);
-    axios
-      .post(
-        `https://jsonplaceholder.typicode.com/todos`,
-        formData
-      )
-      .then(function (response) {
-        onClose();
-        setLoading(false);
-       
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  
   return (
     <Flex
       minH={"100vh"}
@@ -88,21 +85,12 @@ function Form({ Number, onClose }) {
       {!loading ? (
         <Box>
           <Stack
-            spacing={8}
             mx={"auto"}
             maxW={"lg"}
-            py={12}
-            px={6}
+            mt={-4}
+            px={4}
           >
-            <Stack>
-              <Heading
-                color="#10847E"
-                fontSize={"4xl"}
-                textAlign={"center"}
-              >
-                Sign up
-              </Heading>
-            </Stack>
+         
             <Box
               rounded={"lg"}
               bg={useColorModeValue("gray.50", "gray.800")}
@@ -110,41 +98,23 @@ function Form({ Number, onClose }) {
               p={8}
             >
               <Stack spacing={4}>
-                <HStack>
-                  <Box>
-                    <FormControl id="firstName" isRequired>
-                      <FormLabel color="#10847E">
-                        First Name
-                      </FormLabel>
-                      <Input
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            fname: e.target.value,
-                          })
-                        }
-                        value={formData.fname}
-                        _focus={{
-                          border: "1px solid #10847E",
-                        }}
-                        type="text"
-                      />
-                    </FormControl>
-                  </Box>
+               
+                 
                   <Box>
                     <FormControl
                       color="#10847E"
                       id="lastName"
+                      isRequired
                     >
-                      <FormLabel>Last Name</FormLabel>
+                      <FormLabel>Name</FormLabel>
                       <Input
                         onChange={(e) =>
                           setFormData({
                             ...formData,
-                            lname: e.target.value,
+                            name: e.target.value,
                           })
                         }
-                        value={formData.lname}
+                        value={formData.name}
                         _focus={{
                           border: "1px solid #10847E",
                         }}
@@ -152,7 +122,6 @@ function Form({ Number, onClose }) {
                       />
                     </FormControl>
                   </Box>
-                </HStack>
                 <FormControl id="email" isRequired>
                   <FormLabel color="#10847E">
                     Email address
@@ -210,7 +179,7 @@ function Form({ Number, onClose }) {
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
-                <Stack spacing={10} pt={2}>
+                <Stack spacing={4} pt={2}>
                   <Button
                     onClick={handleSubmit}
                     loadingText="Submitting"
@@ -223,8 +192,30 @@ function Form({ Number, onClose }) {
                       border: "1px solid #10847E",
                     }}
                   >
-                    Sign up
+                    Register
                   </Button>
+                  <FormControl id="email" >
+                    <Flex alignItems={'center'}>
+
+                  <FormLabel color="#10847E" w='50%'>
+                   Referal Code
+                  </FormLabel>
+                  <Input h={8}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        referalCode: e.target.value,
+                        
+                      })
+                    }
+                    value={formData.referalCode}
+                    _focus={{
+                      border: "1px solid #10847E",
+                    }}
+                    type="text"
+                    />
+                    </Flex>
+                </FormControl>
                 </Stack>
                 {!!error ? (
                   <Text textAlign={"center"} color={"red"}>

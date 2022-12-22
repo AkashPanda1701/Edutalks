@@ -9,28 +9,30 @@ const signup = async (req, res) => {
 
    
     if(req.method === 'POST') {
-        const { name, email, password, referalCode} = req.body;
+        const { name, email, password, referalCode , phone} = req.body;
         try {
-
           
-            
+
+              
+                    
             const code = Crypto.randomBytes(4).toString('hex');
             
-            const user = await User.create({
+            const newuser = await User.create({
                 name,
                 email,
                 password,
+                phone,
                 subscriptions:{
                     startdate: new Date(),
                     enddate: new Date(),
                 },
                 referalCode: code
-
+                
             });
             sendMail(email, name, code);
             await Referal.create({
                 referalCode: code,
-                userId: user._id,
+                userId: newuser._id,
             });
             if(referalCode){
                 const referal = await Referal.findOne({ referalCode});
@@ -43,7 +45,7 @@ const signup = async (req, res) => {
                     console.log('user.subscriptions.enddate: ', new Date(user.subscriptions.enddate));
                      await User.findByIdAndUpdate(user._id, { subscriptions: user.subscriptions });
                      sendMail(user.email, user.name, 1);
-                     referal.referalcount.push(user._id);
+                     referal.referalcount.push(newuser._id);
                     await referal.save();
                 }
             }
@@ -51,13 +53,17 @@ const signup = async (req, res) => {
           return res.status(201).json({ 
             message: "User created",
             user: {
-                name: user.name,
-                email: user.email,
-                role: user.role,
-                referalCode: user.referalCode,
-                subscriptions: user.subscriptions
+                name: newuser.name,
+                email: newuser.email,
+                role: newuser.role,
+                phone: newuser.phone,
+                referalCode: newuser.referalCode,
+                subscriptions: newuser.subscriptions
 
             }});
+            
+          
+        
         } catch (error) {
           return res.status(400).json({ message : error.message });
         }
