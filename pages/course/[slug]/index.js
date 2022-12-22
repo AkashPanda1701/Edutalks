@@ -32,9 +32,9 @@ const SingleCourse = () => {
                   <Box bg='gray.100' borderRadius='full' w='50px' h='50px' display='flex' justifyContent='center' alignItems='center'>
                     <BsClockFill size='20px' color='gray' />
                   </Box>
-                  <Box w='70%'>
-                    <Text ml='2'>Duration</Text>
-                    <Text ml='2' mt='1' fontSize='sm'>32 mins</Text>
+                  <Box w='65%'>
+                    <Text>Duration</Text>
+                    <Text mt='1' fontSize='sm'>32 mins</Text>
                   </Box>
                 </Flex>
               </GridItem>
@@ -43,9 +43,9 @@ const SingleCourse = () => {
                   <Box bg='gray.100' borderRadius='full' w='50px' h='50px' display='flex' justifyContent='center' alignItems='center'>
                     <BsCollection size='20px' color='gray' />
                   </Box>
-                  <Box w='70%'>
-                    <Text ml='2'>Lectures</Text>
-                    <Text ml='2' mt='1' fontSize='sm'>12 Lectures</Text>
+                  <Box w='65%'>
+                    <Text>Lectures</Text>
+                    <Text mt='1' fontSize='sm'>12 Lectures</Text>
                   </Box>
                 </Flex>
               </GridItem>
