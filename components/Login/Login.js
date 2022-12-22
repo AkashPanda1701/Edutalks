@@ -21,6 +21,10 @@ import {
     Img,
     useToast,
     useColorModeValue,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
 } from "@chakra-ui/react";
 
 import Link from "next/link";
@@ -32,21 +36,22 @@ import {
 } from "firebase/auth";
 import app from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
-import {signIn, useSession} from "next-auth/react"
+import { signIn,signOut, useSession } from "next-auth/react"
 
 
 import Timer from "./Timer";
 import Form from "./Form";
 import { login } from "../../redux/auth/action";
 import { RESET_AUTH } from "../../redux/auth/actionTypes";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 function Login() {
 
     const auth = getAuth(app);
     const dispatch = useDispatch();
     const { data: session, status } = useSession();
-   
-    
-    
+
+
+
 
 
     const [Number, setNumber] = useState("");
@@ -60,24 +65,23 @@ function Login() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const firstField = React.useRef();
     const toast = useToast();
-    const {message} = useSelector(state => state.auth)
+    const { message } = useSelector(state => state.auth)
     useEffect(() => {
-        
-    if (message==="User does not exist") {
-      
-        setOtpVerification(true);
-        dispatch({type:RESET_AUTH})
-    }
-    if(message==="User exists")
-    {
-        //use next Auth here
-        onClose();
-        signIn("credentials", { phone: Number, callbackUrl: "/" });
+
+        if (message === "User does not exist") {
+
+            setOtpVerification(true);
+            dispatch({ type: RESET_AUTH })
+        }
+        if (message === "User exists") {
+            //use next Auth here
+            onClose();
+            signIn("credentials", { phone: Number, callbackUrl: "/" });
 
 
-    }
+        }
     }, [message]);
-    
+
 
     const sendOtp = () => {
         if (
@@ -114,7 +118,7 @@ function Login() {
                 });
             })
             .catch((error) => {
-               
+
                 onClose();
                 setLoading(false);
                 toast({
@@ -167,15 +171,21 @@ function Login() {
         <>
             <div>
                 <div id="recaptcha-container"></div>
-                <Button
-                    fontSize={{ base: 0, md: "md" }}
-                    fontWeight={500}
-                    variant="ghost" 
-                    color="black"
-                    onClick={ session ? null : onOpen}
-                >
-                    Hello, {session ? session.user.name : "Sign In"}
-                </Button>
+                <Menu variant='ghost'>
+                    <MenuButton as={Button} rightIcon={<ChevronDownIcon />} onClick={session ? null : onOpen}>
+                    Hi, {session ? session.user.name : "Sign In"}
+                    </MenuButton>
+                    <MenuList>
+                            <Link href="/profile">
+                        <MenuItem>  
+                                Profile
+                        </MenuItem>
+                            </Link>
+                        <MenuItem onClick={session ? signOut : null}>
+                            Sign Out
+                        </MenuItem>
+                    </MenuList>
+                </Menu>
 
 
                 <Drawer

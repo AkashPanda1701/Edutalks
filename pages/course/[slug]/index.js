@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import { Box, Flex, Text, Badge, Image, Grid, GridItem, Button, Img } from "@chakra-ui/react";
+import { Box, Flex, Text, Badge, Image, Grid, GridItem, Button, Img, useToast } from "@chakra-ui/react";
 import { BsCalendar2Week, BsCheck, BsCheck2Circle, BsClock, BsClockFill, BsCollection, BsDashSquare, BsFillShareFill, BsLayoutSidebarInset, BsListNested, BsShare, BsSquareHalf, BsSuitDiamondFill } from "react-icons/bs";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
@@ -8,14 +8,50 @@ import { FaArrowRight, FaCheckCircle, FaConfluence, FaGift, FaPlaceOfWorship, Fa
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseBySlug } from "../../../redux/course/action";
+import { useSession } from "next-auth/react";
 const SingleCourse = () => {
   const dispatch = useDispatch();
-  const {Singlecourse :{data}} = useSelector(state => state.course);
+  const { Singlecourse: { data } } = useSelector(state => state.course);
   const router = useRouter();
+  const toast = useToast();
   const { slug } = router.query;
   useEffect(() => {
     dispatch(getCourseBySlug(slug));
-  }, [slug,dispatch]);
+  }, [slug, dispatch]);
+  const { data: session } = useSession();
+  const [enrolled, setEnrolled] = React.useState(false);
+
+
+  const handleEnroll = async () => {
+    const dataa = await fetch('/api/accesscourse', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({ userId: session.user.id, courseId: data._id })
+    })
+    const res = await dataa.json()
+    if (res.message === 'Video added successfully') {
+      toast({ title: 'Course added to enrolled list', status: 'success', duration: 3000, position: "top", isClosable: true })
+      setEnrolled(true)
+    }
+  }
+
+  useEffect(() => {
+    session?.user?.courses?.forEach(course => {
+      if (course.courseId === data?._id) {
+        setEnrolled(true)
+      }else{
+        setEnrolled(false)
+      }
+    })
+  }, [session, data])
+  
+
+
+
+
+
   return (
     <Box bg='gray.50'>
       <Navbar />
@@ -55,7 +91,10 @@ const SingleCourse = () => {
                 </Flex>
               </GridItem>
               <GridItem colSpan={{ base: 2, md: 1 }} borderRadius='md' display='flex' alignItems='center'>
-                <Button colorScheme='green' w='100%'><BsCheck2Circle /> &nbsp; Get Subscription</Button>
+                <Button colorScheme='green' w='100%' onClick={ enrolled ? null : handleEnroll}>
+                  <BsCheck2Circle /> &nbsp;
+                  {enrolled ? 'Enrolled' : 'Enroll Now'}
+                </Button>
               </GridItem>
             </Grid>
             <Box border='1px solid' borderColor='gray.100' borderRadius='md' p={4} mt={4}>
@@ -113,26 +152,26 @@ const SingleCourse = () => {
           </Box>
         </GridItem>
         <GridItem colSpan={{ base: 7, md: 4 }} my='6' gap={4} display={'grid'}>
-      
-{
-  data?.videos?.map((video, index) => (
-    <Box key={index} bg='white' p='4' borderRadius='md' boxShadow='md' cursor={'pointer'} _hover={{ bg: 'blue.50' }}>
-    <Flex gap='4' alignItems='center' justifyContent={'space-between'}>
-      <Flex gap='4' alignItems='center'>
-          <Img w='120px' src={data.image} alt={data.title} rounded='md' />
 
-        <Box>
-          <Box fontSize='sm' fontWeight='bold'>{video.subtitle}</Box>
-          <Badge colorScheme="green">Duration: {video.duration} mins</Badge>
-        </Box>
-      </Flex>
-      <Link href={`${data.slug}/watch?video=${index+1}`} >
-        <Button colorScheme='blue' size='sm'><BsLayoutSidebarInset /> &nbsp; Watch Now</Button>
-      </Link>
-    </Flex>
-  </Box> 
-  ))
-}         
+          {
+            data?.videos?.map((video, index) => (
+              <Box key={index} bg='white' p='4' borderRadius='md' boxShadow='md' cursor={'pointer'} _hover={{ bg: 'blue.50' }}>
+                <Flex gap='4' alignItems='center' justifyContent={'space-between'}>
+                  <Flex gap='4' alignItems='center'>
+                    <Img w='120px' src={data.image} alt={data.title} rounded='md' />
+
+                    <Box>
+                      <Box fontSize='sm' fontWeight='bold'>{video.subtitle}</Box>
+                      <Badge colorScheme="green">Duration: {video.duration} mins</Badge>
+                    </Box>
+                  </Flex>
+                  <Link href={`${data.slug}/watch?video=${index + 1}`} >
+                    <Button colorScheme='blue' size='sm'><BsLayoutSidebarInset /> &nbsp; Watch Now</Button>
+                  </Link>
+                </Flex>
+              </Box>
+            ))
+          }
         </GridItem>
       </Grid>
       <Footer />

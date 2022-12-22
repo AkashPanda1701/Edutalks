@@ -1,4 +1,4 @@
-import { LOGIN_LOADING,LOGIN_SUCCESS,LOGIN_ERROR,SIGNUP_LOADING,SIGNUP_SUCCESS,SIGNUP_ERROR } from "./actionTypes";
+import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_ERROR, SIGNUP_LOADING, SIGNUP_SUCCESS, SIGNUP_ERROR } from "./actionTypes";
 import axios from "axios";
 
 
@@ -11,7 +11,7 @@ export const login = (user) => async (dispatch) => {
         console.log('data: ', data);
         dispatch({
             type: LOGIN_SUCCESS,
-            payload:{
+            payload: {
                 message: data.message,
             }
         });
@@ -33,13 +33,27 @@ export const signup = (user) => async (dispatch) => {
         console.log('data: ', data);
         dispatch({
             type: SIGNUP_SUCCESS,
-            payload:{
+            payload: {
                 message: data.message,
             }
         });
     } catch (error) {
         dispatch({
             type: SIGNUP_ERROR,
+            payload: error.response.data.message,
+        });
+    }
+}
+
+export const setSession = (user) => async (dispatch) => {
+    try {
+        dispatch({
+            type: SET_SESSION,
+            payload: user,
+        });
+    } catch (error) {
+        dispatch({
+            type: LOGIN_ERROR,
             payload: error.response.data.message,
         });
     }

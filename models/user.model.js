@@ -29,18 +29,24 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-   phone : {
+    phone: {
 
-        type: String,   
+        type: String,
         required: true,
         unique: true,
     },
     role: {
         type: String,
-        enum: ["user", "admin","creator"],
+        enum: ["user", "admin", "creator"],
         default: "user",
     },
-},{
+    courses: [
+        {
+            courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
+            completed: [Number],
+        },
+    ],
+}, {
     versionKey: false,
 }
 );

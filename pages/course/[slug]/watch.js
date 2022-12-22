@@ -6,6 +6,7 @@ import {
     Grid,
     GridItem,
     Text,
+    useToast
 } from "@chakra-ui/react";
 import Head from "next/head";
 import React, { useEffect } from "react";
@@ -15,15 +16,18 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseBySlug } from "../../../redux/course/action";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 function watch() {
     const router = useRouter();
     const { slug, video } = router.query;
     const dispatch = useDispatch();
+    const toast = useToast();
     const {
         Singlecourse: { data },
     } = useSelector((state) => state.course);
     const [playvideo, setVideo] = React.useState({});
+    const [completed, setCompleted] = React.useState({});
 
     useEffect(() => {
         console.log("router.isReady: ", router.isReady);
@@ -31,16 +35,28 @@ function watch() {
             dispatch(getCourseBySlug(slug));
         }
     }, [router.isReady]);
-
-
-
-    console.log("data: ", data);
+    const { data: session } = useSession();
 
     useEffect(() => {
         if (data?.videos) {
-            setVideo(data.videos[(video - 1||0)])
+            setVideo(data.videos[(video - 1 || 0)])
         }
     }, [data]);
+
+    const handleComplete = async () => {
+        const dataa = await fetch('/api/accesscourse', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({ userId: session.user.id, courseId: data._id, videoNo: video - 1 })
+        })
+        const res = await dataa.json()
+        if (res.message === 'Video added to completed list') {
+            toast({ title: 'Video marked as complete', status: 'success', duration: 3000, position: "top", isClosable: true })
+        }
+    }
+
 
     return <>
         <Head>
@@ -64,7 +80,7 @@ function watch() {
                                     <Badge colorScheme="green">Duration: &nbsp; {playvideo.duration} Mins</Badge>
                                 </Box>
                                 <Flex alignItems='center'>
-                                    <Button colorScheme='green' ml='4'>Mark As Complete</Button>
+                                    <Button colorScheme='green' ml='4' onClick={handleComplete}>Mark As Complete</Button>
                                 </Flex>
                             </Flex>
                             <Box bg='white' p='4' mt='4' borderRadius='md' boxShadow='md'>
@@ -99,5 +115,6 @@ function watch() {
         </Box>
     </>
 }
+
 
 export default watch;
