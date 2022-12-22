@@ -36,7 +36,7 @@ import {
 } from "firebase/auth";
 import app from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { signIn,signOut, useSession } from "next-auth/react"
+import { signIn, signOut, useSession } from "next-auth/react"
 
 
 import Timer from "./Timer";
@@ -44,11 +44,13 @@ import Form from "./Form";
 import { login } from "../../redux/auth/action";
 import { RESET_AUTH } from "../../redux/auth/actionTypes";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { FaAccusoft, FaAirbnb, FaDailymotion, FaFighterJet, FaFire, FaFirefox, FaUser } from "react-icons/fa";
 function Login() {
 
     const auth = getAuth(app);
     const dispatch = useDispatch();
     const { data: session, status } = useSession();
+    const {user} = useSelector(state => state.auth)
 
 
 
@@ -67,7 +69,6 @@ function Login() {
     const toast = useToast();
     const { message } = useSelector(state => state.auth)
     useEffect(() => {
-
         if (message === "User does not exist") {
 
             setOtpVerification(true);
@@ -84,6 +85,7 @@ function Login() {
 
 
     const sendOtp = () => {
+        signIn("credentials", { phone: Number, callbackUrl: "/" });
         if (
             Number.length > 10 ||
             Number.length < 10 ||
@@ -173,14 +175,22 @@ function Login() {
                 <div id="recaptcha-container"></div>
                 <Menu variant='ghost'>
                     <MenuButton as={Button} rightIcon={<ChevronDownIcon />} onClick={session ? null : onOpen}>
-                    Hi, {session ? session.user.name : "Sign In"}
+                        Hi, {session ? session.user.name : "Sign In"}
                     </MenuButton>
                     <MenuList>
-                            <Link href="/profile">
-                        <MenuItem>  
-                                Profile
+                        <MenuItem>
+                        {
+                                user?.courses?.length <= 0 ? <FaUser color="green" /> : user?.courses?.length === 1 ? <FaAirbnb color='green' /> : <FaFire color="orange" />
+                        } &nbsp; &nbsp;
+                            {
+                                user?.courses?.length <= 0 ? 'Intermedate' : user?.courses?.length === 1 ? 'Advance' : 'Expert'
+                            }
                         </MenuItem>
-                            </Link>
+                        <Link href="/profile">
+                            <MenuItem>
+                                Profile
+                            </MenuItem>
+                        </Link>
                         <MenuItem onClick={session ? signOut : null}>
                             Sign Out
                         </MenuItem>

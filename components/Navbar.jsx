@@ -17,10 +17,10 @@ import Link from "next/link";
 import Login from "./Login/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { setSession } from "../redux/auth/action";
+import { BsGift, BsGiftFill } from "react-icons/bs";
 
 const Navbar = () => {
-  const {user} =useSelector(state=>state.auth)
-  console.log('user: ', user);
+  const { user } = useSelector(state => state.auth)
   const dispatch = useDispatch();
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
@@ -55,9 +55,9 @@ const Navbar = () => {
                 <VisuallyHidden>Choc</VisuallyHidden>
               </chakra.a>
               <Link href="/">
-              <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
-                Choc
-              </chakra.h1>
+                <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
+                  Choc
+                </chakra.h1>
               </Link>
             </Flex>
             <HStack display="flex" alignItems="center" spacing={1}>
@@ -84,6 +84,9 @@ const Navbar = () => {
                 </Link>
                 <Link href="/courses">
                   <Button variant="ghost">Courses</Button>
+                </Link>
+                <Link href="/referral">
+                  <Button variant="ghost"><BsGiftFill color="green" /> &nbsp; Refer</Button>
                 </Link>
               </HStack>
               <Login />

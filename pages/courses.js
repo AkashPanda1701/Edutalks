@@ -11,7 +11,6 @@ import { Skeleton, SkeletonText } from '@chakra-ui/react'
 function courses() {
     const dispatch = useDispatch();
     const { Allcourses: { data, loading, error } } = useSelector(state => state.course);
-    console.log('data: ', data);
     React.useEffect(() => {
         dispatch(getAllCourses());
     }, [dispatch]);
@@ -52,7 +51,9 @@ function courses() {
                                     <FaMoneyBill />
                                     <Text fontWeight='semibold'>Paid Courses</Text>
                                 </Flex>
+                                <Link href='/referral'>
                                 <Button colorScheme='blue' mt='4' w='full'>Refer & Earn</Button>
+                                </Link>
                                 <Box border='1px solid' borderColor='gray.100' borderRadius='md' p={4} mt={4}>
                                     <Flex alignItems='center' gap='2' textAlign={'center'}>
                                         <FaGift size={80} />
