@@ -8,7 +8,8 @@ import { FaArrowRight, FaCheckCircle, FaConfluence, FaGift, FaPlaceOfWorship, Fa
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseBySlug } from "../../../redux/course/action";
-import { useSession } from "next-auth/react";
+import { addCourse } from "../../../redux/auth/action";
+
 const SingleCourse = () => {
   const dispatch = useDispatch();
   const { Singlecourse: { data } } = useSelector(state => state.course);
@@ -18,38 +19,39 @@ const SingleCourse = () => {
   useEffect(() => {
     dispatch(getCourseBySlug(slug));
   }, [slug, dispatch]);
-  const { data: session } = useSession();
+  const { user } = useSelector(state => state.auth);
   const [enrolled, setEnrolled] = React.useState(false);
   const [videoData, setVideoData] = React.useState([]);
 
 
   const handleEnroll = async () => {
-    const dataa = await fetch('/api/accesscourse', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({ userId: session.user.id, courseId: data._id })
-    })
-    const res = await dataa.json()
-    if (res.message === 'Video added successfully') {
-      toast({ title: 'Course added to enrolled list', status: 'success', duration: 3000, position: "top", isClosable: true })
-      setEnrolled(true)
+    if (!user) {
+      toast({ title: "You are not logged in", status: 'warning', duration: 3000, position: "top", isClosable: true, description: 'Please login to access this course' })
+      return
     }
+    if (data.type === 'paid') {
+      if (new Date(user.subscriptions.enddate).toLocaleDateString() < new Date().toLocaleDateString()) {
+        console.log('expired')
+        toast({ title: "You don't have valid subscription", status: 'warning', duration: 3000, position: "top", isClosable: true, description: 'Please subscribe to our premium plan to access this course' })
+        router.push(`/pricing`)
+      }
+    }
+    dispatch(addCourse({ userId: user.id, courseId: data._id }));
+    toast({ title: 'Course added to your library', status: 'success', duration: 3000, position: "top", isClosable: true })
   }
 
   useEffect(() => {
-    session?.user?.courses?.forEach(course => {
+    user?.courses?.forEach(course => {
       if (course.courseId === data?._id) {
         setEnrolled(true)
         setVideoData(course.completed)
-      }else{
+      } else {
         setEnrolled(false)
         setVideoData([])
       }
     })
-  }, [session, data])
-  
+  }, [user, data])
+
 
 
   console.log(videoData);
@@ -96,7 +98,7 @@ const SingleCourse = () => {
                 </Flex>
               </GridItem>
               <GridItem colSpan={{ base: 2, md: 1 }} borderRadius='md' display='flex' alignItems='center'>
-                <Button colorScheme='green' w='100%' onClick={ enrolled ? null : handleEnroll}>
+                <Button colorScheme='green' w='100%' onClick={enrolled ? null : handleEnroll}>
                   <BsCheck2Circle /> &nbsp;
                   {enrolled ? 'Enrolled' : 'Get Subscription'}
                 </Button>
@@ -172,10 +174,10 @@ const SingleCourse = () => {
                   </Flex>
                   <Link href={`${data.slug}/watch?video=${index + 1}`} >
                     <Button colorScheme={enrolled ? videoData?.includes(index) ? 'gray' : 'green' : 'gray'} size='sm'>
-                    {enrolled ? videoData?.includes(index) ? <FaCheckCircle /> : <FaPlay /> : <FaPlay />} 
-                    &nbsp; {
-                      enrolled ? videoData?.includes(index) ? 'Watched' : 'Watch Now' : 'Enroll Now'
-                    }
+                      {enrolled ? videoData?.includes(index) ? <FaCheckCircle /> : <FaPlay /> : <FaPlay />}
+                      &nbsp; {
+                        enrolled ? videoData?.includes(index) ? 'Watched' : 'Watch Now' : 'Enroll Now'
+                      }
                     </Button>
                   </Link>
                 </Flex>

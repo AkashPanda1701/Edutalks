@@ -52,7 +52,6 @@ export const signup = (user) => async (dispatch) => {
 export const setSession = (user) => async (dispatch) => {
     try {
         const res = await axios.get("/api/auth/session");
-        console.log('res: ', res);
         dispatch({
             type: SET_SESSION,
             payload: res.data.user,
