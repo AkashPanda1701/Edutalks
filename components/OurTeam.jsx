@@ -120,8 +120,8 @@ const OurTeam = ({ image, name, role, location, email, linkedIn }) => {
             {/* <FaEnvelope size={20} /> */}
             <Text fontSize="lg">{email}</Text>
           </HStack>
-          <Box fontSize="2xl" mt="15px">
-            <Link href={linkedIn}>
+          <Box fontSize="2xl" mt="15px" color="#0a7caa">
+            <Link href={linkedIn} target="_blank" rel="noreferrer">
               <BsLinkedin />
             </Link>
           </Box>
