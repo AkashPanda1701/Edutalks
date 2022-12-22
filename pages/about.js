@@ -85,7 +85,7 @@ const about = () => {
           image="https://avatars.githubusercontent.com/u/53786566?v=4"
           name="Abdul Quadir"
           role="Mern Developer"
-          location="keonjhar, Odisha"
+          location="Keonjhar, Odisha"
           email="abdulquadir77@yahoo.com"
           linkedIn="https://www.linkedin.com/in/abdul-quadir-aa0a60200/"
         />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, Image, Text, HStack } from "@chakra-ui/react";
 // import { FaSuitcase, FaMapPin, FaEnvelope } from "react-icons/fa";
-import { BsLinkedin } from "react-icons/Bs";
+import { BsLinkedin } from "react-icons/bs";
 import Link from "next/link";
 
 const OurTeam = ({ image, name, role, location, email, linkedIn }) => {
