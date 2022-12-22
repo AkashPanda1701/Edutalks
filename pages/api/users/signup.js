@@ -35,7 +35,15 @@ const signup = async (req, res) => {
             if(referalCode){
                 const referal = await Referal.findOne({ referalCode});
                 if(referal){
-                    referal.referalcount.push(user._id);
+                    const user = await User.findById(referal.userId);
+                    console.log('user.subscriptions.enddate: ',new Date(user.subscriptions.enddate));
+
+
+                    user.subscriptions.enddate = new Date(user.subscriptions.enddate.setMonth(user.subscriptions.enddate.getMonth() + 1));
+                    console.log('user.subscriptions.enddate: ', new Date(user.subscriptions.enddate));
+                     await User.findByIdAndUpdate(user._id, { subscriptions: user.subscriptions });
+                     sendMail(user.email, user.name, 1);
+                     referal.referalcount.push(user._id);
                     await referal.save();
                 }
             }
