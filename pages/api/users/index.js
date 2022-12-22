@@ -6,7 +6,11 @@ export default async function user(req, res) {
     await connectDB();
  
     if (req.method === "POST") {
-       addCourse(req, res);
+       return addCourse(req, res);
+    }
+    
+    if(req.method === "GET") {
+        return getUsers(req, res);
     }
 }
 
@@ -31,5 +35,15 @@ async function addCourse(req,res){
         return res.status(200).send({ message: "Video added successfully" , user});
     } catch (error) {
         return res.status(400).json({ message: error.message });
+    }
+}
+
+async function getUsers(req, res) {
+    try{
+        const users = await User.find({}).select({ subscriptions: 0, password: 0, phone: 0, courses:0 })
+        return res.status(200).send(users);
+    }
+    catch({message}) {
+        return res.status(400).send({ error: true, message });
     }
 }

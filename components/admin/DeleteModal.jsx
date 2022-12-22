@@ -27,7 +27,7 @@ export default function DeleteModal(props) {
           <ModalCloseButton />
           <ModalBody>
             <Text fontWeight="bold" mb="1rem">
-              User will be deleted permanently!
+              User will be removed permanently!
             </Text>
 
             <VStack alignItems="flex-start">
@@ -41,7 +41,7 @@ export default function DeleteModal(props) {
               onClose();
               toast({
                 title: "User Deleted!",
-                description: `${data.name} was deleted premanently.`,
+                description: `${data.name} was removed premanently.`,
                 status: "success",
                 duration: 6000,
                 isClosable: true
