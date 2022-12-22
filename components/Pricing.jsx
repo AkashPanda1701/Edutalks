@@ -285,17 +285,11 @@ const Pricing = () => {
                   border="solid transparent"
                   fontWeight="normal"
                   rounded="md"
-                  _light={{
-                    color: "white",
-                  }}
-                  bg="brand.600"
-                  _dark={{
-                    bg: "brand.500",
-                  }}
+                  bg="white"
                   _hover={{
-                    bg: "brand.700",
+                    bg: "brand.50",
                     _dark: {
-                      bg: "brand.600",
+                      bg: "gray.700",
                     },
                   }}
                   cursor="pointer"
