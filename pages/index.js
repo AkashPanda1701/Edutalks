@@ -6,6 +6,9 @@ import Pricing from "../components/Pricing";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Calltoaction from "../components/Calltoaction";
+import CourseSlider from "../components/CourseSlider";
+import AppShowcase from "../components/AppShowcase";
+import Features from "../components/Features";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +25,9 @@ export default function Home() {
         <Navbar />
         <Header />
         <Calltoaction />
+        <CourseSlider />
+        <Features />
+        <AppShowcase />
         <Pricing />
         <Footer />
       </Box>
