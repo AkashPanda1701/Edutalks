@@ -29,61 +29,49 @@ const notes = () => {
             course={"HTML"}
             free={"Free"}
             getnow={"Get Now"}
-            image={
-              "https://media.istockphoto.com/id/1413514774/photo/stylized-3d-html-icon-design.jpg?b=1&s=170667a&w=0&k=20&c=OrkPbETxWlQ4FQSfTku07zULRenQ6KnxkGM4nU5H_Kk="
-            }
+            image={"https://cdn.worldvectorlogo.com/logos/html-1.svg"}
             notesLink="./notes/HTML5NotesForProfessionals.pdf"
           />
           <NotesCard
             course={"CSS"}
             free={"Free"}
             getnow={"Get Now"}
-            image={
-              "https://media.istockphoto.com/id/1413514596/photo/stylized-3d-css-icon-design.jpg?b=1&s=170667a&w=0&k=20&c=Y2wiMC1eKiraLPz-NZmIhyk-ZJfr_FxUHXZ_3lmmLlg="
-            }
+            image={"https://cdn.worldvectorlogo.com/logos/css-3.svg"}
             notesLink="./notes/CSSNotesForProfessionals.pdf"
           />
           <NotesCard
             course={"JavaScript"}
             free={"Free"}
             getnow={"Get Now"}
-            image={
-              "https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png"
-            }
+            image={"https://cdn.worldvectorlogo.com/logos/javascript-1.svg"}
             notesLink="./notes/JavaScriptNotesForProfessionals.pdf"
           />
           <NotesCard
             course={"React Js"}
             free={"Free"}
             getnow={"Get Now"}
-            image={
-              "https://res.cloudinary.com/practicaldev/image/fetch/s--qo_Wp38Z--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/e0nl7ziy1la7bpwj7rsp.png"
-            }
+            image={"https://cdn.worldvectorlogo.com/logos/react-2.svg"}
             notesLink="./notes/ReactJSNotesForProfessionals.pdf"
           />
           <NotesCard
             course={"Type Script"}
             free={"Free"}
             getnow={"Get Now"}
-            image={
-              "https://miro.medium.com/max/800/1*yWUgGAQuiROzilwG_tEU2Q.png"
-            }
+            image={"https://cdn.worldvectorlogo.com/logos/typescript.svg"}
             notesLink="./notes/TypeScriptNotesForProfessionals.pdf"
           />
           <NotesCard
             course={"Node JS"}
             free={"Free"}
             getnow={"Get Now"}
-            image={
-              "https://cdn.iconscout.com/icon/free/png-256/node-js-3550841-2970426.png"
-            }
+            image={"https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"}
             notesLink="./notes/NodeJSNotesForProfessionals.pdf"
           />
           <NotesCard
             course={"Java"}
             free={"Free"}
             getnow={"Get Now"}
-            image={"https://cdn-icons-png.flaticon.com/512/226/226777.png"}
+            image={"https://cdn.worldvectorlogo.com/logos/java-14.svg"}
             notesLink="./notes/JavaNotesForProfessionals.pdf"
           />
         </Grid>
