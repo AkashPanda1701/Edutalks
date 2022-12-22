@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, chakra } from "@chakra-ui/react";
+import { Box, Flex, chakra, Image } from "@chakra-ui/react";
 
 const NotesCard = ({ image, course, free, getnow, notesLink }) => {
   return (
@@ -8,7 +8,7 @@ const NotesCard = ({ image, course, free, getnow, notesLink }) => {
         _dark={{
           bg: "#3e3e3e",
         }}
-        w="full"
+        w="100%"
         alignItems="center"
         justifyContent="center"
       >
@@ -16,22 +16,22 @@ const NotesCard = ({ image, course, free, getnow, notesLink }) => {
           direction="column"
           justifyContent="center"
           alignItems="center"
-          w="sm"
+          w="100%"
           mx="auto"
         >
-          <Box
+          {/* <Box
             bg="gray.300"
-            h={64}
-            w="full"
             rounded="lg"
             shadow="md"
-            bgSize="cover"
+            bgSize="contain"
             bgPos="center"
-            style={{
-              backgroundImage: image,
-              //   "url(https://media.istockphoto.com/id/1427819383/photo/stylized-3d-html-icon-side-view.jpg?b=1&s=170667a&w=0&k=20&c=vLhiYOOEz0ZHHzCYM_JNkC7c6XXl2HHjdv9T6Uk4das=)",
-            }}
-          ></Box>
+            // style={{
+            //   backgroundImage: image,
+            //   //   "url(https://media.istockphoto.com/id/1427819383/photo/stylized-3d-html-icon-side-view.jpg?b=1&s=170667a&w=0&k=20&c=vLhiYOOEz0ZHHzCYM_JNkC7c6XXl2HHjdv9T6Uk4das=)",
+            // }}
+          > */}
+          <Image w="200px" h="200px" src={image} objectFit="contain" />
+          {/* </Box> */}
 
           <Box
             w={{
