@@ -1,5 +1,5 @@
 import React from "react";
-import { useColorModeValue, Box, chakra, Icon, Image } from "@chakra-ui/react";
+import { useColorModeValue, Box, chakra, Icon, Image, Button } from "@chakra-ui/react";
 
 const header = () => {
   const bg = useColorModeValue("white", "gray.800");
@@ -80,7 +80,7 @@ const header = () => {
                 }}
                 letterSpacing="tight"
                 lineHeight="short"
-                fontWeight="extrabold"
+                fontWeight="semibold"
                 color="gray.900"
                 _dark={{
                   color: "white",
@@ -145,35 +145,10 @@ const header = () => {
                 fontWeight="extrabold"
                 fontFamily="fantasy"
               >
-                <Box rounded="full" shadow="md">
-                  <chakra.a
-                    w="full"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    border="solid 1px transparent"
-                    fontSize={{
-                      base: "md",
-                      md: "lg",
-                    }}
-                    rounded="md"
-                    color="white"
-                    bg="skyblue"
-                    _hover={{
-                      bg: "brand.700",
-                    }}
-                    px={{
-                      base: 8,
-                      md: 10,
-                    }}
-                    py={{
-                      base: 3,
-                      md: 4,
-                    }}
-                    cursor="pointer"
-                  >
+                <Box>
+                  <Button colorScheme="green" size="lg" px={10} py={4} fontSize="md">
                     Get started
-                  </chakra.a>
+                  </Button>
                 </Box>
                 <Box mt={[3, 0]} ml={[null, 3]}>
                   <chakra.a
@@ -186,8 +161,8 @@ const header = () => {
                       md: 10,
                     }}
                     py={{
-                      base: 3,
-                      md: 4,
+                      base: 2,
+                      md: 2,
                     }}
                     border="solid 1px transparent"
                     fontSize={{
@@ -232,7 +207,7 @@ const header = () => {
           h={[56, 72, 96, "full"]}
           w="full"
           fit="cover"
-          src={"/Thesis.gif"}
+          src={"https://cdn.dribbble.com/users/1620156/screenshots/5547104/education.gif"}
           alt=""
           loading="lazy"
         />

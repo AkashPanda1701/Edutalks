@@ -10,214 +10,410 @@ import {
   Feature,
   Button,
   Icon,
+  VStack,
+  HStack,
 } from "@chakra-ui/react";
+
+import { IoCheckmark } from "react-icons/io5";
+
+
 
 const Pricing = () => {
   const topBg = useColorModeValue("gray.100", "gray.700");
   const bottomBg = useColorModeValue("white", "gray.800");
   const Feature = (props) => {
     return (
-      <Flex align="center">
-        <Flex shrink={0}>
-          <Icon
-            boxSize={5}
-            mt={1}
-            mr={2}
-            color="brand.500"
-            _dark={{
-              color: "brand.300",
-            }}
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-              clipRule="evenodd"
-            ></path>
-          </Icon>
-        </Flex>
-        <Box ml={4}>
-          <chakra.span
-            mt={2}
-            color="gray.500"
-            _dark={{
-              color: "gray.400",
-            }}
-          >
-            {props.children}
-          </chakra.span>
-        </Box>
+      <Flex alignSelf="start" w="full">
+        <Icon
+          boxSize={5}
+          mt={1}
+          mr={2}
+          _light={{
+            color: "green.500",
+          }}
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          as={IoCheckmark}
+        />
+        <chakra.p
+          fontSize="lg"
+          color="gray.600"
+          _dark={{
+            color: "gray.400",
+          }}
+          {...props}
+        />
       </Flex>
     );
   };
+
   return (
-    <Flex
-      boxSize="full"
-      bg="#F9FAFB"
+    <Box bg="#edf3f8">
+    <Box
       _dark={{
-        bg: "gray.600",
+        bg: "#3e3e3e",
       }}
       p={10}
-      alignItems="center"
+      py='24'
+      mx={{ base: '4', md: '10', lg: '20', xl: '32' }}
       justifyContent="center"
+      alignItems="center"
     >
-      <Box
-        mx="auto"
-        textAlign={{
-          base: "left",
-          md: "center",
-        }}
-        rounded="md"
-        shadow="base"
-        w="full"
-        bg={bottomBg}
+      <Text
+        mb={2}
+        fontSize="4xl"
+        fontWeight="seminormal"
+        lineHeight="tight"
+        bgGradient="linear(to-r, green.300, blue.600)"
+        bgClip="text"
+        textAlign="center"
       >
-        <Box pt={20} rounded="md" bg={topBg}>
-          <Box w="full" px={[10, , 4]} mx="auto">
-            <Text
-              mb={2}
-              fontSize="5xl"
-              fontWeight="bold"
-              lineHeight="tight"
-              bgGradient="linear(to-r, brand.300, brand.600)"
-              bgClip="text"
-              color="skyblue"
-            >
-              Simple transparent pricing
-            </Text>
-            <chakra.p
+        Simple transparent pricing
+      </Text>
+      <chakra.p
               mb={6}
               fontSize={["lg", , "xl"]}
               color="gray.600"
               _dark={{
                 color: "gray.400",
               }}
+              textAlign="center"
             >
               If you're not satisfied, contact us and we'll refund you within
               the first 20 days.
             </chakra.p>
-          </Box>
-          <Box bgGradient={`linear(to-b, ${topBg} 50%, ${bottomBg} 50%)`}>
-            <Flex
-              rounded="md"
-              mx={10}
-              bg={bottomBg}
+      <Box w="full" pt={8}>
+        <Flex
+          direction={{
+            base: "column",
+            md: "row",
+          }}
+          justifyContent="center"
+          mb={{
+            base: 6,
+            sm: 0,
+          }}
+        >
+
+          <Flex
+            flex={{
+              sm: 1,
+              lg: "initial",
+            }}
+            w={{
+              lg: 2.3 / 7,
+            }}
+            rounded="lg"
+            borderTopRightRadius={0}
+            borderBottomLeftRadius="lg"
+            bg="white"
+            _dark={{
+              bg: "gray.700",
+            }}
+            my={6}
+            direction="column"
+          >
+            <VStack
+              spacing={1}
+              justifyContent="center"
+              p={8}
+              textAlign="center"
+              w="full"
               shadow="xl"
-              mb="100px"
-              textAlign="left"
-              direction={{
-                base: "column",
-                lg: "row",
-              }}
             >
-              <Stack spacing={8} p="45px" flex="0.7">
-                <Text fontSize="3xl" fontWeight="bold" lineHeight="tight">
-                  Lifetime Membership
-                </Text>
-                <chakra.p
-                  fontSize={["sm", , "md"]}
-                  color="gray.600"
-                  _dark={{
+              <chakra.span fontSize="3xl" fontWeight="normal">
+                Hobby
+              </chakra.span>
+              <HStack spacing={3}>
+                <chakra.span
+                  fontWeight="normal"
+                  fontSize="6xl"
+                  textShadow="2px 0 currentcolor"
+                >
+                  $79
+                </chakra.span>
+                <chakra.span
+                  alignSelf="center"
+                  fontSize="3xl"
+                  _light={{
                     color: "gray.400",
                   }}
                 >
-                  One plan for any organization—from startups to Fortune 500s.
-                  We offer 50% off of for all students and universities. Please
-                  get in touch with us and provide proof of your status.
-                </chakra.p>
-                <Flex align="center">
-                  <Text
-                    fontFamily="body"
-                    whiteSpace="nowrap"
-                    fontWeight="semibold"
-                    textTransform="uppercase"
-                    color="brand.400"
-                  >
-                    What's included
-                  </Text>
-                  <Flex
-                    ml="15px"
-                    w="full"
-                    borderTopWidth="1px"
-                    h="3px"
-                    borderTopColor={topBg}
-                  />
-                </Flex>
-                <SimpleGrid columns={[1, , 2, 1, 2]} spacingY={4}>
-                  <Feature>Unlimited Projects</Feature>
-                  <Feature>Email Tracking and Analytics </Feature>
-                  <Feature>Email APIs, SMTP Relay, and Webhooks</Feature>
-                  <Feature>1 Dedicated IP (Foundation 100k and up)</Feature>
-                </SimpleGrid>
-              </Stack>
-              <Stack
-                p="45px"
-                flex="0.3"
-                justify="center"
-                align="center"
-                bg="#F9FAFB"
-                _dark={{
-                  bg: "gray.900",
-                }}
-                borderRightRadius="md"
+                  /month
+                </chakra.span>
+              </HStack>
+            </VStack>
+            <VStack
+              fontSize="sm"
+              spacing={8}
+              h="full"
+              bg="gray.100"
+              _dark={{
+                bg: "gray.800",
+              }}
+              borderBottomLeftRadius="lg"
+              p={12}
+            >
+              <VStack
+                spacing={4}
+                w="full"
+                direction="column"
+                alignItems="start"
               >
-                <Text fontSize="xl" fontWeight="semibold">
-                  Pay once, use anytime
-                </Text>
-                <Flex
-                  align="center"
-                  fontSize="5xl"
-                  fontWeight={["bold", , "extrabold"]}
-                  lineHeight="tight"
+                <Feature>Suppression Management</Feature>
+                <Feature>Email Tracking and Analytics </Feature>
+                <Feature>99.99% Guaranteed Uptime SLA</Feature>
+              </VStack>
+              <Box
+                w="full"
+                ml={3}
+                display="inline-flex"
+                rounded="md"
+                shadow="md"
+              >
+                <chakra.a
+                  w="full"
+                  display="inline-flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  px={5}
+                  py={3}
+                  border="solid transparent"
+                  fontWeight="normal"
+                  rounded="md"
+                  color="brand.600"
+                  _dark={{
+                    color: "gray.100",
+                  }}
+                  bg="white"
+                  _hover={{
+                    bg: "brand.50",
+                    _dark: {
+                      bg: "gray.700",
+                    },
+                  }}
+                  cursor="pointer"
                 >
-                  $500
-                  <chakra.span
-                    ml={2}
-                    fontSize="2xl"
-                    fontWeight="medium"
-                    color="gray.500"
-                    _dark={{
-                      color: "gray.400",
-                    }}
-                  >
-                    {" "}
-                    USD
-                  </chakra.span>
-                </Flex>
-                <Stack spacing={6}>
-                  <Text
-                    textDecor="underline"
-                    color="gray.600"
-                    _dark={{
-                      color: "gray.400",
-                    }}
-                  >
-                    Learn more about our membership
-                  </Text>
-                  <Button w="300px" colorScheme="brand" py={6} bg="skyblue">
-                    Get Access
-                  </Button>
-                  <Text align="center" fontWeight="semibold">
-                    Get a free sample
-                    <chakra.span
-                      ml={2}
-                      color="gray.500"
-                      _dark={{
-                        color: "gray.400",
-                      }}
-                      fontWeight="medium"
-                    >
-                      (50MB)
-                    </chakra.span>
-                  </Text>
-                </Stack>
-              </Stack>
-            </Flex>
-          </Box>
-        </Box>
+                  Start your trial{" "}
+                </chakra.a>
+              </Box>
+            </VStack>
+          </Flex>
+
+          <Flex
+            flex={{
+              base: 1,
+              lg: "initial",
+            }}
+            w={{
+              lg: 2.4 / 7,
+            }}
+            rounded="lg"
+            bg="white"
+            _dark={{
+              bg: "gray.700",
+            }}
+            mt={{
+              base: 4,
+              sm: -4,
+            }}
+            shadow="xl"
+            zIndex={30}
+            direction="column"
+          >
+            <VStack
+              spacing={1}
+              justifyContent="center"
+              p={8}
+              textAlign="center"
+              w="full"
+              shadow="xl"
+            >
+              <chakra.span fontSize="3xl" fontWeight="normal">
+                Growth
+              </chakra.span>
+              <HStack spacing={3}>
+                <chakra.span
+                  fontWeight="normal"
+                  fontSize="6xl"
+                  textShadow="2px 0 currentcolor"
+                >
+                  $149
+                </chakra.span>
+                <chakra.span
+                  alignSelf="center"
+                  fontSize="3xl"
+                  _light={{
+                    color: "gray.400",
+                  }}
+                >
+                  /month
+                </chakra.span>
+              </HStack>
+            </VStack>
+            <VStack
+              fontSize="sm"
+              h="full"
+              roundedBottom="lg"
+              spacing={8}
+              bg="gray.100"
+              _dark={{
+                bg: "gray.800",
+              }}
+              p={12}
+            >
+              <VStack
+                spacing={4}
+                w="full"
+                direction="column"
+                alignItems="start"
+              >
+                <Feature>Suppression Management</Feature>
+                <Feature>Email Tracking and Analytics </Feature>
+                <Feature>99.99% Guaranteed Uptime SLA</Feature>
+                <Feature>1,000 Email Address Validations</Feature>
+                <Feature>Limited 24/7 Ticket Support</Feature>
+              </VStack>
+              <Box display="inline-flex" rounded="md" shadow="md" w="full">
+                <chakra.a
+                  w="full"
+                  display="inline-flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  px={5}
+                  py={3}
+                  border="solid transparent"
+                  fontWeight="normal"
+                  rounded="md"
+                  _light={{
+                    color: "white",
+                  }}
+                  bg="brand.600"
+                  _dark={{
+                    bg: "brand.500",
+                  }}
+                  _hover={{
+                    bg: "brand.700",
+                    _dark: {
+                      bg: "brand.600",
+                    },
+                  }}
+                  cursor="pointer"
+                >
+                  Get started
+                </chakra.a>
+              </Box>
+            </VStack>
+          </Flex>
+
+          <Flex
+            flex={{
+              sm: 1,
+              lg: "initial",
+            }}
+            w={{
+              lg: 2.3 / 7,
+            }}
+            roundedTop="lg"
+            borderBottomRightRadius="lg"
+            borderTopLeftRadius={0}
+            bg="white"
+            _dark={{
+              bg: "gray.700",
+            }}
+            my={6}
+            direction="column"
+          >
+            <VStack
+              spacing={1}
+              justifyContent="center"
+              p={8}
+              textAlign="center"
+              w="full"
+              shadow="xl"
+            >
+              <chakra.span fontSize="3xl" fontWeight="normal">
+                Scale
+              </chakra.span>
+              <HStack spacing={3}>
+                <chakra.span
+                  fontWeight="normal"
+                  fontSize="6xl"
+                  textShadow="2px 0 currentcolor"
+                >
+                  $349
+                </chakra.span>
+                <chakra.span
+                  alignSelf="center"
+                  fontSize="3xl"
+                  _light={{
+                    color: "gray.400",
+                  }}
+                >
+                  /month
+                </chakra.span>
+              </HStack>
+            </VStack>
+            <VStack
+              fontSize="sm"
+              spacing={8}
+              h="full"
+              bg="gray.100"
+              _dark={{
+                bg: "gray.800",
+              }}
+              borderBottomRightRadius="lg"
+              p={12}
+            >
+              <VStack
+                spacing={4}
+                w="full"
+                direction="column"
+                alignItems="start"
+              >
+                <Feature>Suppression Management</Feature>
+                <Feature>Email Tracking and Analytics </Feature>
+                <Feature>99.99% Guaranteed Uptime SLA</Feature>
+              </VStack>
+              <Box
+                w="full"
+                ml={3}
+                display="inline-flex"
+                rounded="md"
+                shadow="md"
+              >
+                <chakra.a
+                  w="full"
+                  display="inline-flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  px={5}
+                  py={3}
+                  border="solid transparent"
+                  fontWeight="normal"
+                  rounded="md"
+                  color="brand.600"
+                  _dark={{
+                    color: "gray.100",
+                  }}
+                  bg="white"
+                  _hover={{
+                    bg: "brand.50",
+                    _dark: {
+                      bg: "gray.700",
+                    },
+                  }}
+                  cursor="pointer"
+                >
+                  Start your trial
+                </chakra.a>
+              </Box>
+            </VStack>
+          </Flex>
+        </Flex>
       </Box>
-    </Flex>
+    </Box>
+    </Box>
   );
 };
 

@@ -19,8 +19,8 @@ function watch() {
                     <Box mx={{ base: '4', md: '10', lg: '20', xl: '32' }} textColor='gray.700'>
                         <Grid templateColumns="repeat(7, 1fr)" gap={6}>
                             <GridItem colSpan={{ base: 7, md: 5 }} mt='8'>
-                                <Box w='full' bg='red' class="responsiveFrame">
-                                    <iframe class="responsive-iframe" src="https://www.youtube.com/embed/hQAHSlTtcmY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <Box w='full' h={{ base: '200px', md: '400px', lg: '500px' }} borderRadius='md' boxShadow='md'>
+                                    <iframe width='100%' className='responsive-iframe' height='100%' src="https://www.youtube.com/embed/hQAHSlTtcmY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </Box>
                                 <Flex justifyContent='space-between' alignItems='center' bg='white' p='4' mt='4' borderRadius='md' boxShadow='md'>
                                     <Box>
