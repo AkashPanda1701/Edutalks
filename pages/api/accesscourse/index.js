@@ -1,6 +1,7 @@
 import User from "../../../models/user.model";
 import Course from "../../../models/course.model";
 import connectDB from "../../../middleware/connectDB";
+import mongoose from "mongoose";
 
 export default async function accesscourse(req, res) {
     await connectDB();
@@ -15,13 +16,14 @@ export default async function accesscourse(req, res) {
     if (req.method === "POST") {
         try {
             const { userId, courseId, videoNo } = req.body;
+            console.log(userId, courseId, videoNo);
 
-            let user = await User.findOne({ userId });
+            let user = await User.findOne({ userId })
             let flag = false;
             user.courses.map((course) => {
-                if (course.courseId === courseId) {
-                    if (videoNo) {
-                        course.completed.push(videoNo);
+                if (course.courseId.toString(), mongoose.Types.ObjectId(courseId).toString()) {
+                    if (videoNo >= 0) {
+                        course.completed.includes(videoNo) ? null : course.completed.push(videoNo);
                     }
                     flag = true;
                 }

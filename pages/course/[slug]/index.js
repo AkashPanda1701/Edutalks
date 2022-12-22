@@ -4,7 +4,7 @@ import { Box, Flex, Text, Badge, Image, Grid, GridItem, Button, Img, useToast } 
 import { BsCalendar2Week, BsCheck, BsCheck2Circle, BsClock, BsClockFill, BsCollection, BsDashSquare, BsFillShareFill, BsLayoutSidebarInset, BsListNested, BsShare, BsSquareHalf, BsSuitDiamondFill } from "react-icons/bs";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
-import { FaArrowRight, FaCheckCircle, FaConfluence, FaGift, FaPlaceOfWorship, FaQuestion, FaShare } from "react-icons/fa";
+import { FaArrowRight, FaCheckCircle, FaConfluence, FaGift, FaPlaceOfWorship, FaPlay, FaQuestion, FaShare } from "react-icons/fa";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseBySlug } from "../../../redux/course/action";
@@ -20,6 +20,7 @@ const SingleCourse = () => {
   }, [slug, dispatch]);
   const { data: session } = useSession();
   const [enrolled, setEnrolled] = React.useState(false);
+  const [videoData, setVideoData] = React.useState([]);
 
 
   const handleEnroll = async () => {
@@ -41,13 +42,17 @@ const SingleCourse = () => {
     session?.user?.courses?.forEach(course => {
       if (course.courseId === data?._id) {
         setEnrolled(true)
+        setVideoData(course.completed)
       }else{
         setEnrolled(false)
+        setVideoData([])
       }
     })
   }, [session, data])
   
 
+
+  console.log(videoData);
 
 
 
@@ -93,7 +98,7 @@ const SingleCourse = () => {
               <GridItem colSpan={{ base: 2, md: 1 }} borderRadius='md' display='flex' alignItems='center'>
                 <Button colorScheme='green' w='100%' onClick={ enrolled ? null : handleEnroll}>
                   <BsCheck2Circle /> &nbsp;
-                  {enrolled ? 'Enrolled' : 'Enroll Now'}
+                  {enrolled ? 'Enrolled' : 'Get Subscription'}
                 </Button>
               </GridItem>
             </Grid>
@@ -166,7 +171,12 @@ const SingleCourse = () => {
                     </Box>
                   </Flex>
                   <Link href={`${data.slug}/watch?video=${index + 1}`} >
-                    <Button colorScheme='blue' size='sm'><BsLayoutSidebarInset /> &nbsp; Watch Now</Button>
+                    <Button colorScheme={enrolled ? videoData?.includes(index) ? 'gray' : 'green' : 'gray'} size='sm'>
+                    {enrolled ? videoData?.includes(index) ? <FaCheckCircle /> : <FaPlay /> : <FaPlay />} 
+                    &nbsp; {
+                      enrolled ? videoData?.includes(index) ? 'Watched' : 'Watch Now' : 'Enroll Now'
+                    }
+                    </Button>
                   </Link>
                 </Flex>
               </Box>
