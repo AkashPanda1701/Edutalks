@@ -1,211 +1,217 @@
 [
-{
-    "title" : "Introduction to Data Science",
-    "slug" : "introduction-to-data-science",
-    "type" : "free",
-    "videos":[
-        {
-            "subtitle" : "What is Data Science?",
-            "src":"https://www.youtube.com/embed/JL_grPUnXzY",
-            "duration": "6.46"
-        },
-        {
-            "subtitle" : "Variables and Data Types in Python",
-            "src":"https://www.youtube.com/embed/8tCe1P_cgoY",
-            "duration": "3.42"
-        },
-        {
-            "subtitle" : "For Loops in Python",
-            "src":"https://www.youtube.com/embed/3ykIpmAxdoY",
-            "duration": "20.40"
-        },
-        {
-            "subtitle" :"Classes and Objects in Python",
-            "src":"https://www.youtube.com/embed/6XWeeEg6d3s",
-            "duration": "9.49"
-        },
-        {
-            "subtitle" : "Machine Learning : Random Forest",
-            "src":"https://www.youtube.com/embed/ok2s1vV9XW0" ,
-            "duration": "12.48"
-        }
-
-    ],
-    "totalDuration" : "52.25",
-    "description" : "In a world of data space where organizations deal with petabytes and exabytes of data, the era of Big Data emerged, the essence of its storage also grew. It was a great challenge and concern for industries for the storage of data until 2010. Now when frameworks like Hadoop and others solved the problem of storage, the focus shifted to processing of data. Data Science plays a big role here. All those fancy Sci-fi movies you love to watch around can turn into reality by Data Science. Nowadays it’s growth has been increased in multiple ways and thus one should be ready for our future by learning what it is and how can we add value to it. Without any hunches, let’s dive into the world of Data Science."
-},
-{
-"title" : "Introduction to Web Development",
-"slug" : "introduction-to-web-development",
-    "type" : "free",
-    "videos":[
-        {
-            "subtitle" : "What is Web Development?",
-            "src":"https://www.youtube.com/embed/l1EssrLxt7E",
-            "duration": "11.07"
-        },
-        {
-            "subtitle" : "CSS - What is selectors?",
-            "src":"https://www.youtube.com/embed/sqJ6xZ9mUwE",
-            "duration": "25.41"
-        },
-        {
-            "subtitle" : "Understanding Cascading , Specificity and Inheritance",
-            "src":"https://www.youtube.com/embed/wKPlQkOdpFQ",
-            "duration": "25.32"
-        },
-        {
-            "subtitle" :"Javascript Introduction ",
-            "src":"https://www.youtube.com/embed/B7wHpNUUT4Y",
-            "duration": "7.47"
-        },
-        {
-            "subtitle" : "What is Hoisting? | Javascript",
-            "src":"https://www.youtube.com/embed/101q0HoCDKs",
-            "duration": "31.03"
-        }
-
-    ],
-    "totalDuration" : "100.3",
-    "description" : "Web development is the work involved in developing a website for the Internet (World Wide Web) or an intranet (a private network).[1] Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services. A more comprehensive list of tasks to which Web development commonly refers, may include Web engineering, Web design, Web content development, client liaison, client-side/server-side scripting, Web server and network security configuration, and e-commerce development."
-},
-{
-    "title" : "Introduction to React",
-    "slug" : "introduction-to-react",
+    {
+        "title" : "Introduction to Data Science",
+        "slug" : "introduction-to-data-science",
+        "image":"https://img.youtube.com/vi/JL_grPUnXzY/maxresdefault.jpg",
         "type" : "free",
         "videos":[
             {
-                "subtitle" : "React Js + Installation",
-                "src":"https://www.youtube.com/embed/-mJFZp84TIY",
-                "duration": "16.50"
+                "subtitle" : "What is Data Science?",
+                "src":"https://www.youtube.com/embed/JL_grPUnXzY",
+                "duration": "6.46"
             },
             {
-                "subtitle" : "Understanding JSX",
-                "src":"https://www.youtube.com/embed/JvC7aA24m4Q",
-                "duration": "26.35"
+                "subtitle" : "Variables and Data Types in Python",
+                "src":"https://www.youtube.com/embed/8tCe1P_cgoY",
+                "duration": "3.42"
             },
             {
-                "subtitle" : "Understanding Props and PropTypes",
-                "src":"https://www.youtube.com/embed/xvm3X1oyTL8",
-                "duration": "26.02"
+                "subtitle" : "For Loops in Python",
+                "src":"https://www.youtube.com/embed/3ykIpmAxdoY",
+                "duration": "20.40"
             },
             {
-                "subtitle" :"Fetching API Key from News API ",
-                "src":"https://www.youtube.com/embed/fSFlvm56JwM",
-                "duration": "14.22"
+                "subtitle" :"Classes and Objects in Python",
+                "src":"https://www.youtube.com/embed/6XWeeEg6d3s",
+                "duration": "9.49"
             },
             {
-                "subtitle" : "UseContext hook: Using React Context API",
-                "src":"https://www.youtube.com/embed/coM0JK6o3mo",
-                "duration": "19.07"
+                "subtitle" : "Machine Learning : Random Forest",
+                "src":"https://www.youtube.com/embed/ok2s1vV9XW0" ,
+                "duration": "12.48"
             }
     
         ],
-        "totalDuration" : "102.16",
-        "description" : "React.js is a front-end JavaScript framework developed by Facebook. To build composable user interfaces predictably and efficiently using declarative code, we use React. It’s an open-source and component-based framework responsible for creating the application’s view layer."
-},
-{
-    "title" : "Introduction to Nextjs ",
-    "slug" : "introduction-to-nextjs",
+        "totalDuration" : "52.25",
+        "description" : "In a world of data space where organizations deal with petabytes and exabytes of data, the era of Big Data emerged, the essence of its storage also grew. It was a great challenge and concern for industries for the storage of data until 2010. Now when frameworks like Hadoop and others solved the problem of storage, the focus shifted to processing of data. Data Science plays a big role here. All those fancy Sci-fi movies you love to watch around can turn into reality by Data Science. Nowadays it’s growth has been increased in multiple ways and thus one should be ready for our future by learning what it is and how can we add value to it. Without any hunches, let’s dive into the world of Data Science."
+    },
+    {
+    "title" : "Introduction to Web Development",
+    "slug" : "introduction-to-web-development",
+    "image" :"https://img.youtube.com/vi/l1EssrLxt7E/maxresdefault.jpg",
         "type" : "free",
         "videos":[
             {
-                "subtitle" : "Getting Started with Next.js",
-                "src":"https://www.youtube.com/embed/DZKOunP-WLQ",
-                "duration": "8.30"
+                "subtitle" : "What is Web Development?",
+                "src":"https://www.youtube.com/embed/l1EssrLxt7E",
+                "duration": "11.07"
             },
             {
-                "subtitle" : "File Based Routing in Next.js",
-                "src":"https://www.youtube.com/embed/zSxopWQF4cg",
-                "duration": "16.08"
+                "subtitle" : "CSS - What is selectors?",
+                "src":"https://www.youtube.com/embed/sqJ6xZ9mUwE",
+                "duration": "25.41"
             },
             {
-                "subtitle" : "Creating Multiple Pages in Next.js",
-                "src":"https://www.youtube.com/embed/32KkgR2xSLw",
-                "duration": "11.40"
+                "subtitle" : "Understanding Cascading , Specificity and Inheritance",
+                "src":"https://www.youtube.com/embed/wKPlQkOdpFQ",
+                "duration": "25.32"
             },
             {
-                "subtitle" :"Introduction to API Routes in Next.js",
-                "src":"https://www.youtube.com/embed/gCssfulsemc",
-                "duration": "9.30"
+                "subtitle" :"Javascript Introduction ",
+                "src":"https://www.youtube.com/embed/B7wHpNUUT4Y",
+                "duration": "7.47"
             },
             {
-                "subtitle" : "Deploying Codeswear.com to DigitalOcean",
-                "src":"https://www.youtube.com/embed/G_9U6PPJNiE",
-                "duration": "17.30"
+                "subtitle" : "What is Hoisting? | Javascript",
+                "src":"https://www.youtube.com/embed/101q0HoCDKs",
+                "duration": "31.03"
             }
     
         ],
-        "totalDuration" : "62.38",
-        "description" : "Next.js is a React framework that gives you building blocks to create web applications.By framework, we mean Next.js handles the tooling and configuration needed for React, and provides additional structure, features, and optimizations for your application."
-},
-{
-        "title" : "Introduction to C++",
-        "slug" : "introduction-to-c++",
-            "type" : "paid",
+        "totalDuration" : "100.3",
+        "description" : "Web development is the work involved in developing a website for the Internet (World Wide Web) or an intranet (a private network).[1] Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services. A more comprehensive list of tasks to which Web development commonly refers, may include Web engineering, Web design, Web content development, client liaison, client-side/server-side scripting, Web server and network security configuration, and e-commerce development."
+    },
+    {
+        "title" : "Introduction to React",
+        "slug" : "introduction-to-react",
+        "image": "https://img.youtube.com/vi/-mJFZp84TIY/maxresdefault.jpg",
+            "type" : "free",
             "videos":[
                 {
-                    "subtitle" : "Data Structures and Algorithms ",
-                    "src":"https://www.youtube.com/embed/z9bZufPHFLU",
+                    "subtitle" : "React Js + Installation",
+                    "src":"https://www.youtube.com/embed/-mJFZp84TIY",
+                    "duration": "16.50"
+                },
+                {
+                    "subtitle" : "Understanding JSX",
+                    "src":"https://www.youtube.com/embed/JvC7aA24m4Q",
+                    "duration": "26.35"
+                },
+                {
+                    "subtitle" : "Understanding Props and PropTypes",
+                    "src":"https://www.youtube.com/embed/xvm3X1oyTL8",
                     "duration": "26.02"
                 },
                 {
-                    "subtitle" : "If/else statement in C++ programming",
-                    "src":"https://www.youtube.com/embed/cyB3HNlQyjY",
-                    "duration": "7.50"
+                    "subtitle" :"Fetching API Key from News API ",
+                    "src":"https://www.youtube.com/embed/fSFlvm56JwM",
+                    "duration": "14.22"
                 },
                 {
-                    "subtitle" : "Functions in C++",
-                    "src":"https://www.youtube.com/embed/83KtncYgHYQ",
-                    "duration": "8.10"
-                },
-                {
-                    "subtitle" :"BIT Manipulation",
-                    "src":"https://www.youtube.com/embed/gCssfulsemc",
-                    "duration": "10.45"
-                },
-                {
-                    "subtitle" : "Policy Based Data Structures | C++",
-                    "src":"https://www.youtube.com/embed/f88s33eFGDo",
-                    "duration": "9.38"
+                    "subtitle" : "UseContext hook: Using React Context API",
+                    "src":"https://www.youtube.com/embed/coM0JK6o3mo",
+                    "duration": "19.07"
                 }
         
             ],
-            "totalDuration" : "61.45",
-            "description" : "C++ is a high-level general-purpose programming language created by Danish computer scientist Bjarne Stroustrup as an extension of the C programming language, or C-with-Classes.The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation."
-},
-{
-    "title": "Introduction to Digital Marketing",
-    "slug": "introduction-to-digital-marketing",
-    "type": "paid",
-    "videos": [
-      {
-        "subtitle": "What is Digital Marketing?",
-        "link": "https://www.youtube.com/embed/wfOp0lsCXAY",
-        "duration": "3.34"
-      },
-      {
-        "subtitle": "Digital Marketing Modules.",
-        "link": "https://www.youtube.com/embed/DqKFjgGvbnU",
-        "duration": "20.32"
-      },
-      {
-        "subtitle": "How to start a blog (Domain, Hosting , Wordpress Theme).",
-        "link": "https://www.youtube.com/embed/FgtB4fWIjRE",
-        "duration": "15.49"
-      },
-      {
-        "subtitle": "What is SEO in 2022? - On page SEO and how to write an article like a pro.",
-        "link": "https://www.youtube.com/embed/N8DhIndTi6E",
-        "duration": "15.41"
-      },
-      {
-        "subtitle": "What is Affiliate Marketing?",
-        "link": "https://www.youtube.com/embed/SLE72I-2lv8",
-        "duration": "11.10"
+            "totalDuration" : "102.16",
+            "description" : "React.js is a front-end JavaScript framework developed by Facebook. To build composable user interfaces predictably and efficiently using declarative code, we use React. It’s an open-source and component-based framework responsible for creating the application’s view layer."
+    },
+    {
+        "title" : "Introduction to Nextjs ",
+        "slug" : "introduction-to-nextjs",
+        "image": "https://img.youtube.com/vi/DZKOunP-WLQ/maxresdefault.jpg",
+            "type" : "free",
+            "videos":[
+                {
+                    "subtitle" : "Getting Started with Next.js",
+                    "src":"https://www.youtube.com/embed/DZKOunP-WLQ",
+                    "duration": "8.30"
+                },
+                {
+                    "subtitle" : "File Based Routing in Next.js",
+                    "src":"https://www.youtube.com/embed/zSxopWQF4cg",
+                    "duration": "16.08"
+                },
+                {
+                    "subtitle" : "Creating Multiple Pages in Next.js",
+                    "src":"https://www.youtube.com/embed/32KkgR2xSLw",
+                    "duration": "11.40"
+                },
+                {
+                    "subtitle" :"Introduction to API Routes in Next.js",
+                    "src":"https://www.youtube.com/embed/gCssfulsemc",
+                    "duration": "9.30"
+                },
+                {
+                    "subtitle" : "Deploying Codeswear.com to DigitalOcean",
+                    "src":"https://www.youtube.com/embed/G_9U6PPJNiE",
+                    "duration": "17.30"
+                }
+        
+            ],
+            "totalDuration" : "62.38",
+            "description" : "Next.js is a React framework that gives you building blocks to create web applications.By framework, we mean Next.js handles the tooling and configuration needed for React, and provides additional structure, features, and optimizations for your application."
+    },
+    {
+            "title" : "Introduction to C++",
+            "slug" : "introduction-to-c++",
+            "image": "https://img.youtube.com/vi/z9bZufPHFLU/maxresdefault.jpg",
+                "type" : "paid",
+                "videos":[
+                    {
+                        "subtitle" : "Data Structures and Algorithms ",
+                        "src":"https://www.youtube.com/embed/z9bZufPHFLU",
+                        "duration": "26.02"
+                    },
+                    {
+                        "subtitle" : "If/else statement in C++ programming",
+                        "src":"https://www.youtube.com/embed/cyB3HNlQyjY",
+                        "duration": "7.50"
+                    },
+                    {
+                        "subtitle" : "Functions in C++",
+                        "src":"https://www.youtube.com/embed/83KtncYgHYQ",
+                        "duration": "8.10"
+                    },
+                    {
+                        "subtitle" :"BIT Manipulation",
+                        "src":"https://www.youtube.com/embed/gCssfulsemc",
+                        "duration": "10.45"
+                    },
+                    {
+                        "subtitle" : "Policy Based Data Structures | C++",
+                        "src":"https://www.youtube.com/embed/f88s33eFGDo",
+                        "duration": "9.38"
+                    }
+            
+                ],
+                "totalDuration" : "61.45",
+                "description" : "C++ is a high-level general-purpose programming language created by Danish computer scientist Bjarne Stroustrup as an extension of the C programming language, or C-with-Classes.The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation."
+    },
+    {
+        "title": "Introduction to Digital Marketing",
+        "slug": "introduction-to-digital-marketing",
+        "image": "https://img.youtube.com/vi/wViKLTl_HgQ/maxresdefault.jpg",
+        "type": "paid",
+        "videos": [
+          {
+            "subtitle": "What is Digital Marketing?",
+            "link": "https://www.youtube.com/embed/wfOp0lsCXAY",
+            "duration": "3.34"
+          },
+          {
+            "subtitle": "Digital Marketing Modules.",
+            "link": "https://www.youtube.com/embed/DqKFjgGvbnU",
+            "duration": "20.32"
+          },
+          {
+            "subtitle": "How to start a blog (Domain, Hosting , Wordpress Theme).",
+            "link": "https://www.youtube.com/embed/FgtB4fWIjRE",
+            "duration": "15.49"
+          },
+          {
+            "subtitle": "What is SEO in 2022? - On page SEO and how to write an article like a pro.",
+            "link": "https://www.youtube.com/embed/N8DhIndTi6E",
+            "duration": "15.41"
+          },
+          {
+            "subtitle": "What is Affiliate Marketing?",
+            "link": "https://www.youtube.com/embed/SLE72I-2lv8",
+            "duration": "11.10"
+          }
+        ],
+        "totalDuration": "66.06",
+        "description": "Digital marketing is the marketing of products or services using digital technologies, mainly on the Internet, but also including mobile phones, display advertising, and any other digital medium. Digital marketing's development since the 1990s and 2000s has changed the way brands and businesses use technology for marketing. As digital platforms are increasingly incorporated into marketing plans and everyday life, and as people use digital devices instead of visiting physical shops, digital marketing campaigns are becoming more prevalent and efficient."
       }
-    ],
-    "totalDuration": "66.06",
-    "description": "Digital marketing is the marketing of products or services using digital technologies, mainly on the Internet, but also including mobile phones, display advertising, and any other digital medium. Digital marketing's development since the 1990s and 2000s has changed the way brands and businesses use technology for marketing. As digital platforms are increasingly incorporated into marketing plans and everyday life, and as people use digital devices instead of visiting physical shops, digital marketing campaigns are becoming more prevalent and efficient."
-  }
-]
+    ]
