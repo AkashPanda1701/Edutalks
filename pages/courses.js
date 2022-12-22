@@ -6,10 +6,12 @@ import { FaBook, FaBookMedical, FaBookReader, FaBrain, FaGift, FaHome, FaMoneyBi
 import { useDispatch, useSelector } from 'react-redux'
 import Navbar from '../components/Navbar'
 import { getAllCourses } from '../redux/course/action'
+import { Skeleton, SkeletonText } from '@chakra-ui/react'
 
 function courses() {
     const dispatch = useDispatch();
     const {Allcourses:{data,loading,error}} = useSelector(state => state.course);
+    console.log('data: ', data);
     React.useEffect(() => {
         dispatch(getAllCourses());
     }, [dispatch]);
@@ -69,107 +71,37 @@ function courses() {
                                     <Text mt='2' fontSize='sm' textColor='gray.500'>Browse through our courses and find the one that suits you</Text>
                                 </Box>
                                 <Grid templateColumns="repeat(3, 1fr)" gap={6} mt='4'>
-                                    <Link href='/course/coursepage'>
+                                    {
+                                        loading ? new Array(6).fill(6).map((el,index)=> <GridItem colSpan={1} key={index} >
+                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
+                                            <Skeleton roundedTop={'lg'}  h={'180px'}/>
+                                            <Box p='4'>
+                                                <SkeletonText mt='2' noOfLines={1} spacing='4' />
+                                                <SkeletonText mt='2' noOfLines={1} spacing='4' />
+                                                <SkeletonText mt='2' noOfLines={1} spacing='4' />
+                                
+                                            </Box>
+                                        </Box>
+                                    </GridItem>) : data?.map((course,index) => <Link key={index} href={`/course/${course.slug}`}>
                                         <GridItem colSpan={1}>
                                             <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                                <Image src='https://static.uacdn.net/thumbnail/course/v2/88707BBC-244F-415F-9C15-30BFD213AA9F_special_class.png?q=75&w=512&fm=webp' roundedTop={'lg'} />
+                                                <Image src={course.image} roundedTop={'lg'} />
                                                 <Box p='4'>
                                                     <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                    <Text fontSize='md' fontWeight='semibold'>Learn Python Programming</Text>
-                                                    <Text mt='2' fontSize='sm' textColor='gray.500'>Learn Python Programming from scratch</Text>
-                                                    <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>2 hours</Badge></Text>
+                                                    <Text fontSize='md' fontWeight='semibold'>{course.title.slice(0, 25)}...</Text>
+                                                    <Text mt='2' fontSize='sm' textColor='gray.500'>Learn {
+                                                           course.title.split('to')[1].length > 10 ? `${course.title.split('to')[1].slice(0, 10)}... `: course.title.split('to')[1]
+                                                    } from scratch</Text>
+                                                    <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>{
+                                                        course.totalDuration
+                                                    } Mins</Badge></Text>
                                                 </Box>
                                             </Box>
                                         </GridItem>
                                     </Link>
-                                    <GridItem colSpan={1}>
-                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                            <Image src='https://static.uacdn.net/thumbnail/course/v2/88707BBC-244F-415F-9C15-30BFD213AA9F_special_class.png?q=75&w=512&fm=webp' roundedTop={'lg'} />
-                                            <Box p='4'>
-                                                <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                <Text fontSize='md' fontWeight='semibold'>Learn Python Programming</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Learn Python Programming from scratch</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>2 hours</Badge></Text>
-                                            </Box>
-                                        </Box>
-                                    </GridItem>
-                                    <GridItem colSpan={1}>
-                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                            <Image src='https://static.uacdn.net/thumbnail/course/v2/196C0C5E-9912-45A6-A03E-DE8038CC7355_special_class.png?q=75&w=512&fm=webp' roundedTop={'lg'} />
-                                            <Box p='4'>
-                                                <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                <Text fontSize='md' fontWeight='semibold'>Learn Python Programming</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Learn Python Programming from scratch</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>2 hours</Badge></Text>
-                                            </Box>
-                                        </Box>
-                                    </GridItem>
-                                    <GridItem colSpan={1}>
-                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                            <Image src='https://static.uacdn.net/thumbnail/course/v2/9C9A33BF-4BC6-4808-AB20-4367289732EF_special_class.png?q=75&w=512&fm=webp' roundedTop={'lg'} />
-                                            <Box p='4'>
-                                                <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                <Text fontSize='md' fontWeight='semibold'>Learn Python Programming</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Learn Python Programming from scratch</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>2 hours</Badge></Text>
-                                            </Box>
-                                        </Box>
-                                    </GridItem>
-                                    <GridItem colSpan={1}>
-                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                            <Image src='https://static.uacdn.net/thumbnail/course/v2/88707BBC-244F-415F-9C15-30BFD213AA9F_special_class.png?q=75&w=512&fm=webp' roundedTop={'lg'} />
-                                            <Box p='4'>
-                                                <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                <Text fontSize='md' fontWeight='semibold'>Learn Python Programming</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Learn Python Programming from scratch</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>2 hours</Badge></Text>
-                                            </Box>
-                                        </Box>
-                                    </GridItem>
-                                    <GridItem colSpan={1}>
-                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                            <Image src='https://static.uacdn.net/thumbnail/course/v2/88707BBC-244F-415F-9C15-30BFD213AA9F_special_class.png?q=75&w=512&fm=webp' roundedTop={'lg'} />
-                                            <Box p='4'>
-                                                <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                <Text fontSize='md' fontWeight='semibold'>Learn Python Programming</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Learn Python Programming from scratch</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>2 hours</Badge></Text>
-                                            </Box>
-                                        </Box>
-                                    </GridItem>
-                                    <GridItem colSpan={1}>
-                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                            <Image src='https://static.uacdn.net/thumbnail/course/v2/88707BBC-244F-415F-9C15-30BFD213AA9F_special_class.png?q=75&w=512&fm=webp' roundedTop={'lg'} />
-                                            <Box p='4'>
-                                                <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                <Text fontSize='md' fontWeight='semibold'>Learn Python Programming</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Learn Python Programming from scratch</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>2 hours</Badge></Text>
-                                            </Box>
-                                        </Box>
-                                    </GridItem>
-                                    <GridItem colSpan={1}>
-                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                            <Image src='https://static.uacdn.net/thumbnail/course/v2/88707BBC-244F-415F-9C15-30BFD213AA9F_special_class.png?q=75&w=512&fm=webp' roundedTop={'lg'} />
-                                            <Box p='4'>
-                                                <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                <Text fontSize='md' fontWeight='semibold'>Learn Python Programming</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Learn Python Programming from scratch</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>2 hours</Badge></Text>
-                                            </Box>
-                                        </Box>
-                                    </GridItem>
-                                    <GridItem colSpan={1}>
-                                        <Box borderRadius='lg' boxShadow={'md'} bg='white'>
-                                            <Image src='https://static.uacdn.net/thumbnail/course/v2/88707BBC-244F-415F-9C15-30BFD213AA9F_special_class.png?q=75&w=512&fm=webp' roundedTop={'lg'} />
-                                            <Box p='4'>
-                                                <Badge colorScheme='blue' mb='2'>Special Class</Badge>
-                                                <Text fontSize='md' fontWeight='semibold'>Learn Python Programming</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Learn Python Programming from scratch</Text>
-                                                <Text mt='2' fontSize='sm' textColor='gray.500'>Duration: <Badge colorScheme='green' ml='2'>2 hours</Badge></Text>
-                                            </Box>
-                                        </Box>
-                                    </GridItem>
+                                    )
+                                    }
+                                    
                                 </Grid>
                             </Box>
                         </GridItem>
