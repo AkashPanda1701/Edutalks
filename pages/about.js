@@ -79,6 +79,7 @@ const about = () => {
           role="Mern Developer"
           location="Siliguri, WestBengal"
           email="akashpanda1701@gmail.com"
+          linkedIn="https://www.linkedin.com/in/abdul-quadir-aa0a60200/"
         />
         <OurTeam
           image="https://avatars.githubusercontent.com/u/53786566?v=4"
@@ -86,6 +87,7 @@ const about = () => {
           role="Mern Developer"
           location="keonjhar, Odisha"
           email="abdulquadir77@yahoo.com"
+          linkedIn="https://www.linkedin.com/in/abdul-quadir-aa0a60200/"
         />
         <OurTeam
           image="https://avatars.githubusercontent.com/u/106377969?v=4"
@@ -93,6 +95,7 @@ const about = () => {
           role="Mern Developer"
           location="Jamshedpur, Jharkhand"
           email="indspunk@gmail.com"
+          linkedIn="https://www.linkedin.com/in/abdul-quadir-aa0a60200/"
         />
         <OurTeam
           image="https://avatars.githubusercontent.com/u/107462124?v=4"
@@ -100,6 +103,7 @@ const about = () => {
           role="Mern Developer"
           location="Sangli, Maharastra"
           email="zuhed95@gmail.com"
+          linkedIn="https://www.linkedin.com/in/zuhedshaikh95/"
         />
       </Grid>
       <Footer />
