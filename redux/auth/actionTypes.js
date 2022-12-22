@@ -9,6 +9,10 @@
 
     export const SET_SESSION = "SET_SESSION";
 
+    export const ADD_COURSE_LOADING = "ADD_COURSE_LOADING";
+    export const ADD_COURSE_SUCCESS = "ADD_COURSE_SUCCESS";
+    export const ADD_COURSE_ERROR = "ADD_COURSE_ERROR";
+
 
     export const RESET_AUTH = "RESET_AUTH";
     

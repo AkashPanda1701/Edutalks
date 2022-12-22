@@ -1,4 +1,8 @@
-import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_ERROR, SIGNUP_LOADING, SIGNUP_SUCCESS, SIGNUP_ERROR } from "./actionTypes";
+import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_ERROR, SIGNUP_LOADING, SIGNUP_SUCCESS,
+    ADD_COURSE_LOADING,
+    ADD_COURSE_SUCCESS,
+    ADD_COURSE_ERROR,
+    SIGNUP_ERROR, SET_SESSION } from "./actionTypes";
 import axios from "axios";
 
 
@@ -47,13 +51,38 @@ export const signup = (user) => async (dispatch) => {
 
 export const setSession = (user) => async (dispatch) => {
     try {
+        const res = await axios.get("/api/auth/session");
+        console.log('res: ', res);
         dispatch({
             type: SET_SESSION,
-            payload: user,
+            payload: res.data.user,
         });
     } catch (error) {
         dispatch({
             type: LOGIN_ERROR,
+            payload: error.response.data.message,
+        });
+    }
+}
+
+export const addCourse = (course) => async (dispatch) => {
+    dispatch({
+        type: ADD_COURSE_LOADING,
+    });
+    try {
+        const { data } = await axios.post("/api/users", course);
+        console.log('data: ', data);
+        dispatch({
+            type: ADD_COURSE_SUCCESS,
+            payload: {
+                message: data.message,
+                user : data.user
+            }
+        });
+    }
+    catch (error) {
+        dispatch({
+            type: ADD_COURSE_ERROR,
             payload: error.response.data.message,
         });
     }
