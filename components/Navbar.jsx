@@ -30,9 +30,8 @@ const Navbar = () => {
           }}
           py={4}
           shadow="md"
-          position={{  base: "relative" }}
+          position={{ base: "relative" }}
           zIndex={10}
-
         >
           <Flex alignItems="center" justifyContent="space-between" mx="auto">
             <Flex>
@@ -60,12 +59,14 @@ const Navbar = () => {
                 }}
               >
                 <Link href="/">
-                <Button variant="ghost">Home</Button>
+                  <Button variant="ghost">Home</Button>
                 </Link>
                 <Link href="/pricing">
-                <Button variant="ghost">Pricing</Button>
+                  <Button variant="ghost">Pricing</Button>
                 </Link>
-                <Button variant="ghost">Notes</Button>
+                <Link href="/notes">
+                  <Button variant="ghost">Notes</Button>
+                </Link>
                 <Button variant="ghost">About</Button>
                 <Link href="/courses">
                   <Button variant="ghost">Courses</Button>

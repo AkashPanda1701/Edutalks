@@ -1,5 +1,12 @@
 import React from "react";
-import { useColorModeValue, Box, chakra, Icon, Image, Button } from "@chakra-ui/react";
+import {
+  useColorModeValue,
+  Box,
+  chakra,
+  Icon,
+  Image,
+  Button,
+} from "@chakra-ui/react";
 
 const header = () => {
   const bg = useColorModeValue("white", "gray.800");
@@ -146,7 +153,13 @@ const header = () => {
                 fontFamily="fantasy"
               >
                 <Box>
-                  <Button colorScheme="green" size="lg" px={10} py={4} fontSize="md">
+                  <Button
+                    colorScheme="green"
+                    size="lg"
+                    px={10}
+                    py={4}
+                    fontSize="md"
+                  >
                     Get started
                   </Button>
                 </Box>
@@ -185,6 +198,7 @@ const header = () => {
           </Box>
         </Box>
       </Box>
+
       <Box
         position={{
           lg: "absolute",
@@ -207,7 +221,9 @@ const header = () => {
           h={[56, 72, 96, "full"]}
           w="full"
           fit="cover"
-          src={"https://cdn.dribbble.com/users/1620156/screenshots/5547104/education.gif"}
+          src={
+            "https://cdn.dribbble.com/users/1620156/screenshots/5547104/education.gif"
+          }
           alt=""
           loading="lazy"
         />
