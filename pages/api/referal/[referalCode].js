@@ -8,7 +8,7 @@ export default async function referal(req, res) {
         try {
             await connectDB();
             const { referalCode } = req.query;
-            const referal = await Referal.find({ referalCode }).select('-userId').populate('referalcount', 'name email');
+            const referal = await Referal.findOne({ referalCode }).select('-userId').populate('referalcount', 'name email subscriptions');
             return res.status(200).send({ referal });
         } catch (error) {
             return res.status(400).json({ message: error.message });

@@ -1,11 +1,25 @@
-import { Avatar, AvatarGroup, Badge, Box, Button, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react'
-import React from 'react'
+import { Avatar, AvatarGroup, Badge, Box, Button, Flex, Grid, GridItem, Image, Text, useToast } from '@chakra-ui/react'
+import React, { useEffect } from 'react'
 import { FaArrowRight, FaClock, FaConfluence, FaFacebookMessenger, FaGift, FaQuestion } from 'react-icons/fa'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Head from 'next/head'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
 
 function referral() {
+  const toast = useToast()
+  const { user } = useSelector(state => state.auth)
+  const [referrals, setReferrals] = React.useState(null)
+  useEffect(() => {
+    if (!user) return
+    const response = axios.get(`/api/referal/${user.referalCode}`).then(res => {
+      setReferrals(res.data?.referal?.referalcount)
+    })
+  }, [user])
+
+  console.log(referrals)
+
   return (
     <>
       <Head>
@@ -35,10 +49,24 @@ function referral() {
                 </Flex>
                 <Flex mt={4} bg='white' p={4} borderRadius='md' gap='4'>
                   <Box w='70%'>
-                    <Text fontSize="xs" fontWeight="bold" textColor='#522C2C'> Here Is Your Referral Code </Text>
-                    <Text fontSize="2xl" fontWeight="bold" textColor='#522C2C'> Y7u8BF </Text>
+                    <Text fontSize="xs" fontWeight="bold" textColor='#522C2C'> {
+                      user ? 'Here Is Your Referral Code' : 'You Need To Login To Get Your Referral Code'
+                    } </Text>
+                    <Text fontSize="2xl" fontWeight="bold" textColor='#522C2C'> {user ? user.referalCode : 'XXXXXX'} </Text>
                   </Box>
-                  <Button colorScheme="orange" h='auto' w='30%'> Refer </Button>
+                  <Button colorScheme="orange" h='auto' w='30%' onClick={() => {
+                    if (!user) {
+                      toast({
+                        title: 'Please Login First To Start Referring',
+                        description: 'You need to login to get your referral code',
+                        status: 'info',
+                        duration: 3000,
+                        position: 'top',
+                        isClosable: true,
+                      })
+                    }
+                  }}
+                  > Refer </Button>
                 </Flex>
               </Box>
             </GridItem>
@@ -82,62 +110,24 @@ function referral() {
               <GridItem colSpan={{ base: 8, md: 5 }} bg='white' p={4} borderRadius='md'>
                 <Text fontWeight="bold" textColor='#522C2C' fontSize={{ base: 'xl', lg: '2xl' }}> Your Referrals </Text>
                 <Grid templateColumns="repeat(2, 1fr)" gap='4' mt={4}>
-                  <GridItem colSpan={{ base: 2, md: 1 }} bg='white' p={4} borderRadius='md' border='1px solid' borderColor='gray.100'>
-                    <Box>
-                      <Text fontWeight="bold" textColor='#522C2C' fontSize={{ base: 'xl', lg: '2xl' }}>Chandan Kumar</Text>
-                      <Flex alignItems='center' gap={2}>
-                        <FaClock />
-                        <Text mt='1' fontSize="md" textColor='#522C2C'> 24th January</Text>
-                      </Flex>
-                      <Flex alignItems='center' gap={2}>
-                        <FaFacebookMessenger />
-                        <Text mt='1' fontSize="md" textColor='#522C2C'> indspunk@gmail.com </Text>
-                      </Flex>
-                      <Badge size='xl' px='4' py='1' mt='3' colorScheme="green">Status: &nbsp; Active</Badge>
-                    </Box>
-                  </GridItem>
-                  <GridItem colSpan={{ base: 2, md: 1 }} bg='white' p={4} borderRadius='md' border='1px solid' borderColor='gray.100'>
-                    <Box>
-                      <Text fontWeight="bold" textColor='#522C2C' fontSize={{ base: 'xl', lg: '2xl' }}>Chandan Kumar</Text>
-                      <Flex alignItems='center' gap={2}>
-                        <FaClock />
-                        <Text mt='1' fontSize="md" textColor='#522C2C'> 24th January</Text>
-                      </Flex>
-                      <Flex alignItems='center' gap={2}>
-                        <FaFacebookMessenger />
-                        <Text mt='1' fontSize="md" textColor='#522C2C'> indspunk@gmail.com </Text>
-                      </Flex>
-                      <Badge size='xl' px='4' py='1' mt='3' colorScheme="orange">Status: &nbsp; Pending</Badge>
-                    </Box>
-                  </GridItem>
-                  <GridItem colSpan={{ base: 2, md: 1 }} bg='white' p={4} borderRadius='md' border='1px solid' borderColor='gray.100'>
-                    <Box>
-                      <Text fontWeight="bold" textColor='#522C2C' fontSize={{ base: 'xl', lg: '2xl' }}>Chandan Kumar</Text>
-                      <Flex alignItems='center' gap={2}>
-                        <FaClock />
-                        <Text mt='1' fontSize="md" textColor='#522C2C'> 24th January</Text>
-                      </Flex>
-                      <Flex alignItems='center' gap={2}>
-                        <FaFacebookMessenger />
-                        <Text mt='1' fontSize="md" textColor='#522C2C'> indspunk@gmail.com </Text>
-                      </Flex>
-                      <Badge size='xl' px='4' py='1' mt='3' colorScheme="green">Status: &nbsp; Active</Badge>
-                    </Box>
-                  </GridItem>
-                  <GridItem colSpan={{ base: 2, md: 1 }} bg='white' p={4} borderRadius='md' border='1px solid' borderColor='gray.100'>
-                    <Box>
-                      <Text fontWeight="bold" textColor='#522C2C' fontSize={{ base: 'xl', lg: '2xl' }}>Chandan Kumar</Text>
-                      <Flex alignItems='center' gap={2}>
-                        <FaClock />
-                        <Text mt='1' fontSize="md" textColor='#522C2C'> 24th January</Text>
-                      </Flex>
-                      <Flex alignItems='center' gap={2}>
-                        <FaFacebookMessenger />
-                        <Text mt='1' fontSize="md" textColor='#522C2C'> indspunk@gmail.com </Text>
-                      </Flex>
-                      <Badge size='xl' px='4' py='1' mt='3' colorScheme="green">Status: &nbsp; Active</Badge>
-                    </Box>
-                  </GridItem>
+                  {
+                    referrals ? referrals.map((referral, index) => (
+                      <GridItem colSpan={{ base: 2, md: 1 }} bg='white' p={4} borderRadius='md' border='1px solid' borderColor='gray.100'>
+                        <Box>
+                          <Text fontWeight="bold" textColor='#522C2C' fontSize={{ base: 'xl', lg: '2xl' }}>{referral.name}</Text>
+                          <Flex alignItems='center' gap={2}>
+                            <FaClock />
+                            <Text mt='1' fontSize="md" textColor='#522C2C'>{new Date(referral.subscriptions.startdate).toDateString()}</Text>
+                          </Flex>
+                          <Flex alignItems='center' gap={2}>
+                            <FaFacebookMessenger />
+                            <Text mt='1' fontSize="md" textColor='#522C2C'>{referral.email}</Text>
+                          </Flex>
+                          <Badge size='xl' px='4' py='1' mt='3' colorScheme="green">Status: &nbsp; Active</Badge>
+                        </Box>
+                      </GridItem>
+                    )) : <Text> No Referrals Yet </Text>
+                  }
                 </Grid>
               </GridItem>
               <GridItem colSpan={{ base: 8, md: 3 }} bg='white' p={4} borderRadius='md'>

@@ -16,7 +16,9 @@ function pricing() {
             </Head>
             <Box>
                 <Navbar />
+                <Box mt="-60px">
                 <Pricing />
+                </Box>
                 <Footer />
             </Box>
         </>
