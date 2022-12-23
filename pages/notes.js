@@ -8,8 +8,18 @@ const notes = () => {
   return (
     <Box w="100%" m="auto">
       <Navbar />
-      <Heading textAlign="center">Get Notes in pdf format</Heading>
-      <Divider />
+      <Heading
+        textAlign="start"
+        fontFamily="'Open Sans', sans-serif"
+        w="85%"
+        m="auto"
+        mt="20px"
+        mb="20px"
+        color="blue.600"
+      >
+        Get notes in PDF format
+      </Heading>
+
       <Box
         w={{ base: "90%", md: "90%", sm: "90%" }}
         m="auto"

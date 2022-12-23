@@ -159,8 +159,8 @@ const Pricing = () => {
                   alignItems="start"
                 >
                   <Feature>Suppression Management</Feature>
-                  <Feature>Email Tracking and Analytics </Feature>
-                  <Feature>99.99% Guaranteed Uptime SLA</Feature>
+                  <Feature>Get Unlimited Videos</Feature>
+                  <Feature>100% Refundable </Feature>
                 </VStack>
                 <Box
                   w="full"
@@ -228,7 +228,7 @@ const Pricing = () => {
                 shadow="xl"
               >
                 <chakra.span fontSize="3xl" fontWeight="normal">
-                  Gold
+                  Premium
                 </chakra.span>
                 <HStack spacing={3}>
                   <chakra.span
@@ -236,7 +236,7 @@ const Pricing = () => {
                     fontSize="6xl"
                     textShadow="2px 0 currentcolor"
                   >
-                    ₹149
+                    ₹349
                   </chakra.span>
                   <chakra.span
                     alignSelf="center"
@@ -245,7 +245,7 @@ const Pricing = () => {
                       color: "gray.400",
                     }}
                   >
-                    /6 Months
+                    /1 Year
                   </chakra.span>
                 </HStack>
               </VStack>
@@ -267,9 +267,9 @@ const Pricing = () => {
                   alignItems="start"
                 >
                   <Feature>Suppression Management</Feature>
-                  <Feature>Email Tracking and Analytics </Feature>
-                  <Feature>99.99% Guaranteed Uptime SLA</Feature>
-                  <Feature>1,000 Email Address Validations</Feature>
+                  <Feature>Get Unlimited Videos </Feature>
+                  <Feature>One-One Mentorship</Feature>
+                  <Feature>100% Refundable</Feature>
                   <Feature>Limited 24/7 Ticket Support</Feature>
                 </VStack>
                 <Box display="inline-flex" rounded="md" shadow="md" w="full">
@@ -325,7 +325,7 @@ const Pricing = () => {
                 shadow="xl"
               >
                 <chakra.span fontSize="3xl" fontWeight="normal">
-                  Premium
+                  Gold
                 </chakra.span>
                 <HStack spacing={3}>
                   <chakra.span
@@ -333,7 +333,7 @@ const Pricing = () => {
                     fontSize="6xl"
                     textShadow="2px 0 currentcolor"
                   >
-                    ₹349
+                    ₹149
                   </chakra.span>
                   <chakra.span
                     alignSelf="center"
@@ -342,7 +342,7 @@ const Pricing = () => {
                       color: "gray.400",
                     }}
                   >
-                    /Year
+                    /6 Months
                   </chakra.span>
                 </HStack>
               </VStack>
@@ -364,8 +364,8 @@ const Pricing = () => {
                   alignItems="start"
                 >
                   <Feature>Suppression Management</Feature>
-                  <Feature>Email Tracking and Analytics </Feature>
-                  <Feature>99.99% Guaranteed Uptime SLA</Feature>
+                  <Feature>Get Unlimited Videos </Feature>
+                  <Feature>100% Refundable</Feature>
                 </VStack>
                 <Box
                   w="full"

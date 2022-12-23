@@ -38,7 +38,7 @@ const NotesCard = ({ image, course, free, getnow, notesLink }) => {
               base: 56,
               md: 64,
             }}
-            bg="#67dc79"
+            bg="#da9bff"
             _dark={{
               bg: "gray.800",
             }}
