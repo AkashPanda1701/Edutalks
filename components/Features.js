@@ -108,8 +108,7 @@ function Features() {
                 color: "gray.400",
               }}
             >
-              Lorem ipsum dolor sit amet consect adipisicing elit. Possimus
-              magnam voluptatum cupiditate veritatis in accusamus quisquam.
+              We provide the best services to our customers and we are always ready to help you.Below are some of the features we provide.
             </chakra.p>
           </Box>
 
@@ -136,9 +135,7 @@ function Features() {
                 title="Competitive exchange rates"
                 icon={ <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /> }
               >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                We use the mid-market rate as our reference rate, and we don't charge any hidden fees.
               </Feature>
 
               <Feature
@@ -152,9 +149,10 @@ function Features() {
                   />
                 }
               >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                We dont charge any hidden fees for our services .We are upfront and clear about what we are responsible for, including the fees we charge.
+
+
+
               </Feature>
 
               <Feature
@@ -168,9 +166,7 @@ function Features() {
                   />
                 }
               >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                Whichever payment method you choose, your money will be sent to the recipient instantly.
               </Feature>
 
               <Feature
@@ -184,9 +180,7 @@ function Features() {
                   />
                 }
               >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+               All our customers are notified via email and SMS when their transfers are completed.
               </Feature>
             </Stack>
           </Box>
