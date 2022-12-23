@@ -195,6 +195,7 @@ function Login() {
                         <MenuItem onClick={session ? signOut : null}>
                             Sign Out
                         </MenuItem>
+                        
                     </MenuList>
                 </Menu>
 

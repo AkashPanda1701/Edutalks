@@ -10,7 +10,7 @@ export default NextAuth({
       // fetch user from database
       async authorize(credentials) {
         await connectDB();
-        const user = await User.findOne({ phone: credentials.phone });
+        const user = await User.findOne({ phone: credentials.phone }).populate('courses.courseId')
         if (user) {
           return user;
         } else {
@@ -21,7 +21,7 @@ export default NextAuth({
   ],
   callbacks: {
     async session({ session, token }) {
-      const user = await User.findOne({ email: session.user.email }, { password: 0 });
+      const user = await User.findOne({ email: session.user.email }, { password: 0 }).populate('courses.courseId')
       if (session.user) {
         session.user.role = user.role;
         session.user.name = user.name;
@@ -34,7 +34,7 @@ export default NextAuth({
       return session;
     },
     async jwt({ token }) {
-      const user = await User.findOne({ email: token.email }, { password: 0 });
+      const user = await User.findOne({ email: token.email }, { password: 0 }).populate('courses.courseId')
       if (user) {
         token.role = user.role;
       }

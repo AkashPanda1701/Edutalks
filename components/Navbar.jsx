@@ -11,6 +11,12 @@ import {
   chakra,
   VisuallyHidden,
   IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  ProgressLabel,
+  Progress,
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Link from "next/link";
@@ -18,16 +24,21 @@ import Login from "./Login/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { setSession } from "../redux/auth/action";
 import { BsGift, BsGiftFill } from "react-icons/bs";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const { user } = useSelector(state => state.auth)
+  const { data: session } = useSession()
   const dispatch = useDispatch();
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     dispatch(setSession());
   }, [dispatch]);
+
   return (
     <>
       <React.Fragment>
@@ -88,6 +99,28 @@ const Navbar = () => {
                 <Link href="/referral">
                   <Button variant="ghost"><BsGiftFill color="green" /> &nbsp; Refer</Button>
                 </Link>
+                {user?.courses?.length > 0 && <Menu variant='ghost'>
+                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />} onClick={session ? null : onOpen}>
+                    Progress
+                  </MenuButton>
+                  <MenuList>
+                    {
+                      user?.courses?.map((course, index) => (
+                        <Link href={`/course/${course.courseId.slug}/watch`} key={index}>
+                          <MenuItem>
+                            {course.courseId.title}
+                          </MenuItem>
+                          <Progress m={4} colorScheme="green" value={course.completed.length*20} size="sm" >
+                            <ProgressLabel ml={2} color="green">{course.completed.length*20}%</ProgressLabel>
+                          </Progress>
+                        </Link>
+                      ))
+
+                    }
+
+                  </MenuList>
+                </Menu>
+                }
               </HStack>
               <Login />
               <Box

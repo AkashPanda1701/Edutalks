@@ -18,10 +18,10 @@ async function addCourse(req, res) {
     try {
         const { userId, courseId, videoNo } = req.body;
 
-        let user = await User.findOne({ userId });
+        let user = await User.findOne({ userId }).populate('courses.courseId')
         let flag = false;
         user.courses.map((course) => {
-            if (course.courseId.toString() === courseId) {
+            if (course.courseId._id.toString() === courseId) {
                 if (videoNo>=0) {
                     course.completed.includes(videoNo) ? null : course.completed.push(videoNo);
                 }
@@ -29,9 +29,11 @@ async function addCourse(req, res) {
             }
         });
         if (!flag) {
-            user.courses.push({ courseId, completed: [] });
+            user.courses.push({ courseId, completed: [] })
         }
-        await user.save();
+        // save and populate the user
+        user = await user.save();
+        user = await User.findOne({ userId }).populate('courses.courseId')
         return res.status(200).send({ message: "Video added successfully", user });
     } catch (error) {
         return res.status(400).json({ message: error.message });

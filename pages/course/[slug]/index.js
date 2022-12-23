@@ -30,10 +30,14 @@ const SingleCourse = () => {
       return
     }
     if (data.type === 'paid') {
-      if (new Date(user.subscriptions.enddate).toLocaleDateString() < new Date().toLocaleDateString()) {
+      // compare end date with current date
+      const endDate = new Date(user.subscriptions.enddate).toISOString();
+      const currentDate = new Date().toISOString();
+      if (endDate < currentDate) {
         console.log('expired')
         toast({ title: "You don't have valid subscription", status: 'warning', duration: 3000, position: "top", isClosable: true, description: 'Please subscribe to our premium plan to access this course' })
-        router.push(`/pricing`)
+        router.push(`/pricing`);
+        return
       }
     }
     dispatch(addCourse({ userId: user.id, courseId: data._id }));
@@ -42,7 +46,7 @@ const SingleCourse = () => {
 
   useEffect(() => {
     user?.courses?.forEach(course => {
-      if (course.courseId === data?._id) {
+      if (course.courseId._id === data?._id) {
         setEnrolled(true)
         setVideoData(course.completed)
       } else {
@@ -100,7 +104,7 @@ const SingleCourse = () => {
               <GridItem colSpan={{ base: 2, md: 1 }} borderRadius='md' display='flex' alignItems='center'>
                 <Button colorScheme='green' w='100%' onClick={enrolled ? null : handleEnroll}>
                   <BsCheck2Circle /> &nbsp;
-                  {enrolled ? 'Enrolled' : 'Get Subscription'}
+                  {enrolled ? 'Enrolled' : data?.type === 'paid' ? new Date(user?.subscriptions?.enddate||null).toISOString() < new Date().toISOString() ? 'Get Subscription' : 'Enroll Now' : 'Enroll Now'}
                 </Button>
               </GridItem>
             </Grid>
@@ -172,7 +176,7 @@ const SingleCourse = () => {
                       <Badge colorScheme="green">Duration: {video.duration} mins</Badge>
                     </Box>
                   </Flex>
-                  <Link href={`${data.slug}/watch?video=${index + 1}`} >
+                  <Link href={enrolled ? `${data.slug}/watch?video=${index + 1}` : `${data.slug}`}>
                     <Button colorScheme={enrolled ? videoData?.includes(index) ? 'gray' : 'green' : 'gray'} size='sm'>
                       {enrolled ? videoData?.includes(index) ? <FaCheckCircle /> : <FaPlay /> : <FaPlay />}
                       &nbsp; {
