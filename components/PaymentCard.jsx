@@ -35,6 +35,18 @@ const PaymentCard = ({month}) => {
   };
   //console.log(cvvData);
   const handleSubmit = async() => {
+    if(!user) { 
+      toast({ 
+        title: "Please Login First",
+        // description: "We've created
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      onClose();
+      return;
+    }
     if (cvvData === "123") {
       const res = await axios.post("/api/users/subscription", { email: user.email, month: month });
       toast({
