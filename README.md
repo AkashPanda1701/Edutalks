@@ -1,61 +1,65 @@
 ## Hello Everyone
 
-This is our construct week project where we have cloned Sephora.com website. This is a collaborative project of team of 5 members and a duration of 5 days.We have renamed the website as "Shopaholic"
+This is our Hackathon team project where we have implemented a new idea of spreading knowlegde through our website. This is a collaborative project of team of 4 members and a duration of 2 days.We have renamed the website as "Edutalks" as its based on "Education"
 
 ## About Website
 
-It is an ecommerce website which deals in variety of beauty and care products for women.
+In our website all user will get some free videos that they can access and start learning online and also if they refers there friends and family they will get a 1 month free subscription .
 
 ## Tech Stacks
 
-- React Js
+- Next Js
 - Node JS
 - Express JS
+- Socket
+- Mongo DB
 
 ## External libraries and frameworks
 
 - Redux
 - Chakra UI
+- Firebase
+- NextAuth
 
 ## Features
 
 - Responsive UI
 - Login/signup functionality
-- Filter functionality
-- Add to cart functionality
+- Buying subscription functionality
+- Enroll to Different Courses
+- Get progess Status
 - Rest Api's
-- CRUD functionalitites for products
+
 
 ## Landing Page
 
-![Landing Image 1](Shopahoilc-App/src/Images/landing1.jpg)
+<img src="https://i.ibb.co/T8GPXhQ/image.png" alt="">
 
-![Landing Image 2](Shopahoilc-App/src/Images/landing2.jpg)
+## All Courses Pages
 
-![Landing Image 3](Shopahoilc-App/src/Images/landing3.jpg)
+<img src="https://i.ibb.co/TbKzVsw/image.png" alt="">
 
-## Product Pages
 
-![New Page](Shopahoilc-App/src/Images/new.jpg)
+## Single Course Page
 
-![Makeup Page](Shopahoilc-App/src/Images/makeup.jpg)
+<img src="https://i.ibb.co/9nqBtWh/image.png" alt="">
 
-## Single Product Page
+## Watch lectures Page
 
-![Single Product Page](Shopahoilc-App/src/Images/single.jpg)
+<img src="https://i.ibb.co/WVFpjCw/image.png" alt="">
 
-## Cart Page
 
-![Cart Page](Shopahoilc-App/src/Images/cart.jpg)
+## Refers Page
 
-## Admin Dashboard Page
+<img src="https://i.ibb.co/pZh3Y6h/image.png" alt="">
 
-![admin dashboard](Shopahoilc-App/src/Images/admindash.jpg)
 
-## Update form
+## Get free Notes Page 
 
-![update form](Shopahoilc-App/src/Images/update.jpg)
+<img src="https://i.ibb.co/JpqCyk2/image.png" alt="">
 
-## Add new Product Page
+## About Page and contributors
 
-![add new product](Shopahoilc-App/src/Images/addnew.jpg)
+<img src="https://i.ibb.co/TbJ5XRS/image.png" alt="">
+
+
