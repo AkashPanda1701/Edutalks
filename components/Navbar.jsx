@@ -17,6 +17,7 @@ import {
   MenuItem,
   ProgressLabel,
   Progress,
+  Image,
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Link from "next/link";
@@ -67,7 +68,7 @@ const Navbar = () => {
               </chakra.a>
               <Link href="/">
                 <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
-                  Choc
+                  <Image src="https://edutalks.biz/wp-content/uploads/2020/02/Edu-Talks-Logo.png" alt="logo" height={50} />
                 </chakra.h1>
               </Link>
             </Flex>
