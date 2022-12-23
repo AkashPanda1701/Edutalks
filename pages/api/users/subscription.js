@@ -11,11 +11,11 @@ export default async function subscription(req, res) {
             if (!user) {
                 return res.status(400).json({ message: "User does not exist" });
             }
-            console.log('enddate: before ',new Date(user.subscriptions.enddate));
 
+            // UPDATE SUBSCRIPTION END DATE
+            console.log('enddate:before ', new Date(user.subscriptions.enddate));
+            user.subscriptions.enddate = new Date(user.subscriptions.enddate).setMonth(new Date(user.subscriptions.enddate).getMonth() + month);
 
-            user.subscriptions.enddate = new Date(user.subscriptions.enddate.setMonth(user.subscriptions.enddate.getMonth() + month));
-            console.log('enddate:after ', new Date(user.subscriptions.enddate));
             await User.findByIdAndUpdate(user._id, { subscriptions: user.subscriptions });
             sendMail(email, user.name, month);
             return res.status(201).send({message : "Subscription updated" , user: {

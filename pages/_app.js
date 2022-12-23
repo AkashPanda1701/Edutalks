@@ -15,12 +15,10 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-
       <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
       <Bots />
       <SessionProvider session={pageProps.session}>
         <ChakraProvider>
-
           <Provider store={store}>
             <Component {...pageProps} />
           </Provider>

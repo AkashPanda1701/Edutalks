@@ -29,8 +29,8 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useSession } from "next-auth/react";
 
 const Navbar = () => {
-  const { user } = useSelector(state => state.auth)
-  const { data: session } = useSession()
+  const { user } = useSelector((state) => state.auth);
+  const { data: session } = useSession();
   const dispatch = useDispatch();
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
@@ -59,16 +59,20 @@ const Navbar = () => {
             <Flex>
               <chakra.a
                 href="/"
-                title="Choc Home Page"
+                title="Home Page"
                 display="flex"
                 alignItems="center"
               >
                 {/* <Logo /> */}
-                <VisuallyHidden>Choc</VisuallyHidden>
+                {/* <VisuallyHidden>Choc</VisuallyHidden> */}
               </chakra.a>
               <Link href="/">
                 <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
-                  <Image src="https://edutalks.biz/wp-content/uploads/2020/02/Edu-Talks-Logo.png" alt="logo" height={50} />
+                  <Image
+                    src="https://edutalks.biz/wp-content/uploads/2020/02/Edu-Talks-Logo.png"
+                    alt="logo"
+                    height={50}
+                  />
                 </chakra.h1>
               </Link>
             </Flex>
@@ -98,30 +102,41 @@ const Navbar = () => {
                   <Button variant="ghost">Courses</Button>
                 </Link>
                 <Link href="/referral">
-                  <Button variant="ghost"><BsGiftFill color="green" /> &nbsp; Refer</Button>
+                  <Button variant="ghost">
+                    <BsGiftFill color="green" /> &nbsp; Refer
+                  </Button>
                 </Link>
-                {user?.courses?.length > 0 && <Menu variant='ghost'>
-                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />} onClick={session ? null : onOpen}>
-                    Progress
-                  </MenuButton>
-                  <MenuList>
-                    {
-                      user?.courses?.map((course, index) => (
-                        <Link href={`/course/${course.courseId.slug}/watch`} key={index}>
-                          <MenuItem>
-                            {course.courseId.title}
-                          </MenuItem>
-                          <Progress m={4} colorScheme="green" value={course.completed.length*20} size="sm" >
-                            <ProgressLabel ml={2} color="green">{course.completed.length*20}%</ProgressLabel>
+                {user?.courses?.length > 0 && (
+                  <Menu variant="ghost">
+                    <MenuButton
+                      as={Button}
+                      rightIcon={<ChevronDownIcon />}
+                      onClick={session ? null : onOpen}
+                    >
+                      Progress
+                    </MenuButton>
+                    <MenuList>
+                      {user?.courses?.map((course, index) => (
+                        <Link
+                          href={`/course/${course.courseId.slug}/watch`}
+                          key={index}
+                        >
+                          <MenuItem>{course.courseId.title}</MenuItem>
+                          <Progress
+                            m={4}
+                            colorScheme="green"
+                            value={course.completed.length * 20}
+                            size="sm"
+                          >
+                            <ProgressLabel ml={2} color="green">
+                              {course.completed.length * 20}%
+                            </ProgressLabel>
                           </Progress>
                         </Link>
-                      ))
-
-                    }
-
-                  </MenuList>
-                </Menu>
-                }
+                      ))}
+                    </MenuList>
+                  </Menu>
+                )}
               </HStack>
               <Login />
               <Box
