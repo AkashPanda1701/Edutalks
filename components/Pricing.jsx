@@ -15,8 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 import { IoCheckmark } from "react-icons/io5";
-
-
+import PaymentCard from "./PaymentCard";
 
 const Pricing = () => {
   const topBg = useColorModeValue("gray.100", "gray.700");
@@ -54,8 +53,8 @@ const Pricing = () => {
           bg: "#3e3e3e",
         }}
         p={10}
-        py='24'
-        mx={{ base: '4', md: '10', lg: '20', xl: '32' }}
+        py="24"
+        mx={{ base: "4", md: "10", lg: "20", xl: "32" }}
         justifyContent="center"
         alignItems="center"
       >
@@ -79,8 +78,8 @@ const Pricing = () => {
           }}
           textAlign="center"
         >
-          If you're not satisfied, contact us and we'll refund you within
-          the first 20 days.
+          If you're not satisfied, contact us and we'll refund you within the
+          first 20 days.
         </chakra.p>
         <Box w="full" pt={8}>
           <Flex
@@ -94,7 +93,6 @@ const Pricing = () => {
               sm: 0,
             }}
           >
-
             <Flex
               flex={{
                 sm: 1,
@@ -171,7 +169,7 @@ const Pricing = () => {
                   rounded="md"
                   shadow="md"
                 >
-                  <chakra.a
+                  {/* <Button
                     w="full"
                     display="inline-flex"
                     alignItems="center"
@@ -193,9 +191,9 @@ const Pricing = () => {
                       },
                     }}
                     cursor="pointer"
-                  >
-                    Get started{" "}
-                  </chakra.a>
+                  > */}
+                  <PaymentCard />
+                  {/* </Button> */}
                 </Box>
               </VStack>
             </Flex>
@@ -275,7 +273,7 @@ const Pricing = () => {
                   <Feature>Limited 24/7 Ticket Support</Feature>
                 </VStack>
                 <Box display="inline-flex" rounded="md" shadow="md" w="full">
-                  <chakra.a
+                  {/* <chakra.a
                     w="full"
                     display="inline-flex"
                     alignItems="center"
@@ -293,9 +291,9 @@ const Pricing = () => {
                       },
                     }}
                     cursor="pointer"
-                  >
-                    Get started
-                  </chakra.a>
+                  > */}
+                  <PaymentCard />
+                  {/* </chakra.a> */}
                 </Box>
               </VStack>
             </Flex>
@@ -376,7 +374,7 @@ const Pricing = () => {
                   rounded="md"
                   shadow="md"
                 >
-                  <chakra.a
+                  {/* <chakra.a
                     w="full"
                     display="inline-flex"
                     alignItems="center"
@@ -398,9 +396,9 @@ const Pricing = () => {
                       },
                     }}
                     cursor="pointer"
-                  >
-                    Get started
-                  </chakra.a>
+                  > */}
+                  <PaymentCard />
+                  {/* </chakra.a> */}
                 </Box>
               </VStack>
             </Flex>
