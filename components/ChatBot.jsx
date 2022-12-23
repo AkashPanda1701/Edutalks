@@ -5,7 +5,7 @@ import { FaSeedling } from "react-icons/fa";
 import { AiOutlineSend } from "react-icons/ai";
 // create socket connection
 import { io } from "socket.io-client";
-const socket = io("http://localhost:8000", { transports: ["websocket"] });
+const socket = io("https://edutalkssocket.onrender.com", { transports: ["websocket"] });
 const Bots = () => {
     const [input , setInput] = useState('')
     const [messages, setMessages] = useState([]);

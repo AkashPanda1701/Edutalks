@@ -192,6 +192,13 @@ function Login() {
                                 Profile
                             </MenuItem>
                         </Link>
+                        {
+                            user?.role === 'admin' && <Link href="/admin/users">
+                                <MenuItem>
+                                    Admin
+                                </MenuItem>
+                            </Link>
+                        }
                         <MenuItem onClick={session ? signOut : null}>
                             Sign Out
                         </MenuItem>
