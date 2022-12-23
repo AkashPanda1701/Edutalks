@@ -85,7 +85,7 @@ function Login() {
 
 
     const sendOtp = () => {
-        signIn("credentials", { phone: Number, callbackUrl: "/" });
+        // signIn("credentials", { phone: Number, callbackUrl: "/" });
         if (
             Number.length > 10 ||
             Number.length < 10 ||
@@ -110,6 +110,7 @@ function Login() {
             appVerifier
         )
             .then((res) => {
+                console.log(res);
                 setAuthinicated(res);
                 setOtpSented(false);
                 toast({
@@ -120,7 +121,7 @@ function Login() {
                 });
             })
             .catch((error) => {
-
+                console.log(error);
                 onClose();
                 setLoading(false);
                 toast({
