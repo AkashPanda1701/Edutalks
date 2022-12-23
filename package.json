@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.10.5",
     "@next/font": "13.0.7",
     "axios": "^1.2.1",
+    "bongga-react-simple-chatbot": "^1.0.0",
     "chakra": "^0.0.3",
     "firebase": "^9.15.0",
     "framer-motion": "^8.0.1",
@@ -31,6 +32,8 @@
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
-    "referral-codes": "^2.0.3"
+    "referral-codes": "^2.0.3",
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4"
   }
 }
