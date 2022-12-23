@@ -7,11 +7,12 @@ import {
   Image,
   Button,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 const header = () => {
   const bg = useColorModeValue("white", "gray.800");
   return (
-    <Box pos="relative" overflow="hidden" bg={bg}>
+    <Box pos="relative" overflow="hidden" bg={bg} mb={60}>
       <Box maxW="7xl" mx="auto">
         <Box
           pos="relative"
@@ -83,7 +84,7 @@ const header = () => {
                 fontSize={{
                   base: "4xl",
                   sm: "5xl",
-                  md: "6xl",
+                  md: "55px",
                 }}
                 letterSpacing="tight"
                 lineHeight="short"
@@ -99,7 +100,7 @@ const header = () => {
                     xl: "inline",
                   }}
                 >
-                  Data to enrich your{" "}
+                Today’s action shows {" "}
                 </chakra.span>
                 <chakra.span
                   display={{
@@ -111,7 +112,7 @@ const header = () => {
                     color: "brand.400",
                   }}
                 >
-                  online business
+                  tomorrow’s result
                 </chakra.span>
               </chakra.h1>
               <chakra.p
@@ -133,9 +134,8 @@ const header = () => {
                 }}
                 color="gray.500"
               >
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                fugiat aliqua.
+                Start your journey with us today. We are here to help you achieve your goals and dreams.Progess is a journey, not a destination.
+
               </chakra.p>
               <Box
                 mt={{
@@ -153,6 +153,7 @@ const header = () => {
                 fontFamily="fantasy"
               >
                 <Box>
+                  <Link href="/courses">
                   <Button
                     colorScheme="green"
                     size="lg"
@@ -162,8 +163,10 @@ const header = () => {
                   >
                     Get started
                   </Button>
+                  </Link>
                 </Box>
-                <Box mt={[3, 0]} ml={[null, 3]}>
+               <Link href="/course/introduction-to-data-science">
+               <Box mt={[3, 0]} ml={[null, 3]}>
                   <chakra.a
                     w="full"
                     display="flex"
@@ -193,6 +196,7 @@ const header = () => {
                     Live demo
                   </chakra.a>
                 </Box>
+                </Link>
               </Box>
             </Box>
           </Box>
