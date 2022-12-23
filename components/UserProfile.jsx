@@ -20,11 +20,13 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 const UserProfile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { data: session } = useSession();
-  console.log(session);
+  const {user} = useSelector(state => state.auth)
+
+
 
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
@@ -66,7 +68,7 @@ const UserProfile = () => {
         <Flex justifyContent="space-between" mt="30px" bg='gray.50' px='8' p='4' rounded='md'>
           <Box>
             <chakra.p fontSize="12px">Your referal code</chakra.p>
-            <chakra.h1 fontSize="26px" fontWeight={'semibold'}>{session?.user.referalCode}</chakra.h1>
+            <chakra.h1 fontSize="26px" fontWeight={'semibold'}>{user.referalCode}</chakra.h1>
           </Box>
           <Box mt='10px'>
             <Button colorScheme="green" mr="10px">
@@ -84,24 +86,24 @@ const UserProfile = () => {
         </chakra.h1>
         <Box>
           <chakra.p>Name</chakra.p>
-          <chakra.p>{session?.user.name}</chakra.p>
+          <chakra.p>{user.name}</chakra.p>
           <Divider mt="10px" mb="10px" />
         </Box>
         <Box>
           <chakra.p>Email</chakra.p>
-          <chakra.p>{session?.user.email}</chakra.p>
+          <chakra.p>{user.email}</chakra.p>
           <Divider mt="10px" mb="10px" />
         </Box>
         <Box>
           <chakra.p>Mobile number</chakra.p>
-          <chakra.p>{session?.user.phone}</chakra.p>
+          <chakra.p>{user.phone}</chakra.p>
           <Divider mt="10px" mb="10px" />
         </Box>
         <Box>
           <chakra.p>Subscription Valid</chakra.p>
           <chakra.p>
             {/* Calculate subscription left from startdate and enddate */}
-            {new Date(session?.user.subscriptions.enddate).toDateString()}
+            {new Date(user?.subscriptions?.enddate).toDateString()}
           </chakra.p>
           <Divider mt="10px" mb="10px" />
         </Box>
@@ -121,16 +123,16 @@ const UserProfile = () => {
             <ModalBody pb={6}>
               <FormControl>
                 <FormLabel>Name</FormLabel>
-                <Input ref={initialRef} placeholder="Name" value={session?.user.name} />
+                <Input ref={initialRef} placeholder="Name" value={user.name} />
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>Email</FormLabel>
-                <Input placeholder="Email" value={session?.user.email} />
+                <Input placeholder="Email" value={user.email} />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Phone number</FormLabel>
-                <Input placeholder="Phone number" value={session?.user.phone} />
+                <Input placeholder="Phone number" value={user.phone} />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Password</FormLabel>
