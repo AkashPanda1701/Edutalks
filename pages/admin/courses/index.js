@@ -41,7 +41,7 @@ export default function Courses() {
 
   useEffect(() => {
     handleGetCoures();
-  }, []);
+  }, [courses]);
 
   const handleFormChange = (event) => {
     const { value, name } = event.target;

@@ -20,8 +20,8 @@ export default async function getSingleUser(req, res) {
         const { query: { id } } = req;
 
         try{
-            const user = await User.findByIdAndDelete({ _id: id });
-            await Referral.findByIdAndDelete({ referalCode: user.referalCode });
+            // await Referral.findByIdAndDelete({ userId: id });
+            await User.findByIdAndDelete({ _id: id });
             return res.status(200).send("User and referal removed!");
         }
         catch({message}) {

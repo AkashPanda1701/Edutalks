@@ -14,7 +14,7 @@ export default function Users() {
 
   useEffect(() => {
     handleGetUsers();
-  }, []);
+  }, [users]);
 
   return (
     <>
