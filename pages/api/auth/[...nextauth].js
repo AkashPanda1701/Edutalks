@@ -24,13 +24,13 @@ export default NextAuth({
     async session({ session, token }) {
       const user = await User.findOne({ email: session.user.email }, { password: 0 }).populate('courses.courseId')
       if (session.user) {
-        session.user.role = user.role;
+        // session.user.role = user.role;
         session.user.name = user.name;
-        session.user.id = user._id;
-        session.user.phone = user.phone;
-        session.user.subscriptions = user.subscriptions;
-        session.user.referalCode = user.referalCode;
-        session.user.courses = user.courses;
+        // session.user.id = user._id;
+        // session.user.phone = user.phone;
+        // session.user.subscriptions = user.subscriptions;
+        // session.user.referalCode = user.referalCode;
+        // session.user.courses = user.courses;
       }
       return session;
     },
