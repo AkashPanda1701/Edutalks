@@ -1,23 +1,26 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Box, Button, Flex, Image, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react";
+import { Badge, Box, Button, Flex, Image, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react";
 import { BsMessenger } from "react-icons/bs";
 import { FaSeedling } from "react-icons/fa";
 import { AiOutlineSend } from "react-icons/ai";
 // create socket connection
 import { io } from "socket.io-client";
-let socket;
+const socket = io("http://localhost:8000", { transports: ["websocket"] });
 const Bots = () => {
+    const [input , setInput] = useState('')
+    const [messages, setMessages] = useState([]);
 
-    useEffect(() => socketInitializer(), [])
+    socket.on('history', (data) => {
+        console.log(data)
+        setMessages(data)
+    })
+    socket.on("connect", () => {
+        console.log("connected");
 
-    const socketInitializer = async () => {
-        await fetch('/api/socket')
-        socket = io()
+      
+    });
 
-        socket.emit('response', (data) => {
-            console.log(data)
-        })
-    }
+ 
 
     const [show, setShow] = useState(false);
 
@@ -30,19 +33,38 @@ const Bots = () => {
                         <Box bg="green" width='100%' height='50px' roundedTop='10px' mb='5'>
                             <Text lineHeight='50px' textAlign='center' color='white' fontSize='xl' fontWeight='bold' ml='5' mt='2'>ChatBot</Text>
                         </Box>
-                        <Flex flexDirection='column' alignItems='center' justifyContent='center' height='100%'>
-                            <Text fontSize='xl' fontWeight='bold'>Hello, I am ChatBot</Text>
-                            <Text fontSize='xl' fontWeight='bold'>How can I help you?</Text>
+                        <Flex flexDirection='column' alignItems='center' justifyContent='center' height='100%' fontSize={'14px'}>
+                           {
+                                 messages.map((user, index) => {
+                                    return (
+                                        <Box key={index} bg='gray.100' p='2' borderRadius='10px' w='80%' mb='2'>
+                                            
+<Flex direction={'column'} alignItems={user.type === 'admin' ? 'flex-start' : 'flex-end'} justifyContent={user.type === 'admin' ? 'flex-start' : 'flex-end'}>
+
+                                            <Badge colorScheme="green" mr='2' bg='green.200' borderRadius='10px' p='2' float={user.type === 'admin' ? 'left' : 'right'}>{user.type}</Badge>
+                                            <Box colorScheme="green" mr='2' bg='green.200' border={'1px solid green'} borderRadius='10px' p='2' w='fit-content' display={'flex'} float={user.type === 'admin' ? 'left' : 'right'}>{user.message}</Box>
+</Flex>
+                                            
+                                          
+                                        </Box>
+                                    )
+                                })
+                           }
                         </Flex>
                         <InputGroup size='md' p='8'>
                             <Input
                                 p='4'
                                 w='220px'
                                 type={show ? 'text' : 'password'}
-                                placeholder='Enter password'
+                                placeholder='Enter Your Message'
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
                             />
                             <InputRightElement width='4.5rem'>
-                                <Box color='gray.300' mt='12' ml='8'>
+                                <Box color='gray.300' mt='12' ml='8' onClick = {() => {
+                                    console.log('send' ,input)
+                                    socket.emit('message', {message: input, type: 'user'})
+                                }}>
                                     <AiOutlineSend size='25px' />
                                 </Box>
                             </InputRightElement>

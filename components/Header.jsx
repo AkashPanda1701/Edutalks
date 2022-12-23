@@ -12,7 +12,7 @@ import Link from "next/link";
 const header = () => {
   const bg = useColorModeValue("white", "gray.800");
   return (
-    <Box pos="relative" overflow="hidden" bg={bg} mb={60}>
+    <Box pos="relative" overflow="hidden" bg={bg}>
       <Box maxW="7xl" mx="auto">
         <Box
           pos="relative"
@@ -165,38 +165,7 @@ const header = () => {
                   </Button>
                   </Link>
                 </Box>
-               <Link href="/course/introduction-to-data-science">
-               <Box mt={[3, 0]} ml={[null, 3]}>
-                  <chakra.a
-                    w="full"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    px={{
-                      base: 8,
-                      md: 10,
-                    }}
-                    py={{
-                      base: 2,
-                      md: 2,
-                    }}
-                    border="solid 1px transparent"
-                    fontSize={{
-                      base: "md",
-                      md: "lg",
-                    }}
-                    rounded="md"
-                    color="brand.700"
-                    bg="brand.100"
-                    _hover={{
-                      bg: "brand.200",
-                    }}
-                    cursor="pointer"
-                  >
-                    Live demo
-                  </chakra.a>
-                </Box>
-                </Link>
+              
               </Box>
             </Box>
           </Box>

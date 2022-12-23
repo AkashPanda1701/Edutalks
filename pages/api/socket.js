@@ -10,7 +10,10 @@ const SocketHandler = (req, res) => {
         console.log('Socket.IO disconnected')
       })
       socket.on('message', (data) => {
-        console.log(data)
+        console.log('data' , data)
+      } )
+      socket.on('response', (data) => {
+        console.log('data' , 'jknjn')
       } )
     })
     res.socket.server.io = io
