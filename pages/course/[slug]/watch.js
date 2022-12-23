@@ -53,7 +53,7 @@ function watch() {
 
     useEffect(() => {
         user?.courses?.forEach(course => {
-            if (course.courseId === data?._id) {
+            if (course.courseId._id === data?._id) {
                 setVideoData(course.completed)
             }
         })

@@ -37,7 +37,7 @@ const signup = async (req, res) => {
             if(referalCode){
                 const referal = await Referal.findOne({ referalCode});
                 if(referal){
-                    const user = await User.findById(referal.userId);
+                    const user = await User.findById(referal.userId)
                     console.log('user.subscriptions.enddate: ',new Date(user.subscriptions.enddate));
 
 

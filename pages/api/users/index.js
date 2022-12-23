@@ -14,10 +14,10 @@ async function addCourse(req, res) {
     try {
         const { userId, courseId, videoNo } = req.body;
 
-        let user = await User.findOne({ userId });
+        let user = await User.findOne({ userId }).populate('courses.courseId')
         let flag = false;
         user.courses.map((course) => {
-            if (course.courseId.toString() === courseId) {
+            if (course.courseId._id.toString() === courseId) {
                 if (videoNo>=0) {
                     course.completed.includes(videoNo) ? null : course.completed.push(videoNo);
                 }

@@ -8,7 +8,7 @@ export default async function getSingleUser(req, res) {
         const { query: { id } } = req;
 
         try{
-            const user = await User.findOne({_id: id}).select({ subscriptions: 0, password: 0, phone: 0});
+            const user = await User.findOne({_id: id}).select({ subscriptions: 0, password: 0, phone: 0}).populate('courses.courseId');
             return res.status(200).send(user);
         }
         catch({message}) {
