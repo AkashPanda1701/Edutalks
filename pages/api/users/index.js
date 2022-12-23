@@ -25,9 +25,11 @@ async function addCourse(req, res) {
             }
         });
         if (!flag) {
-            user.courses.push({ courseId, completed: [] });
+            user.courses.push({ courseId, completed: [] })
         }
-        await user.save();
+        // save and populate the user
+        user = await user.save();
+        user = await User.findOne({ userId }).populate('courses.courseId')
         return res.status(200).send({ message: "Video added successfully", user });
     } catch (error) {
         return res.status(400).json({ message: error.message });

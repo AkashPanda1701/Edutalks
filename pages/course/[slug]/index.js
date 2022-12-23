@@ -176,7 +176,7 @@ const SingleCourse = () => {
                       <Badge colorScheme="green">Duration: {video.duration} mins</Badge>
                     </Box>
                   </Flex>
-                  <Link href={`${data.slug}/watch?video=${index + 1}`} >
+                  <Link href={enrolled ? `${data.slug}/watch?video=${index + 1}` : `${data.slug}`}>
                     <Button colorScheme={enrolled ? videoData?.includes(index) ? 'gray' : 'green' : 'gray'} size='sm'>
                       {enrolled ? videoData?.includes(index) ? <FaCheckCircle /> : <FaPlay /> : <FaPlay />}
                       &nbsp; {

@@ -106,7 +106,7 @@ const Navbar = () => {
                   <MenuList>
                     {
                       user?.courses?.map((course, index) => (
-                        <Link href={`/course/${course.courseId.slug}`} key={index}>
+                        <Link href={`/course/${course.courseId.slug}/watch`} key={index}>
                           <MenuItem>
                             {course.courseId.title}
                           </MenuItem>
