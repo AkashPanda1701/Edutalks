@@ -219,12 +219,14 @@ function Login() {
                             bg={useColorModeValue("gray.50", "gray.800")}
                             justifyContent={"space-between"}
                             alignItems="center"
+                            p='4'
                         >
                             <Img
-                                w="100%"
+                                w="60%"
                                 padding={"30px"}
-                                src="https://profiles.sulekha.com/mstore/41473532/albums/default/thumbnailfull/shutterstock-548778247.jpg"
+                                src="https://edutalks.biz/wp-content/uploads/2020/02/Edu-Talks-Logo.png"
                             />
+                            <Img w="40%" p='4' mr='20px' src="https://static.vecteezy.com/system/resources/thumbnails/008/845/913/small/online-courses-with-students-sitting-on-books-pile-with-laptops-notebooks-png.png" />
                         </Box>{" "}
                         <hr />
                         {!otpVerification ? (
