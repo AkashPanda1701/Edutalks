@@ -1,7 +1,8 @@
+import mongoose from "mongoose";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "../../../models/user.model";
-import connectDB from "../../../middleware/connectDB";
+// import connectDB from "../../../middleware/connectDB";
 
 export default NextAuth({
   providers: [
@@ -9,7 +10,7 @@ export default NextAuth({
       name: "credentials",
       // fetch user from database
       async authorize(credentials) {
-        await connectDB();
+        await mongoose.connect(process.env.MONGODB_URL);
         const user = await User.findOne({ phone: credentials.phone }).populate('courses.courseId')
         if (user) {
           return user;
