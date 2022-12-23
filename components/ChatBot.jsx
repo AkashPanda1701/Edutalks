@@ -4,20 +4,20 @@ import { BsMessenger } from "react-icons/bs";
 import { FaSeedling } from "react-icons/fa";
 import { AiOutlineSend } from "react-icons/ai";
 // create socket connection
-// import { io } from "socket.io-client";
+import { io } from "socket.io-client";
 let socket;
 const Bots = () => {
 
-    // useEffect(() => socketInitializer(), [])
+    useEffect(() => socketInitializer(), [])
 
-    // const socketInitializer = async () => {
-    //     await fetch('/api/socket')
-    //     socket = io()
+    const socketInitializer = async () => {
+        await fetch('/api/socket')
+        socket = io()
 
-    //     socket.emit('response', (data) => {
-    //         console.log(data)
-    //     })
-    // }
+        socket.emit('response', (data) => {
+            console.log(data)
+        })
+    }
 
     const [show, setShow] = useState(false);
 
