@@ -192,7 +192,7 @@ const Pricing = () => {
                     }}
                     cursor="pointer"
                   > */}
-                  <PaymentCard />
+                  <PaymentCard month='3' />
                   {/* </Button> */}
                 </Box>
               </VStack>
@@ -292,7 +292,7 @@ const Pricing = () => {
                     }}
                     cursor="pointer"
                   > */}
-                  <PaymentCard />
+                  <PaymentCard month='6' />
                   {/* </chakra.a> */}
                 </Box>
               </VStack>
@@ -397,7 +397,7 @@ const Pricing = () => {
                     }}
                     cursor="pointer"
                   > */}
-                  <PaymentCard />
+                  <PaymentCard month='12' />
                   {/* </chakra.a> */}
                 </Box>
               </VStack>

@@ -20,20 +20,23 @@ import {
   Flex,
   useToast,
 } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
-const PaymentCard = () => {
+const PaymentCard = ({month}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const initialRef = React.useRef(null);
   const toast = useToast();
   const [cvvData, setCvvData] = useState();
+  const {user} = useSelector(state => state.auth)
 
   const handleChange = (event) => {
     setCvvData(event.target.value);
   };
   //console.log(cvvData);
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if (cvvData === "123") {
+      const res = await axios.post("/api/users/subscription", { email: user.email, month: month });
       toast({
         title: "Payment Successful",
         // description: "We've created your account for you.",
