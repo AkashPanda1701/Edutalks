@@ -225,6 +225,8 @@ export const getServerSideProps = async (context) => {
 
  const { data } = await axios.get(`${process.env.BASE_URL}/api/users/${id}`);
 
+ delete data.courses;
+
   return {
     props: {
       data: [data]
