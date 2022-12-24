@@ -79,7 +79,7 @@ function Login() {
         if (message === "User exists") {
             //use next Auth here
             onClose();
-            signIn("credentials", { email: "abcd@gmail.com", password: "123456", callbackUrl: "/" });
+            signIn("credentials", { phone: Number, callbackUrl: "/" });
 
 
         }
