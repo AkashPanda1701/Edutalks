@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 import User from "../../../models/user.model";
 // import connectDB from "../../../middleware/connectDB";
 
@@ -12,6 +13,19 @@ export default NextAuth({
       async authorize(credentials) {
         await mongoose.connect(process.env.MONGODB_URL);
         const user = await User.findOne({ phone: credentials.phone }).populate('courses.courseId')
+        if (user) {
+          return user;
+        } else {
+          return null;
+        }
+      },
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      async profile(profile) {
+        await mongoose.connect(process.env.MONGODB_URL);
+        const user = await User.findOne({ email: profile.email }).populate('courses.courseId')
         if (user) {
           return user;
         } else {
@@ -35,10 +49,10 @@ export default NextAuth({
       return session;
     },
     async jwt({ token }) {
-      const user = await User.findOne({ email: token.email }, { password: 0 }).populate('courses.courseId')
-      if (user) {
-        token.role = user.role;
-      }
+      // const user = await User.findOne({ email: token.email }, { password: 0 }).populate('courses.courseId')
+      // if (user) {
+      //   token.role = user.role;
+      // }
       return token;
     }
   },
