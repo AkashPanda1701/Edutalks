@@ -287,7 +287,7 @@ function Login() {
                                                 >
                                                     Send OTP
                                                 </Button>
-                                                <Button
+                                                {/* <Button
                                                     width="100%"
                                                     mt='4'
                                                     height={"50px"}
@@ -309,7 +309,7 @@ function Login() {
                                                 >
                                                     <FaFacebookSquare size='20' />
                                                     <Text ml='2'>Continue with Facebook</Text>
-                                                </Button>
+                                                </Button> */}
                                             </Box>
                                         ) : (
                                             <Box>
