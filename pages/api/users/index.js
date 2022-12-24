@@ -6,10 +6,10 @@ export default async function user(req, res) {
     await connectDB();
 
     if (req.method === "POST") {
-        addCourse(req, res);
+        return addCourse(req, res);
     }
 
-    if(req.method === "GET") {
+    if (req.method === "GET") {
         return getUsers(req, res)
     }
 }
@@ -17,12 +17,14 @@ export default async function user(req, res) {
 async function addCourse(req, res) {
     try {
         const { userId, courseId, videoNo } = req.body;
+        console.log('userId: ', userId);
 
-        let user = await User.findOne({ userId }).populate('courses.courseId')
+        let user = await User.findOne({ _id: userId }).populate('courses.courseId')
+        console.log('user: ', user);
         let flag = false;
         user.courses.map((course) => {
             if (course.courseId._id.toString() === courseId) {
-                if (videoNo>=0) {
+                if (videoNo >= 0) {
                     course.completed.includes(videoNo) ? null : course.completed.push(videoNo);
                 }
                 flag = true;
@@ -33,7 +35,7 @@ async function addCourse(req, res) {
         }
         // save and populate the user
         user = await user.save();
-        user = await User.findOne({ userId }).populate('courses.courseId')
+        user = await User.findOne({ _id: userId }).populate('courses.courseId')
         return res.status(200).send({ message: "Video added successfully", user });
     } catch (error) {
         return res.status(400).json({ message: error.message });
@@ -41,11 +43,11 @@ async function addCourse(req, res) {
 }
 
 async function getUsers(req, res) {
-    try{
-        const users = await User.find({}).select({ subscriptions: 0, password: 0, phone: 0, courses:0 })
+    try {
+        const users = await User.find({}).select({ subscriptions: 0, password: 0, phone: 0, courses: 0 })
         return res.status(200).send(users);
     }
-    catch({message}) {
+    catch ({ message }) {
         return res.status(400).send({ error: true, message });
     }
 }
