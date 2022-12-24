@@ -5,10 +5,10 @@ import Navbar from "../components/Navbar";
 import Pricing from "../components/Pricing";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Calltoaction from "../components/Calltoaction";
-import CourseSlider from "../components/CourseSlider";
-import AppShowcase from "../components/AppShowcase";
-import Features from "../components/Features";
+import Calltoaction from "../components/Home/Calltoaction";
+import CourseSlider from "../components/Home/CourseSlider";
+import AppShowcase from "../components/Home/AppShowcase";
+import Features from "../components/Home/Features";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -26,8 +26,10 @@ import {
     MenuList,
     MenuItem,
 } from "@chakra-ui/react";
+import { FcGoogle } from 'react-icons/fc';
 
 import Link from "next/link";
+
 
 import {
     getAuth,
@@ -44,19 +46,19 @@ import Form from "./Form";
 import { login } from "../../redux/auth/action";
 import { RESET_AUTH } from "../../redux/auth/actionTypes";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { FaAccusoft, FaAirbnb, FaDailymotion, FaFighterJet, FaFire, FaFirefox, FaUser } from "react-icons/fa";
+import { FaAccusoft, FaAirbnb, FaDailymotion, FaFacebookSquare, FaFighterJet, FaFire, FaFirefox, FaGoogle, FaUser } from "react-icons/fa";
 function Login() {
 
     const auth = getAuth(app);
     const dispatch = useDispatch();
     const { data: session, status } = useSession();
-    const {user} = useSelector(state => state.auth)
+    const { user } = useSelector(state => state.auth)
 
 
 
 
 
-    const [Number, setNumber] = useState("");
+    const [Number, setNumber] = useState("0");
     const [Authinicated, setAuthinicated] = useState(false);
     const [otpSented, setOtpSented] = useState(true);
     const [Otp, setOtp] = useState("");
@@ -77,7 +79,7 @@ function Login() {
         if (message === "User exists") {
             //use next Auth here
             onClose();
-            signIn("credentials", { phone: Number, callbackUrl: "/" });
+            signIn("credentials", { email: "abcd@gmail.com", password: "123456", callbackUrl: "/" });
 
 
         }
@@ -179,9 +181,9 @@ function Login() {
                     </MenuButton>
                     <MenuList>
                         <MenuItem>
-                        {
+                            {
                                 user?.courses?.length <= 0 ? <FaUser color="green" /> : user?.courses?.length === 1 ? <FaAirbnb color='green' /> : <FaFire color="orange" />
-                        } &nbsp; &nbsp;
+                            } &nbsp; &nbsp;
                             {
                                 user?.courses?.length <= 0 ? 'Intermedate' : user?.courses?.length === 1 ? 'Advance' : 'Expert'
                             }
@@ -201,7 +203,7 @@ function Login() {
                         <MenuItem onClick={session ? signOut : null}>
                             Sign Out
                         </MenuItem>
-                        
+
                     </MenuList>
                 </Menu>
 
@@ -284,6 +286,29 @@ function Login() {
                                                     }}
                                                 >
                                                     Send OTP
+                                                </Button>
+                                                <Button
+                                                    width="100%"
+                                                    mt='4'
+                                                    height={"50px"}
+                                                    borderRadius={"3px"}
+                                                    variant='solid'
+                                                    onClick={()=>{
+                                                        signIn('google')
+                                                    }}
+                                                >
+                                                    <FcGoogle size='20' />
+                                                    <Text ml='2'>Continue with Google</Text>
+                                                </Button>
+                                                <Button
+                                                    width="100%"
+                                                    mt='4'
+                                                    height={"50px"}
+                                                    borderRadius={"3px"}
+                                                    colorScheme="facebook"
+                                                >
+                                                    <FaFacebookSquare size='20' />
+                                                    <Text ml='2'>Continue with Facebook</Text>
                                                 </Button>
                                             </Box>
                                         ) : (
