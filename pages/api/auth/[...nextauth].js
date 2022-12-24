@@ -20,19 +20,6 @@ export default NextAuth({
         }
       },
     }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      async profile(profile) {
-        await mongoose.connect(process.env.MONGODB_URL);
-        const user = await User.findOne({ email: profile.email }).populate('courses.courseId')
-        if (user) {
-          return user;
-        } else {
-          return null;
-        }
-      },
-    }),
   ],
   callbacks: {
     async session({ session, token }) {
