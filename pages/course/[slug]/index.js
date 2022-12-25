@@ -8,7 +8,7 @@ import { FaArrowRight, FaCheckCircle, FaConfluence, FaGift, FaPlaceOfWorship, Fa
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseBySlug } from "../../../redux/course/action";
-import { addCourse } from "../../../redux/auth/action";
+import { addCourseUser } from "../../../redux/auth/action";
 
 const SingleCourse = () => {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const SingleCourse = () => {
     dispatch(getCourseBySlug(slug));
   }, [slug, dispatch]);
   const { user } = useSelector(state => state.auth);
+  console.log('user: ', user);
   const [enrolled, setEnrolled] = React.useState(false);
   const [videoData, setVideoData] = React.useState([]);
 
@@ -40,7 +41,7 @@ const SingleCourse = () => {
         return
       }
     }
-    dispatch(addCourse({ userId: user.id, courseId: data._id }));
+    dispatch(addCourseUser({ userId: user.id, courseId: data._id }));
     toast({ title: 'Course added to your library', status: 'success', duration: 3000, position: "top", isClosable: true })
   }
 
