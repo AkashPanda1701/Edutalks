@@ -48,24 +48,6 @@ export default async function courses(req, res) {
             return res.status(400).json({ message: error.message });
         }
     }
-
-    if(req.method === "PATCH") {
-        try{
-            const { title, type, totalDuration } = req.body;
-            const { id } = req.query;
-
-            await Course.findByIdAndUpdate(id,{
-                title,
-                type,
-                totalDuration
-            })
-            return res.status(200).send("Course updated!");
-        }
-        catch({message}) {
-            return res.status(200).send({error: true, message});
-        }
-    }
-
     else{
         return res.status(400).json({message: "Invalid request method"});
     }

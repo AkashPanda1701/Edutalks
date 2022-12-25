@@ -44,8 +44,8 @@ async function addCourse(req, res) {
 
 async function getUsers(req, res) {
     try {
-        const users = await User.find({}).select({ subscriptions: 0, password: 0, phone: 0, courses: 0 })
-        return res.status(200).send(users);
+        const users = await User.find({}).select({ subscriptions: 0, password: 0, phone: 0 })
+        return res.status(200).send({ users });
     }
     catch ({ message }) {
         return res.status(400).send({ error: true, message });
