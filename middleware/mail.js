@@ -12,9 +12,9 @@ const sendMail = async (to, name,code) => {
     const mailOptions = {
         from: 'nixturindia@gmail.com',
         to: to,
-        subject: 'Welcome to Hackthon',
+        subject: 'Welcome to Edutalks',
         html: typeof(code) === 'number' ?`<h1>Hi ${name},</h1>
-        <h2>Welcome to Hackthon</h2>
+        <h2>Welcome to Edutalks</h2>
         
         <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
             <div style="margin:50px auto;width:70%;padding:20px 0">
@@ -34,7 +34,7 @@ const sendMail = async (to, name,code) => {
                 <p style="font-size:0.8em;color:#777">You are receiving this email because you bought our subscription.</p>
             </div>
           </div>`  :  `<h1>Hi ${name},</h1>
-        <h2>Welcome to Hackthon</h2>
+        <h2>Welcome to Edutalks</h2>
         
         <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
             <div style="margin:50px auto;width:70%;padding:20px 0">
