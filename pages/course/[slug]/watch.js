@@ -37,7 +37,7 @@ function watch() {
         if (router.isReady) {
             dispatch(getCourseBySlug(slug));
         }
-    }, [router.isReady]);
+    }, [router.isReady,slug]);
     const { data: session } = useSession();
 
     useEffect(() => {
@@ -96,7 +96,7 @@ function watch() {
                             <Box bg='white' p='4' mt='4' borderRadius='md' boxShadow='md'>
                                 <Box fontSize='xl' fontWeight='bold'>Description</Box>
                                 <Text>
-                                    {data.description}
+                                    {data?.description}
                                 </Text>
                             </Box>
                         </GridItem>

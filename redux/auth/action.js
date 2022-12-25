@@ -82,7 +82,6 @@ export const addCourse = (course) => async (dispatch) => {
     catch (error) {
         dispatch({
             type: ADD_COURSE_ERROR,
-            payload: error.response.data.message,
         });
     }
 }

@@ -119,18 +119,18 @@ const Navbar = () => {
                     <MenuList>
                       {user?.courses?.map((course, index) => (
                         <Link
-                          href={`/course/${course.courseId.slug}/watch`}
+                          href={`/course/${course?.courseId.slug}/watch?video=1`}
                           key={index}
                         >
-                          <MenuItem>{course.courseId.title}</MenuItem>
+                          <MenuItem>{course?.courseId.title}</MenuItem>
                           <Progress
                             m={4}
                             colorScheme="green"
-                            value={course.completed.length * 20}
+                            value={course?.completed.length * 20}
                             size="sm"
                           >
                             <ProgressLabel ml={2} color="green">
-                              {course.completed.length * 20}%
+                              {course?.completed.length * 20}%
                             </ProgressLabel>
                           </Progress>
                         </Link>
