@@ -37,14 +37,11 @@ export const getCourseBySlug = (slug) => async (dispatch) => {
     }
 }
 
-//FOR ADMIN PANEL ONLY
 
 export const addCourse = (course) => async (dispatch) => {
-    //send course data to server like this:{ title, slug, type, videos, totalDuration, description }
     try {
         dispatch({ type: ADD_COURSE_LOADING });
         const res = await axios.post('/api/courses', course);
-        console.log('res: ', res);
         dispatch({ type: ADD_COURSE_SUCCESS, payload: res.data.course });
     } catch (error) {
         dispatch({ type: ADD_COURSE_ERROR, payload: error.message });
@@ -52,11 +49,9 @@ export const addCourse = (course) => async (dispatch) => {
 }
 
 export const updateCourse = (course) => async (dispatch) => {
-    //send course data to server like this:{ title, slug, type, videos, totalDuration, description }
     try {
         dispatch({ type: UPDATE_COURSE_LOADING });
         const res = await axios.put(`/api/courses/${course._id}`, course);
-        console.log('res: ', res);
         dispatch({ type: UPDATE_COURSE_SUCCESS, payload: res.data.course });
     } catch (error) {
         dispatch({ type: UPDATE_COURSE_ERROR, payload: error.message });
@@ -67,7 +62,7 @@ export const deleteCourse = (courseId) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_COURSE_LOADING });
         const res = await axios.delete(`/api/courses/${courseId}`);
-        dispatch({ type: DELETE_COURSE_SUCCESS, payload: res.data.course });
+        dispatch({ type: DELETE_COURSE_SUCCESS, payload: courseId});
     } catch (error) {
         dispatch({ type: DELETE_COURSE_ERROR, payload: error.message });
     }

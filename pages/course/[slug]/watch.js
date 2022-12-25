@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCourseBySlug } from "../../../redux/course/action";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { addCourse } from "../../../redux/auth/action";
+import { addUserCourse } from "../../../redux/auth/action";
 
 function watch() {
     const router = useRouter();
@@ -47,7 +47,7 @@ function watch() {
     }, [data]);
 
     const handleComplete = async () => {
-        dispatch(addCourse({ userId: session.user.id, courseId: data._id, videoNo: video - 1 }));
+        dispatch(addUserCourse({ userId: session.user.id, courseId: data._id, videoNo: video - 1 }));
         toast({ title: 'Video marked as complete', status: 'success', duration: 3000, position: "top", isClosable: true })
     }
 
@@ -103,9 +103,9 @@ function watch() {
                         <GridItem colSpan={{ base: 7, md: 2 }} mt='8' h='90vh' overflowY='scroll' gap='4' display='flex' flexDirection='column'>
                             {
                                 data?.videos?.map((item, index) => (<Link href={`/course/${slug}/watch?video=${index + 1}`} key={index}>
-                                    <Box p='4' borderRadius='md' boxShadow='md' cursor={'pointer'} _hover={{ bg: 'green.50' }} onClick={() => setVideo(item)}  bg={videoData.includes(index) ? 'green.200' : 'white'}>
+                                    <Box p='4' borderRadius='md' boxShadow='md' cursor={'pointer'} onClick={() => setVideo(item)}  bg={videoData.includes(index) ? 'green.200' : 'white'} _hover={videoData.includes(index) ? null : { bg: 'green.50' }}>
                                         <Flex gap='4' alignItems='center'>
-                                            <Box px='6' py='2' bg='blue.500' borderRadius='md' color='white'>
+                                            <Box px='6' py='2' borderRadius='md' color='white' bg={videoData.includes(index) ? 'green.500' : 'blue.500'}>
                                                 <Text fontSize='xl' fontWeight='bold'>{index + 1}</Text>
                                             </Box>
                                             <Box>

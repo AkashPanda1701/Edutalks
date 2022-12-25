@@ -16,6 +16,10 @@ const courseSchema = new mongoose.Schema(
       enum: ["free", "paid"],
       required: true,
     },
+    image: {
+      type: String,
+      required: true,
+    },
     videos: [
       {
         subtitle: { type: String, required: true },

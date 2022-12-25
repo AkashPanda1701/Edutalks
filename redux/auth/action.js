@@ -1,8 +1,5 @@
 import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_ERROR, SIGNUP_LOADING, SIGNUP_SUCCESS,
-    ADD_COURSE_LOADING,
-    ADD_COURSE_SUCCESS,
-    ADD_COURSE_ERROR,
-    SIGNUP_ERROR, SET_SESSION } from "./actionTypes";
+    SIGNUP_ERROR, SET_SESSION, ADD_USER_COURSE_LOADING, ADD_USER_COURSE_SUCCESS, ADD_USER_COURSE_ERROR } from "./actionTypes";
 import axios from "axios";
 
 
@@ -12,7 +9,6 @@ export const login = (user) => async (dispatch) => {
             type: LOGIN_LOADING,
         });
         const { data } = await axios.post("/api/users/login", user);
-        console.log('data: ', data);
         dispatch({
             type: LOGIN_SUCCESS,
             payload: {
@@ -28,13 +24,11 @@ export const login = (user) => async (dispatch) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-    console.log('user: ', user);
     try {
         dispatch({
             type: SIGNUP_LOADING,
         });
         const { data } = await axios.post("/api/users/signup", user);
-        console.log('data: ', data);
         dispatch({
             type: SIGNUP_SUCCESS,
             payload: {
@@ -64,16 +58,14 @@ export const setSession = (user) => async (dispatch) => {
     }
 }
 
-export const addCourseUser = (course) => async (dispatch) => {
-    console.log('course: ', course);
+export const addUserCourse = (course) => async (dispatch) => {
     dispatch({
-        type: ADD_COURSE_LOADING,
+        type: ADD_USER_COURSE_LOADING,
     });
     try {
         const { data } = await axios.post("/api/users", course);
-        console.log('data: ', data);
         dispatch({
-            type: ADD_COURSE_SUCCESS,
+            type: ADD_USER_COURSE_SUCCESS,
             payload: {
                 message: data.message,
                 user : data.user
@@ -81,8 +73,6 @@ export const addCourseUser = (course) => async (dispatch) => {
         });
     }
     catch (error) {
-        dispatch({
-            type: ADD_COURSE_ERROR,
-        });
+        console.log('error: ', error);
     }
 }

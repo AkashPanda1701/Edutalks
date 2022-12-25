@@ -11,11 +11,11 @@ const Bots = () => {
     const [messages, setMessages] = useState([]);
 
     socket.on('history', (data) => {
-        console.log(data)
+        // console.log(data)
         setMessages(data)
     })
     socket.on("connect", () => {
-        console.log("connected");
+        // console.log("connected");
 
       
     });

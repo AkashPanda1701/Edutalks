@@ -47,6 +47,7 @@ import { login } from "../../redux/auth/action";
 import { RESET_AUTH } from "../../redux/auth/actionTypes";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaAccusoft, FaAirbnb, FaDailymotion, FaFacebookSquare, FaFighterJet, FaFire, FaFirefox, FaGoogle, FaUser } from "react-icons/fa";
+import { useRouter } from "next/router";
 function Login() {
 
     const auth = getAuth(app);
@@ -70,6 +71,7 @@ function Login() {
     const firstField = React.useRef();
     const toast = useToast();
     const { message } = useSelector(state => state.auth)
+    const router = useRouter();
     useEffect(() => {
         if (message === "User does not exist") {
 
@@ -79,7 +81,7 @@ function Login() {
         if (message === "User exists") {
             //use next Auth here
             onClose();
-            signIn("credentials", { phone: Number, callbackUrl: "/" });
+            signIn("credentials", { phone: Number, callbackUrl: `${router.asPath}` });
 
 
         }
@@ -185,7 +187,7 @@ function Login() {
                                 user?.courses?.length <= 0 ? <FaUser color="green" /> : user?.courses?.length === 1 ? <FaAirbnb color='green' /> : <FaFire color="orange" />
                             } &nbsp; &nbsp;
                             {
-                                user?.courses?.length <= 0 ? 'Beginner' : user?.courses?.length === 1 ? 'Advance' : 'Expert'
+                                user?.courses?.length <= 1 ? 'Beginner' : user?.courses?.length < 3 ? 'Advance' : 'Expert'
                             }
                         </MenuItem>
                         <Link href="/profile">
@@ -194,13 +196,13 @@ function Login() {
                             </MenuItem>
                         </Link>
                         {
-                            user?.role === 'admin' && <Link href="/admin/users">
+                            user?.role === 'admin' && <Link href="/admin/courses">
                                 <MenuItem>
                                     Admin
                                 </MenuItem>
                             </Link>
                         }
-                        <MenuItem onClick={session ? signOut : null}>
+                        <MenuItem onClick={session ? () => { signOut({ callbackUrl: '/' }) } : null}>
                             Sign Out
                         </MenuItem>
 

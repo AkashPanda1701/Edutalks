@@ -37,6 +37,7 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Allcourses: {
           loading: true,
           error: false,
+          data: state.Allcourses.data,
         },
       };
     case GET_ALL_COURSES_SUCCESS:
@@ -54,6 +55,7 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Allcourses: {
           loading: false,
           error: true,
+          data: state.Allcourses.data,
         },
       };
     case GET_COURSE_BY_SLUG_LOADING:
@@ -62,6 +64,7 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Singlecourse: {
           loading: true,
           error: false,
+          data: state.Singlecourse.data,
         },
       };
     case GET_COURSE_BY_SLUG_SUCCESS:
@@ -79,6 +82,7 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Singlecourse: {
           loading: false,
           error: true,
+          data: state.Singlecourse.data,
         },
       };
     case ADD_COURSE_LOADING:
@@ -87,6 +91,7 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Allcourses: {
           loading: true,
           error: false,
+          data: state.Allcourses.data,
         },
       };
     case ADD_COURSE_SUCCESS:
@@ -104,6 +109,7 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Allcourses: {
           loading: false,
           error: true,
+          data: state.Allcourses.data,
         },
       };
     case UPDATE_COURSE_LOADING:
@@ -112,9 +118,11 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Allcourses: {
           loading: true,
           error: false,
+          data: state.Allcourses.data,
         },
       };
     case UPDATE_COURSE_SUCCESS:
+      console.log(payload);
       return {
         ...state,
         Allcourses: {
@@ -131,6 +139,7 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Allcourses: {
           loading: false,
           error: true,
+          data: state.Allcourses.data,
         },
       };
     case DELETE_COURSE_LOADING:
@@ -139,6 +148,7 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Allcourses: {
           loading: true,
           error: false,
+          data: state.Allcourses.data,
         },
       };
     case DELETE_COURSE_SUCCESS:
@@ -158,6 +168,7 @@ export const courseReducer = (state = initialState, { type, payload }) => {
         Allcourses: {
           loading: false,
           error: true,
+          data: state.Allcourses.data,
         },
       };
     default:

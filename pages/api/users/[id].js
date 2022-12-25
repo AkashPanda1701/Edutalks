@@ -16,19 +16,19 @@ export default async function getSingleUser(req, res) {
     //         return res.status(400).send({ error: true, message })
     //     }
     // }
-     if(req.method === "DELETE") {
+    if (req.method === "DELETE") {
         const { query: { id } } = req;
-        const {referalCode} = req.body;
 
-        try{
-            await Referal.findOneAndDelete({ referalCode });
+        try {
+            const user = await User.findOne({ _id: id });
+            await Referal.findOneAndDelete({ referalCode: user.referalCode });
             await User.findByIdAndDelete({ _id: id });
             return res.status(200).send("User and referal removed!");
         }
-        catch({message}) {
+        catch ({ message }) {
             return res.status(400).send({ error: true, message })
         }
-    }else{
-        return res.status(400).json({message: "Invalid request method"});
+    } else {
+        return res.status(400).json({ message: "Invalid request method" });
     }
 }
