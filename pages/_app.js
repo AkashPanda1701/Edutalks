@@ -7,7 +7,6 @@ import { SessionProvider } from "next-auth/react";
 import Bots from "../components/ChatBot";
 
 
-let socket;
 export default function App({ Component, pageProps }) {
 
   
@@ -15,7 +14,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
+      <NextNProgress color="#68D391" startPosition={0.3} height={5} showOnShallow={true} />
       <Bots />
       <SessionProvider session={pageProps.session}>
         <ChakraProvider>

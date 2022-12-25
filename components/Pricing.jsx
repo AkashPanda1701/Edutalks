@@ -128,7 +128,7 @@ const Pricing = () => {
                     fontSize="6xl"
                     textShadow="2px 0 currentcolor"
                   >
-                    ₹79
+                    ₹49
                   </chakra.span>
                   <chakra.span
                     alignSelf="center"
@@ -140,6 +140,7 @@ const Pricing = () => {
                     /3 months
                   </chakra.span>
                 </HStack>
+                  <Text fontSize="sm" color="gray.500" _dark={{ color: "gray.400" }} fontWeight='600'>*Or refer 3 friends</Text>
               </VStack>
               <VStack
                 fontSize="sm"
@@ -236,7 +237,7 @@ const Pricing = () => {
                     fontSize="6xl"
                     textShadow="2px 0 currentcolor"
                   >
-                    ₹349
+                    ₹149
                   </chakra.span>
                   <chakra.span
                     alignSelf="center"
@@ -248,6 +249,7 @@ const Pricing = () => {
                     /1 Year
                   </chakra.span>
                 </HStack>
+                <Text fontSize="sm" color="gray.500" _dark={{ color: "gray.400" }} fontWeight='600'>*Or refer 12 friends</Text>
               </VStack>
               <VStack
                 fontSize="sm"
@@ -292,7 +294,7 @@ const Pricing = () => {
                     }}
                     cursor="pointer"
                   > */}
-                  <PaymentCard month='6' />
+                  <PaymentCard month='12' />
                   {/* </chakra.a> */}
                 </Box>
               </VStack>
@@ -333,7 +335,7 @@ const Pricing = () => {
                     fontSize="6xl"
                     textShadow="2px 0 currentcolor"
                   >
-                    ₹149
+                    ₹99
                   </chakra.span>
                   <chakra.span
                     alignSelf="center"
@@ -345,6 +347,7 @@ const Pricing = () => {
                     /6 Months
                   </chakra.span>
                 </HStack>
+                <Text fontSize="sm" color="gray.500" _dark={{ color: "gray.400" }} fontWeight='600'>*Or refer 6 friends</Text>
               </VStack>
               <VStack
                 fontSize="sm"
@@ -397,7 +400,7 @@ const Pricing = () => {
                     }}
                     cursor="pointer"
                   > */}
-                  <PaymentCard month='12' />
+                  <PaymentCard month='6' />
                   {/* </chakra.a> */}
                 </Box>
               </VStack>
