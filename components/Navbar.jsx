@@ -70,6 +70,7 @@ const Navbar = () => {
                 <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
                   <Image
                     src="https://edutalks.biz/wp-content/uploads/2020/02/Edu-Talks-Logo.png"
+                    
                     alt="logo"
                     height={50}
                   />
@@ -83,7 +84,7 @@ const Navbar = () => {
                 color="brand.500"
                 display={{
                   base: "none",
-                  md: "inline-flex",
+                  lg: "inline-flex",
                 }}
               >
                 <Link href="/">
@@ -142,13 +143,13 @@ const Navbar = () => {
               <Box
                 display={{
                   base: "inline-flex",
-                  md: "none",
+                  lg: "none",
                 }}
               >
                 <IconButton
                   display={{
                     base: "flex",
-                    md: "none",
+                    lg: "none",
                   }}
                   aria-label="Open menu"
                   fontSize="20px"

@@ -82,9 +82,7 @@ function Features() {
           }}
         >
           <Box
-            textAlign={{
-              lg: "center",
-            }}
+            textAlign='center'
           >
             <chakra.h2
               _light={{
