@@ -185,7 +185,7 @@ function Login() {
                                 user?.courses?.length <= 0 ? <FaUser color="green" /> : user?.courses?.length === 1 ? <FaAirbnb color='green' /> : <FaFire color="orange" />
                             } &nbsp; &nbsp;
                             {
-                                user?.courses?.length <= 0 ? 'Intermedate' : user?.courses?.length === 1 ? 'Advance' : 'Expert'
+                                user?.courses?.length <= 0 ? 'Beginner' : user?.courses?.length === 1 ? 'Advance' : 'Expert'
                             }
                         </MenuItem>
                         <Link href="/profile">
