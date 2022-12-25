@@ -8,7 +8,7 @@ import { FaArrowRight, FaCheckCircle, FaConfluence, FaGift, FaPlaceOfWorship, Fa
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseBySlug } from "../../../redux/course/action";
-import { addCourse } from "../../../redux/auth/action";
+import { addUserCourse } from "../../../redux/auth/action";
 
 const SingleCourse = () => {
   const dispatch = useDispatch();
@@ -34,33 +34,27 @@ const SingleCourse = () => {
       const endDate = new Date(user.subscriptions.enddate).toISOString();
       const currentDate = new Date().toISOString();
       if (endDate < currentDate) {
-        console.log('expired')
         toast({ title: "You don't have valid subscription", status: 'warning', duration: 3000, position: "top", isClosable: true, description: 'Please subscribe to our premium plan to access this course' })
         router.push(`/pricing`);
         return
       }
     }
-    dispatch(addCourse({ userId: user.id, courseId: data._id }));
+    dispatch(addUserCourse({ userId: user.id, courseId: data._id }));
     toast({ title: 'Course added to your library', status: 'success', duration: 3000, position: "top", isClosable: true })
   }
 
   useEffect(() => {
+    let isMounted = false;
+    let cvideo = [];
     user?.courses?.forEach(course => {
       if (course.courseId._id === data?._id) {
-        setEnrolled(true)
-        setVideoData(course.completed)
-      } else {
-        setEnrolled(false)
-        setVideoData([])
+        isMounted = true;
+        cvideo = course.completed;
       }
     })
+    setEnrolled(isMounted);
+    setVideoData(cvideo);
   }, [user, data])
-
-
-
-  console.log(videoData);
-
-
 
 
   return (
@@ -102,7 +96,7 @@ const SingleCourse = () => {
                 </Flex>
               </GridItem>
               <GridItem colSpan={{ base: 2, md: 1 }} borderRadius='md' display='flex' alignItems='center'>
-                <Button colorScheme='green' w='100%' onClick={enrolled ? null : handleEnroll}>
+                <Button w='100%' onClick={enrolled ? null : handleEnroll}  colorScheme={enrolled ? 'orange' : 'green'}>
                   <BsCheck2Circle /> &nbsp;
                   {enrolled ? 'Enrolled' : data?.type === 'paid' ? new Date(user?.subscriptions?.enddate||null).toISOString() < new Date().toISOString() ? 'Get Subscription' : 'Enroll Now' : 'Enroll Now'}
                 </Button>

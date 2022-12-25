@@ -26,7 +26,7 @@ export default async function courses(req, res) {
                 videos,
                 totalDuration,
                 description
-            });
+            }, { new: true });
 
            
             return res.status(201).send({ message: "Course updated", course: course });

@@ -25,6 +25,7 @@ import { useSelector } from "react-redux";
 const UserProfile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {user} = useSelector(state => state.auth)
+  const [userData, setUserData] = React.useState({ name: user.name, email: user.email, phone: user.phone });
 
 
 
@@ -123,16 +124,16 @@ const UserProfile = () => {
             <ModalBody pb={6}>
               <FormControl>
                 <FormLabel>Name</FormLabel>
-                <Input ref={initialRef} placeholder="Name" value={user.name} />
+                <Input ref={initialRef} placeholder="Name" value={userData.name} onChange={(e) => setUserData({...userData, name: e.target.value})} />
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>Email</FormLabel>
-                <Input placeholder="Email" value={user.email} />
+                <Input placeholder="Email" value={userData.email} onChange={(e) => setUserData({...userData, email: e.target.value})} />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Phone number</FormLabel>
-                <Input placeholder="Phone number" value={user.phone} />
+                <Input placeholder="Phone number" value={userData.phone} onChange={(e) => setUserData({...userData, phone: e.target.value})} />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Password</FormLabel>

@@ -18,7 +18,6 @@ function referral() {
     })
   }, [user])
 
-  console.log(referrals)
 
   return (
     <>
@@ -112,7 +111,7 @@ function referral() {
                 <Grid templateColumns="repeat(2, 1fr)" gap='4' mt={4}>
                   {
                     referrals ? referrals.map((referral, index) => (
-                      <GridItem colSpan={{ base: 2, md: 1 }} bg='white' p={4} borderRadius='md' border='1px solid' borderColor='gray.100'>
+                      <GridItem key={index} colSpan={{ base: 2, md: 1 }} bg='white' p={4} borderRadius='md' border='1px solid' borderColor='gray.100'>
                         <Box>
                           <Text fontWeight="bold" textColor='#522C2C' fontSize={{ base: 'xl', lg: '2xl' }}>{referral.name}</Text>
                           <Flex alignItems='center' gap={2}>

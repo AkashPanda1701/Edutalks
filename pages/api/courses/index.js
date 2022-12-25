@@ -14,13 +14,15 @@ export default async function courses(req, res) {
 
     if(req.method === 'POST'){
         try {
-            const { title, slug, type, videos, totalDuration, description } = req.body;
+            const { title, image, slug, type, videos, totalDuration, description } = req.body;
+            console.log(req.body);
 
             const course = await Course.create({
                 title,
                 slug,
                 type,
                 videos,
+                image,
                 totalDuration,
                 description
             });

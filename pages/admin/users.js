@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { Box, Button, Flex, Text, useColorModeValue, Table, Thead, Tbody, Tr, Th, Td, useDisclosure, Modal, FormControl, InputGroup, Input, ModalBody, ModalHeader, ModalOverlay, ModalFooter, ModalContent, ModalCloseButton, Select, useToast } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux';
-// import { deleteUser, getallUser, updateUser } from '../../redux/user/action';
+import { deleteUser, getAllUsers } from '../../redux/user/action';
 import Admin from './index'
 
 function Users() {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    // let { users, loading, error } = useSelector((state) => state.user);
+    let { data: users, loading, error } = useSelector((state) => state.user);
+    console.log(users);
     // const { user: { data: { email: userEmail } } } = useSelector((state) => state.auth);
 
     // users.forEach((user) => {
@@ -16,12 +17,12 @@ function Users() {
     // })
 
     const [userEdit, setUserEdit] = React.useState({});
-    // const dispatch = useDispatch();
-    // const toast = useToast();
+    const dispatch = useDispatch();
+    const toast = useToast();
 
-    // useEffect(() => {
-    //     dispatch(getallUser());
-    // }, [dispatch]);
+    useEffect(() => {
+        dispatch(getAllUsers());
+    }, [dispatch]);
 
     const handleEditChange = (e) => {
         setUserEdit({
@@ -69,12 +70,13 @@ function Users() {
                             <Tr>
                                 <Th>Name</Th>
                                 <Th>Email</Th>
+                                <Th>Referal</Th>
                                 <Th>Role</Th>
                                 <Th>Actions</Th>
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {/* {
+                            {
                                 users.map((user, index) => (
                                     <Tr key={index}>
                                         <Td>{user.name}</Td>
@@ -83,6 +85,7 @@ function Users() {
                                                 {user.email}
                                             </Text>
                                         </Td>
+                                        <Td>{user.referalCode}</Td>
                                         <Td>{user.role}</Td>
                                         <Td>
                                             <Button colorScheme="blue" size="sm" mr="2" onClick={() => {
@@ -92,14 +95,20 @@ function Users() {
                                             <Button colorScheme="red" size="sm"
                                                 onClick={() => {
                                                     dispatch(deleteUser(user._id))
+                                                    toast({
+                                                        title: "User deleted successfully.",
+                                                        description: "We've deleted the user for you.",
+                                                        status: "success",
+                                                        duration: 3000,
+                                                        isClosable: true,
+                                                        position: 'top'
+                                                    })
                                                 }}
-
-
                                             >Delete</Button>
                                         </Td>
                                     </Tr>
                                 ))
-                            } */}
+                            }
                         </Tbody>
                     </Table>
                 </Box>
@@ -120,7 +129,6 @@ function Users() {
                                     <Select placeholder="Select Role" value={userEdit.role} name="role" onChange={handleEditChange}>
                                         <option value="Admin">Admin</option>
                                         <option value="User">User</option>
-                                        <option value="Writer">Writer</option>
                                     </Select>
                                 </InputGroup>
                             </FormControl>

@@ -36,6 +36,7 @@ const Navbar = () => {
   const mobileNav = useDisclosure();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+
   useEffect(() => {
     dispatch(setSession());
   }, [dispatch]);
@@ -124,13 +125,16 @@ const Navbar = () => {
                         >
                           <MenuItem>{course?.courseId.title}</MenuItem>
                           <Progress
-                            m={4}
+                            mx={3}
+                            mt='1'
+                            mb='4'
                             colorScheme="green"
-                            value={course?.completed.length * 20}
-                            size="sm"
+                            value={(course?.completed.length * ((1/ course?.courseId.videos.length) * 100))}
+                            size="lg"
+                            rounded={10}
                           >
-                            <ProgressLabel ml={2} color="green">
-                              {course?.completed.length * 20}%
+                            <ProgressLabel ml={2} fontSize={12} color={(course?.completed.length * ((1/course?.courseId.videos.length) * 100)).toFixed(2) > "50" ? "white" : "green"}>
+                              {(course?.completed.length * ((1/course?.courseId.videos.length) * 100)).toFixed(2)}%
                             </ProgressLabel>
                           </Progress>
                         </Link>
