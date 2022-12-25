@@ -64,7 +64,8 @@ export const setSession = (user) => async (dispatch) => {
     }
 }
 
-export const addCourse = (course) => async (dispatch) => {
+export const addCourseUser = (course) => async (dispatch) => {
+    console.log('course: ', course);
     dispatch({
         type: ADD_COURSE_LOADING,
     });
